@@ -1,7 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { cn } from "@/utils/styling";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "../ui/navigation-menu";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -17,31 +23,32 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="w-full">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-2xl font-playfair font-bold">
-            Library Card
-          </Link>
+    <section className="container mx-auto px-2 py-2">
+      <NavigationMenu className={cn("w-full max-w-none justify-between")}>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink href="/" className="hover:line-through">
+              <h2 className="text-4xl font-bold">Library Card</h2>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
 
-          <ul className="flex space-x-8">
-            {navItems.map((item) => (
-              <li key={item.name}>
-                <Link
-                  href={item.href}
-                  className={`font-playfair hover:text-white-600 transition-colors ${
-                    pathname === item.href
-                      ? "text-white font-semibold"
-                      : "text-white-800"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </nav>
+        <NavigationMenuList>
+          {navItems.map((item) => (
+            <NavigationMenuItem key={item.name}>
+              <NavigationMenuLink
+                href={item.href}
+                className={cn(
+                  "text-lg",
+                  pathname.endsWith(item.href) ? "font-semibold" : "",
+                )}
+              >
+                {item.name}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          ))}
+        </NavigationMenuList>
+      </NavigationMenu>
+    </section>
   );
 }
