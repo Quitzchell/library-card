@@ -1,4 +1,4 @@
-import { formatDate } from "@/utils/dateFormatter";
+import { formatDate } from "@/utils/date";
 
 export function ConcertDateDisplay({ date }: { date: Date }) {
   return (
