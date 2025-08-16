@@ -1,7 +1,7 @@
 import { TourDateDisplay } from "@/lib/api/services";
-import { ConcertCard } from "./ConcertCard";
+import { ConcertCard } from "../tour/ConcertCard";
 
-export function TourSection() {
+export function TourContainer() {
   const TourDateList: Array<TourDateDisplay> = [
     {
       id: 1,
@@ -36,7 +36,7 @@ export function TourSection() {
   ];
 
   return (
-    <div className="col-span-1 flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4">
       <h2>Tour</h2>
       <div className="flex flex-col gap-y-4">
         {TourDateList.map((tourDate, index) => (
