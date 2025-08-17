@@ -23,8 +23,6 @@ export function TourContainer() {
     fetchData();
   }, []);
 
-  console.log(tourDates);
-
   return (
     <div className="flex flex-col space-y-4">
       <h2>Tour</h2>
