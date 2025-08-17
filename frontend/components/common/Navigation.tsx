@@ -29,6 +29,11 @@ const navItems = [
   { name: "Contact", href: "/contact" },
 ];
 
+const homeItem = {
+  name: "Home",
+  href: "/",
+};
+
 export default function Navigation() {
   const pathname = usePathname();
 
@@ -47,31 +52,31 @@ export default function Navigation() {
 
 function NavBar({ pathname }: { pathname: string }) {
   return (
-      <NavigationMenu className={cn("w-full max-w-none justify-between")}>
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuLink href="/" className="hover:line-through">
-              <h2 className="text-4xl font-bold">Library Card</h2>
+    <NavigationMenu className={cn("w-full max-w-none justify-between")}>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuLink href="/" className="hover:line-through">
+            <h2 className="text-4xl font-bold">Library Card</h2>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+
+      <NavigationMenuList>
+        {navItems.map((item) => (
+          <NavigationMenuItem key={item.name}>
+            <NavigationMenuLink
+              href={item.href}
+              className={cn(
+                "text-lg",
+                pathname.endsWith(item.href) ? "font-semibold" : "",
+              )}
+            >
+              {item.name}
             </NavigationMenuLink>
           </NavigationMenuItem>
-        </NavigationMenuList>
-
-        <NavigationMenuList>
-          {navItems.map((item) => (
-            <NavigationMenuItem key={item.name}>
-              <NavigationMenuLink
-                href={item.href}
-                className={cn(
-                  "text-lg",
-                  pathname.endsWith(item.href) ? "font-semibold" : "",
-                )}
-              >
-                {item.name}
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          ))}
-        </NavigationMenuList>
-      </NavigationMenu>
+        ))}
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 }
 
@@ -85,17 +90,15 @@ function NavSheet({ pathname }: { pathname: string }) {
       </div>
       <SheetContent className="w-80 gap-y-4">
         <SheetHeader>
-          <SheetTitle className="text-4xl font-bold">
-            <Link href={'/'}>Library Card</Link>
-          </SheetTitle>
+          <SheetTitle className="text-4xl font-bold">Library Card</SheetTitle>
         </SheetHeader>
-        {navItems.map((item) => (
+        {[homeItem, ...navItems].map((item) => (
           <Link
             key={item.name}
             href={item.href}
             className={cn(
-              "px-4 py-2 200 text-2xl",
-              pathname.endsWith(item.href) ? "font-semibold" : "",
+              "200 px-4 py-2 text-2xl",
+              pathname.endsWith(item.href) ? "line-through" : "",
             )}
           >
             {item.name}
