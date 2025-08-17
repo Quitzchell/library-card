@@ -1,0 +1,178 @@
+import {
+  TourDateDisplay,
+  TourResponse,
+} from "@/lib/api/interfaces/tour";
+
+export const tourMock = {
+  async getTourDates(page = 0, perPage = 20): Promise<TourResponse> {
+    const from = page * perPage;
+    const data: TourDateDisplay[] = TourDateList.slice(from, perPage);
+    console.log(data)
+    const totalItems = TourDateList.length;
+    const lastPage = Math.ceil(totalItems / perPage);
+
+    return {
+      data: data,
+      meta: {
+        current_page: page,
+        last_page: lastPage,
+        per_page: perPage,
+        total: totalItems,
+      },
+    };
+  },
+};
+
+// Mockdata
+const TourDateList: Array<TourDateDisplay> = [
+  {
+    id: 1,
+    venue: "Rotown",
+    city: "Rotterdam",
+    country: "Netherlands",
+    ticket_url: "https://ticketurl.com",
+    sold_out: false,
+    description: undefined,
+    date: new Date("11-11-2025"),
+  },
+  {
+    id: 2,
+    venue: "Paradiso",
+    city: "Amsterdam",
+    country: "Netherlands",
+    ticket_url: undefined,
+    sold_out: undefined,
+    description: undefined,
+    date: new Date("01-11-2025"),
+  },
+  {
+    id: 3,
+    venue: "Doornroosje",
+    city: "Nijmegen",
+    country: "Netherlands",
+    ticket_url: "https://ticketurl.com",
+    sold_out: true,
+    description: undefined,
+    date: new Date("02-23-2026"),
+  },
+  {
+    id: 4,
+    venue: "The Bowery Ballroom",
+    city: "New York",
+    country: "USA",
+    ticket_url: "https://boweryballroom.com/tickets",
+    sold_out: false,
+    description: "Special acoustic set",
+    date: new Date("03-15-2025"),
+  },
+  {
+    id: 5,
+    venue: "The Troubadour",
+    city: "Los Angeles",
+    country: "USA",
+    ticket_url: "https://troubadour.com/shows",
+    sold_out: true,
+    description: undefined,
+    date: new Date("03-18-2025"),
+  },
+  {
+    id: 6,
+    venue: "First Avenue",
+    city: "Minneapolis",
+    country: "USA",
+    ticket_url: undefined,
+    sold_out: false,
+    description: "All ages show",
+    date: new Date("03-22-2025"),
+  },
+  {
+    id: 7,
+    venue: "O2 Academy Brixton",
+    city: "London",
+    country: "UK",
+    ticket_url: "https://academymusicgroup.com/o2academybrixton",
+    sold_out: true,
+    description: undefined,
+    date: new Date("04-10-2025"),
+  },
+  {
+    id: 8,
+    venue: "The Roundhouse",
+    city: "London",
+    country: "UK",
+    ticket_url: "https://roundhouse.org.uk",
+    sold_out: false,
+    description: "Album release show",
+    date: new Date("04-11-2025"),
+  },
+  {
+    id: 9,
+    venue: "La Cigale",
+    city: "Paris",
+    country: "France",
+    ticket_url: undefined,
+    sold_out: false,
+    description: undefined,
+    date: new Date("04-20-2025"),
+  },
+  {
+    id: 10,
+    venue: "Olympia",
+    city: "Paris",
+    country: "France",
+    ticket_url: "https://olympiahall.com/tickets",
+    sold_out: true,
+    description: "Live recording",
+    date: new Date("04-21-2025"),
+  },
+  {
+    id: 11,
+    venue: "Columbiahalle",
+    city: "Berlin",
+    country: "Germany",
+    ticket_url: "https://columbiahalle.de",
+    sold_out: false,
+    description: undefined,
+    date: new Date("05-02-2025"),
+  },
+  {
+    id: 12,
+    venue: "Batschkapp",
+    city: "Frankfurt",
+    country: "Germany",
+    ticket_url: undefined,
+    sold_out: false,
+    description: "Meet & greet available",
+    date: new Date("05-04-2025"),
+  },
+  {
+    id: 13,
+    venue: "Sala Apolo",
+    city: "Barcelona",
+    country: "Spain",
+    ticket_url: "https://sala-apolo.com",
+    sold_out: true,
+    description: undefined,
+    date: new Date("05-15-2025"),
+  },
+  {
+    id: 14,
+    venue: "Joy Eslava",
+    city: "Madrid",
+    country: "Spain",
+    ticket_url: "https://joyeslava.com/eventos",
+    sold_out: false,
+    description: undefined,
+    date: new Date("05-17-2025"),
+  },
+  {
+    id: 15,
+    venue: "The Opera House",
+    city: "Toronto",
+    country: "Canada",
+    ticket_url: undefined,
+    sold_out: true,
+    description: "Festival warm-up show",
+    date: new Date("06-01-2025"),
+  },
+];
