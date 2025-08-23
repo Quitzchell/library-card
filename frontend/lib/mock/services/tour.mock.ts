@@ -7,7 +7,6 @@ export const tourMock = {
   async getTourDates(page = 0, perPage = 20): Promise<TourResponse> {
     const from = page * perPage;
     const data: TourDateDisplay[] = TourDateList.slice(from, perPage);
-    console.log(data)
     const totalItems = TourDateList.length;
     const lastPage = Math.ceil(totalItems / perPage);
 
