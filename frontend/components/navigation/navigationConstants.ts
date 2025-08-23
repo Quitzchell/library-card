@@ -1,14 +1,17 @@
+export const HOME_ROUTE = "/";
+export const TOUR_ROUTE = "/tour";
+export const MUSIC_ROUTE = "/music";
+export const WEBSHOP_ROUTE = "/webshop";
+export const CONTACT_ROUTE = "/contact";
+
 export const navItems = [
-  { name: "News", href: "/news" },
-  { name: "Music", href: "/music" },
-  { name: "Tour", href: "/tour" },
-  { name: "Video", href: "/video" },
-  { name: "Webshop", href: "/webshop" },
-  { name: "Bio", href: "/bio" },
-  { name: "Contact", href: "/contact" },
+  { name: "Tour", href: TOUR_ROUTE },
+  { name: "Music", href: MUSIC_ROUTE },
+  { name: "Webshop", href: WEBSHOP_ROUTE },
+  { name: "Contact", href: CONTACT_ROUTE },
 ];
 
 export const homeItem = {
   name: "Home",
-  href: "/",
+  href: HOME_ROUTE,
 };
