@@ -5,7 +5,7 @@ export const formatDate = (
   const dateObj = typeof date === "string" ? new Date(date) : date;
 
   return dateObj.toLocaleDateString(
-    "en-EN",
+    "nl-NL",
     options || {
       weekday: "short",
       year: "numeric",
