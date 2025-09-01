@@ -16,6 +16,7 @@ export default function Home() {
 function Mobile() {
   return (
     <main>
+      {/* Header */}
       <section className="h-dvh">
         <div className="bg-primary flex h-[90%] items-center justify-center">
           <Image
@@ -32,10 +33,7 @@ function Mobile() {
       </section>
 
       <section className="space-y-8 mb-8">
-        {/* todo: create tour overview */}
         <TourContainer />
-
-        {/* todo: insert music embed through cms */}
         <MusicContainer />
 
         {/* <WebshopContainer /> */}
