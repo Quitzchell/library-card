@@ -5,7 +5,7 @@ export default function SectionLink({ href, text }: { href: string; text: string
     <div className="flex justify-end">
       <Link
         href={href}
-        className="underline hover:bg-black hover:text-white"
+        className="-my-2 p-2 underline hover:bg-black hover:text-white"
       >
         {text}
       </Link>

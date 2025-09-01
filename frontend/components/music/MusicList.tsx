@@ -6,13 +6,19 @@ export default async function MusicList() {
   const musicItems = await services.music.getMusicItems(0, 4);
 
   return (
-    <section className="grid grid-cols-2 gap-8">
+    <section className="grid grid-cols-2 gap-3">
       {musicItems.data.map((musicItem: MusicItemDisplay, index: number) => (
-        <div key={index} className="h-75 w-full space-y-2">
-          <Image src={musicItem.cover_image} width={1080} height={1080} alt={musicItem.title} />
+        <div key={index} className="cursor-pointer group h-75 p-2 w-full space-y-2 hover:bg-black">
+          <Image
+            src={musicItem.cover_image}
+            width={1080}
+            height={1080}
+            alt={musicItem.title}
+          />
           <div>
-            <p>{musicItem.title}</p>
-            <p className="text-sm">Listen online</p>
+            <p className="w-fit underline group-hover:text-white">
+              {musicItem.title}
+            </p>
           </div>
         </div>
       ))}

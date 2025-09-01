@@ -1,6 +1,6 @@
 export default function SectionTitle({ title }: { title: string }) {
   return (
-    <h2 className="container bg-black py-2 text-end text-2xl text-white">
+    <h2 className="container py-2 text-end text-2xl border-dashed border-y-2">
       {title}
     </h2>
   );
