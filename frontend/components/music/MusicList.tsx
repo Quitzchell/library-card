@@ -1,19 +1,21 @@
+import { MusicItemDisplay } from "@/lib/api/interfaces/music";
 import { services } from "@/lib/services.config";
+import Image from "next/image";
 
 export default async function MusicList() {
-  const musicItems = await services.music.getMusicItems(0, 3);
+  const musicItems = await services.music.getMusicItems(0, 4);
 
   return (
-      <>
-      {musicItems.data.map((musicItem) => (
-        <div key={`${musicItem.bandcamp_item?.type}-${musicItem.bandcamp_item?.id}`}>
-          <iframe
-            src={`https://bandcamp.com/EmbeddedPlayer/${musicItem.bandcamp_item?.type}=${musicItem.bandcamp_item?.id}/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/`}
-            className="m-auto h-30 w-[90%] rounded shadow outline-2 outline-black"
-            seamless
-          />
+    <section className="grid grid-cols-2 gap-8">
+      {musicItems.data.map((musicItem: MusicItemDisplay, index: number) => (
+        <div key={index} className="h-75 w-full space-y-2">
+          <Image src={musicItem.cover_image} width={1080} height={1080} alt={musicItem.title} />
+          <div>
+            <p>{musicItem.title}</p>
+            <p className="text-sm">Listen online</p>
+          </div>
         </div>
       ))}
-    </>
+    </section>
   );
 }
