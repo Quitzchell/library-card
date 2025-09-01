@@ -1,25 +1,16 @@
 import MusicList from "@/components/music/MusicList";
 import { MUSIC_ROUTE } from "@/components/navigation";
-import Link from "next/link";
-import HomeTitle from "../common/homeTitle";
+import SectionTitle from "../common/SectionTitle";
+import SectionLink from "../common/SectionLink";
 
 export default function MusicContainer() {
   return (
     <section className="space-y-6">
-      {/* title */}
-      <HomeTitle title="Music" />
+      <SectionTitle title="Music" />
 
-      {/* list */}
-      <MusicList />
-
-      {/* to music overview */}
-      <div className="flex justify-end px-2">
-        <Link
-          href={MUSIC_ROUTE}
-          className="px-2 underline hover:bg-black hover:text-white"
-        >
-          {"All music >>>"}
-        </Link>
+      <div className="container space-y-6">
+        <MusicList />
+        <SectionLink href={MUSIC_ROUTE} text="All music" />
       </div>
     </section>
   );
