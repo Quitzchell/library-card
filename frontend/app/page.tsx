@@ -28,7 +28,7 @@ function Mobile() {
           />
         </div>
         <div className="flex h-[10%] items-center bg-white">
-          <h1 className="px-4 text-2xl text-black">This is Library Card</h1>
+          <h1 className="container text-2xl text-black">This is Library Card</h1>
         </div>
       </section>
 
