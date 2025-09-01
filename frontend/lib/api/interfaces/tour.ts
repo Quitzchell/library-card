@@ -11,7 +11,7 @@ export interface TourDate {
   updated_at: string;
 }
 
-export type TourDateDisplay = Omit<TourDate, "created_at" | "updated_at">;
+export type TourDateDisplay = Omit<TourDate, "created_at" | "updated_at">
 
 export interface TourResponse {
   data: TourDateDisplay[];
