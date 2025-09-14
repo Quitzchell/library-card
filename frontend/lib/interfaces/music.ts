@@ -1,11 +1,13 @@
-export type ServicesVariant = { name: string; url: string };
+import { MusicServiceName } from '@/lib/enums';
+
+export type ServiceVariant = { name: MusicServiceName; url: string };
 
 export interface MusicItem {
   id: number;
   title: string;
   release_date?: string;
   cover_image: string;
-  services: Array<ServicesVariant>;
+  services: Array<ServiceVariant>;
   created_at: string;
   updated_at: string;
 }
