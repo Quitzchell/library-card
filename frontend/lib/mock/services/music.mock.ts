@@ -1,7 +1,8 @@
 import {
   MusicItemDisplay,
   MusicItemResponse,
-} from "@/lib/api/interfaces/music";
+} from "@/lib/interfaces/music";
+import { MusicServiceName } from "@/lib/enums";
 
 export const musicMock = {
   async getMusicItems(page = 0, perPage = 10): Promise<MusicItemResponse> {
@@ -32,15 +33,15 @@ const MusicItemList: Array<MusicItemDisplay> = [
     cover_image: "/images/art-school-artwork.jpg",
     services: [
       {
-        name: "spotify",
+        name: MusicServiceName.SPOTIFY,
         url: "https://open.spotify.com/track/2pjSXlkwwlqEhoGtUpXeqr?si=27494075ad234820",
       },
       {
-        name: "bandcamp",
+        name: MusicServiceName.BANDCAMP,
         url: "https://thisislibrarycard.bandcamp.com/track/art-school",
       },
       {
-        name: "apple",
+        name: MusicServiceName.APPLE_MUSIC,
         url: "https://music.apple.com/us/song/art-school/1823574040",
       },
     ],
@@ -52,15 +53,15 @@ const MusicItemList: Array<MusicItemDisplay> = [
     cover_image: "/images/nothing-interesting-artwork.jpg",
     services: [
       {
-        name: "spotify",
+        name: MusicServiceName.SPOTIFY,
         url: "https://open.spotify.com/album/4wzy3foMTOWeACd3J2FXoC?si=e3fn2cSqQ0CvfQ6wv-MIag",
       },
       {
-        name: "bandcamp",
+        name: MusicServiceName.BANDCAMP,
         url: "https://thisislibrarycard.bandcamp.com/album/nothing-interesting",
       },
       {
-        name: "apple",
+        name: MusicServiceName.APPLE_MUSIC,
         url: "https://music.apple.com/us/album/nothing-interesting-ep/1722176456",
       },
     ],
@@ -72,15 +73,15 @@ const MusicItemList: Array<MusicItemDisplay> = [
     cover_image: "/images/sunflowers-artwork.jpg",
     services: [
       {
-        name: "spotify",
+        name: MusicServiceName.SPOTIFY,
         url: "https://open.spotify.com/album/5PY6ZHSv3OwcLNwi6qSm8P?si=s7X1JY32RgmKPfTdqA3ecg",
       },
       {
-        name: "bandcamp",
+        name: MusicServiceName.BANDCAMP,
         url: "https://thisislibrarycard.bandcamp.com/track/sunflowers",
       },
       {
-        name: "apple",
+        name: MusicServiceName.APPLE_MUSIC,
         url: "https://music.apple.com/us/album/sunflowers-single/1672448083",
       },
     ],
@@ -92,15 +93,15 @@ const MusicItemList: Array<MusicItemDisplay> = [
     cover_image: "/images/mirror-factory-artwork.jpg",
     services: [
       {
-        name: "spotify",
+        name: MusicServiceName.SPOTIFY,
         url: "https://open.spotify.com/track/0D5W10M58DccbwOOxrdkxM?si=a27b56e81f6a4c2c",
       },
       {
-        name: "bandcamp",
+        name: MusicServiceName.BANDCAMP,
         url: "https://thisislibrarycard.bandcamp.com/album/mirror-factory",
       },
       {
-        name: "apple",
+        name: MusicServiceName.APPLE_MUSIC,
         url: "https://music.apple.com/us/song/mirror-factory/1625081184",
       },
     ],

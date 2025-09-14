@@ -1,7 +1,7 @@
 import {
   TourDateDisplay,
   TourResponse,
-} from "@/lib/api/interfaces/tour";
+} from "@/lib/interfaces/tour";
 
 export const tourMock = {
   async getTourDates(page = 0, perPage = 20): Promise<TourResponse> {

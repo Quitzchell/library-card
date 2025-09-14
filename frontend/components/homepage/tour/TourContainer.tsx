@@ -12,7 +12,9 @@ export default function TourContainer() {
       <div className="container space-y-6">
         <TourList perPage={3} />
 
-        <SectionLink href={TOUR_ROUTE} text="All tourdates" />
+        <div className="flex justify-end">
+          <SectionLink href={TOUR_ROUTE} text="All tourdates" />
+        </div>
       </div>
     </section>
   );

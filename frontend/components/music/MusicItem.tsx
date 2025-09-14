@@ -1,0 +1,64 @@
+import Image from "next/image";
+import { MusicItemDisplay, ServiceVariant } from "@/lib/interfaces/music";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "../ui/button";
+import Link from "next/link";
+
+export default function MusicItem({
+  musicItem,
+}: {
+  musicItem: MusicItemDisplay;
+}) {
+  console.log(musicItem);
+
+  return (
+    <Dialog>
+      <DialogTrigger className="group hover:bg-secondary-foreground hover:text-primary-foreground dark:hover:bg-accent/50 h-62 w-full cursor-pointer space-y-2 p-2">
+        <Image
+          src={musicItem.cover_image}
+          width={1080}
+          height={1080}
+          alt={musicItem.title}
+        />
+        <div>
+          <p className="w-fit underline group-hover:text-white">
+            {musicItem.title}
+          </p>
+        </div>
+      </DialogTrigger>
+      <DialogContent className='gap-y-0'>
+        <DialogHeader className="space-y-2 my-2 text-left">
+          <DialogTitle>{musicItem.title}</DialogTitle>
+          <Image
+            src={musicItem.cover_image}
+            width={1080}
+            height={1080}
+            alt={musicItem.title}
+          />
+        </DialogHeader>
+
+        {musicItem.services.map((service, index) => (
+          <MusicService key={index} service={service} />
+        ))}
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+const serviceVariant = {};
+
+function MusicService({ service }: { service: ServiceVariant }) {
+  return (
+    <Button asChild variant={"ghost"} className="border-b border-black">
+      <Link href={service.url} target={"_blank"} className="px-2">
+        {service.name}
+      </Link>
+    </Button>
+  );
+}

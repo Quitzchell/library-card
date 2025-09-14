@@ -1,5 +1,5 @@
 import { apiClient } from "../client";
-import { MusicItemResponse } from "../interfaces/music";
+import { MusicItemResponse } from "../../interfaces/music";
 
 export const musicService = {
   async getMusicItems(page = 1, perPage = 10): Promise<MusicItemResponse> {

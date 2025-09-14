@@ -10,7 +10,10 @@ export default function MusicContainer() {
 
       <div className="container space-y-6">
         <MusicList />
-        <SectionLink href={MUSIC_ROUTE} text="All music" />
+        
+        <div className="flex justify-end">
+          <SectionLink href={MUSIC_ROUTE} text="All music" />
+        </div>
       </div>
     </section>
   );

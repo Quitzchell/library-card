@@ -1,5 +1,5 @@
 import { apiClient } from "../client";
-import { TourDate, TourResponse } from "../interfaces/tour";
+import { TourDate, TourResponse } from "../../interfaces/tour";
 
 export const tourService = {
   async getTourDates(page = 1, perPage = 20): Promise<TourResponse> {
