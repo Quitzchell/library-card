@@ -19,7 +19,7 @@ export default function MusicItem({
 
   return (
     <Dialog>
-      <DialogTrigger className="group hover:bg-secondary-foreground hover:text-primary-foreground dark:hover:bg-accent/50 h-62 w-full cursor-pointer space-y-2 p-2">
+      <DialogTrigger className="group hover:bg-secondary-foreground hover:text-primary-foreground dark:hover:bg-accent/50 h-70 w-full cursor-pointer space-y-2 p-2">
         <Image
           src={musicItem.cover_image}
           width={1080}
@@ -43,7 +43,7 @@ export default function MusicItem({
           />
         </DialogHeader>
 
-        {musicItem.services.map((service, index) => (
+        {musicItem.services.map((service: ServiceVariant, index) => (
           <MusicService key={index} service={service} />
         ))}
       </DialogContent>
@@ -51,13 +51,17 @@ export default function MusicItem({
   );
 }
 
-const serviceVariant = {};
-
 function MusicService({ service }: { service: ServiceVariant }) {
   return (
     <Button asChild variant={"ghost"} className="border-b border-black">
-      <Link href={service.url} target={"_blank"} className="px-2">
-        {service.name}
+      <Link
+        href={service.url}
+        target={"_blank"}
+        className="flex w-full justify-between px-2"
+      >
+        {service.prefix && <p>{service.prefix}</p>}
+        <p>{service.name}</p>
+        {service.postfix && <p>{service.postfix}</p>}
       </Link>
     </Button>
   );

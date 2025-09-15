@@ -1,6 +1,11 @@
-import { MusicServiceName } from '@/lib/enums';
+import { MusicServiceName } from "@/lib/enums";
 
-export type ServiceVariant = { name: MusicServiceName; url: string };
+export type ServiceVariant = {
+  name: MusicServiceName;
+  url: string;
+  prefix?: string;
+  postfix?: string;
+};
 
 export interface MusicItem {
   id: number;

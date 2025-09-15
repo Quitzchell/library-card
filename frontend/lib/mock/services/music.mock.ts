@@ -1,7 +1,4 @@
-import {
-  MusicItemDisplay,
-  MusicItemResponse,
-} from "@/lib/interfaces/music";
+import { MusicItemDisplay, MusicItemResponse } from "@/lib/interfaces/music";
 import { MusicServiceName } from "@/lib/enums";
 
 export const musicMock = {
@@ -52,6 +49,11 @@ const MusicItemList: Array<MusicItemDisplay> = [
     release_date: "2024-03-15",
     cover_image: "/images/nothing-interesting-artwork.jpg",
     services: [
+      {
+        name: MusicServiceName.ATEASE,
+        url: "https://shop.atease.ltd/products/library-card-nothing-interesting",
+        postfix: "Buy now!",
+      },
       {
         name: MusicServiceName.SPOTIFY,
         url: "https://open.spotify.com/album/4wzy3foMTOWeACd3J2FXoC?si=e3fn2cSqQ0CvfQ6wv-MIag",
