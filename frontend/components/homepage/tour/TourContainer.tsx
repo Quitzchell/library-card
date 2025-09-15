@@ -1,5 +1,5 @@
 import React from "react";
-import { TOUR_ROUTE } from "@/components/navigation";
+import { NavigationRoute } from "@/lib/enums/navigation";
 import TourList from "@/components/tour/TourList";
 import SectionTitle from "../common/SectionTitle";
 import SectionLink from "../common/SectionLink";
@@ -13,7 +13,7 @@ export default function TourContainer() {
         <TourList perPage={3} />
 
         <div className="flex justify-end">
-          <SectionLink href={TOUR_ROUTE} text="All tourdates" />
+          <SectionLink href={NavigationRoute.TOUR} text="All tourdates" />
         </div>
       </div>
     </section>

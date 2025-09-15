@@ -1,5 +1,5 @@
 import MusicList from "@/components/music/MusicList";
-import { MUSIC_ROUTE } from "@/components/navigation";
+import { NavigationRoute } from "@/lib/enums/navigation";
 import SectionTitle from "../common/SectionTitle";
 import SectionLink from "../common/SectionLink";
 
@@ -12,7 +12,7 @@ export default function MusicContainer() {
         <MusicList />
         
         <div className="flex justify-end">
-          <SectionLink href={MUSIC_ROUTE} text="All music" />
+          <SectionLink href={NavigationRoute.MUSIC} text="All music" />
         </div>
       </div>
     </section>
