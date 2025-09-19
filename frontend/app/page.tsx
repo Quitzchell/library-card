@@ -1,5 +1,6 @@
-import MusicContainer from "@/components/homepage/music/MusicContainer";
-import TourContainer from "@/components/homepage/tour/TourContainer";
+import MusicContainer from "@/components/homepage/MusicContainer";
+import TourContainer from "@/components/homepage/TourContainer";
+import VideoContainer from "@/components/homepage/VideoContainer";
 import Image from "next/image";
 import React from "react";
 
@@ -35,8 +36,7 @@ function Mobile() {
       <section className="space-y-8 mb-8">
         <TourContainer />
         <MusicContainer />
-
-        {/* <WebshopContainer /> */}
+        <VideoContainer />
       </section>
     </main>
   );
