@@ -15,11 +15,9 @@ export default function MusicItem({
 }: {
   musicItem: MusicItemDisplay;
 }) {
-  console.log(musicItem);
-
   return (
     <Dialog>
-      <DialogTrigger className="group hover:bg-secondary-foreground hover:text-primary-foreground dark:hover:bg-accent/50 h-70 w-full cursor-pointer space-y-2 p-2">
+      <DialogTrigger className="group hover:bg-secondary-foreground hover:text-primary-foreground dark:hover:bg-accent/50 h-64 w-full cursor-pointer space-y-2 p-2">
         <Image
           src={musicItem.cover_image}
           width={1080}
