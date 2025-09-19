@@ -1,8 +1,7 @@
-import React from "react";
 import { NavigationRoute } from "@/lib/enums/navigation";
 import TourList from "@/components/tour/TourList";
-import SectionTitle from "../common/SectionTitle";
-import SectionLink from "../common/SectionLink";
+import SectionTitle from "./common/SectionTitle";
+import SectionLink from "./common/SectionLink";
 
 export default function TourContainer() {
   return (

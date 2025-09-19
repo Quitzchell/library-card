@@ -1,7 +1,7 @@
 import MusicList from "@/components/music/MusicList";
 import { NavigationRoute } from "@/lib/enums/navigation";
-import SectionTitle from "../common/SectionTitle";
-import SectionLink from "../common/SectionLink";
+import SectionTitle from "./common/SectionTitle";
+import SectionLink from "./common/SectionLink";
 
 export default function MusicContainer() {
   return (
@@ -9,7 +9,7 @@ export default function MusicContainer() {
       <SectionTitle title="Music" />
 
       <div className="container space-y-6">
-        <MusicList />
+        <MusicList perPage={4}/>
         
         <div className="flex justify-end">
           <SectionLink href={NavigationRoute.MUSIC} text="All music" />
