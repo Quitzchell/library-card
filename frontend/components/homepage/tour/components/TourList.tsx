@@ -14,18 +14,20 @@ export default function TourList({ tourDates }: { tourDates: TourResponse }) {
             className="col-span-7 border-b border-black text-left"
           >
             {/* todo: make this a link to the tourdate detail page */}
-            <p className="px-2 font-bold">
-              {formatDate(tourDate.date, {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-              })}
-            </p>
-            <p className="px-2">{tourDate.venue}</p>
-            <div className="flex">
-              <p className="px-2">
-                {tourDate.city}, {tourDate.country}
+            <div>
+              <p className="px-2 font-bold">
+                {formatDate(tourDate.date, {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })}
               </p>
+              <p className="px-2">{tourDate.venue}</p>
+              <div className="flex">
+                <p className="px-2">
+                  {tourDate.city}, {tourDate.country}
+                </p>
+              </div>
             </div>
           </Button>
 
