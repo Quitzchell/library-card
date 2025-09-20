@@ -1,19 +1,10 @@
-import { services } from "@/lib/services.config";
 import { formatDate } from "@/utils/date";
 import Link from "next/link";
 import React from "react";
-import { Button } from "../ui/button";
-import { TourDateDisplay } from "@/lib/interfaces/tour";
+import { Button } from "../../../ui/button";
+import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
 
-export default async function TourList({
-  page,
-  perPage,
-}: {
-  page?: number;
-  perPage?: number;
-}) {
-  const tourDates = await services.tour.getTourDates(page, perPage);
-
+export default function TourList({tourDates}: {tourDates: TourResponse}) {
   return (
     <section className="grid grid-cols-12 gap-x-5">
       {tourDates.data.map((tourDate) => (

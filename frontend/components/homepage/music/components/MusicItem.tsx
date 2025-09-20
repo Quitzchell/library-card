@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function MusicItem({
@@ -30,8 +30,8 @@ export default function MusicItem({
           </p>
         </div>
       </DialogTrigger>
-      <DialogContent className='gap-y-0'>
-        <DialogHeader className="space-y-2 my-2 text-left">
+      <DialogContent className="gap-y-0">
+        <DialogHeader className="my-2 space-y-2 text-left">
           <DialogTitle>{musicItem.title}</DialogTitle>
           <Image
             src={musicItem.cover_image}
