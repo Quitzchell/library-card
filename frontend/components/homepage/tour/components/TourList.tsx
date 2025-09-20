@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "../../../ui/button";
 import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
 
-export default function TourList({tourDates}: {tourDates: TourResponse}) {
+export default function TourList({ tourDates }: { tourDates: TourResponse }) {
   return (
     <section className="grid grid-cols-12 gap-x-5">
       {tourDates.data.map((tourDate) => (
@@ -14,20 +14,18 @@ export default function TourList({tourDates}: {tourDates: TourResponse}) {
             className="col-span-7 border-b border-black text-left"
           >
             {/* todo: make this a link to the tourdate detail page */}
-            <div>
-              <p className="px-2 font-bold">
-                {formatDate(tourDate.date, {
-                  day: "2-digit",
-                  month: "2-digit",
-                  year: "numeric",
-                })}
+            <p className="px-2 font-bold">
+              {formatDate(tourDate.date, {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+              })}
+            </p>
+            <p className="px-2">{tourDate.venue}</p>
+            <div className="flex">
+              <p className="px-2">
+                {tourDate.city}, {tourDate.country}
               </p>
-              <p className="px-2">{tourDate.venue}</p>
-              <div className="flex">
-                <p className="px-2">
-                  {tourDate.city}, {tourDate.country}
-                </p>
-              </div>
             </div>
           </Button>
 
@@ -54,7 +52,7 @@ function TicketButtonContent({ tourDate }: { tourDate: TourDateDisplay }) {
 
   if (tourDate.ticket_url && !tourDate.sold_out) {
     return (
-      <Link href={tourDate.ticket_url} className="w-full h-full text-end">
+      <Link href={tourDate.ticket_url} className="h-full w-full text-end">
         <p className="underline">Get tickets</p>
       </Link>
     );

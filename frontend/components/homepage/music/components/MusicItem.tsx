@@ -24,11 +24,9 @@ export default function MusicItem({
           height={1080}
           alt={musicItem.title}
         />
-        <div>
-          <p className="w-fit underline group-hover:text-white">
-            {musicItem.title}
-          </p>
-        </div>
+        <p className="w-fit underline group-hover:text-white">
+          {musicItem.title}
+        </p>
       </DialogTrigger>
       <DialogContent className="gap-y-0">
         <DialogHeader className="my-2 space-y-2 text-left">

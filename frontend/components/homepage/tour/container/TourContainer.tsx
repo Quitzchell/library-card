@@ -8,7 +8,7 @@ export default async function TourContainer() {
   const tourDates = await services.tour.getTourDates(0, 4);
 
   return (
-    <section className="space-y-6">
+    <div className="space-y-6">
       <SectionTitle title="Tour dates" />
 
       <div className="container space-y-6">
@@ -18,6 +18,6 @@ export default async function TourContainer() {
           <SectionLink href={NavigationRoute.TOUR} text="All tourdates" />
         </div>
       </div>
-    </section>
+    </div>
   );
 }

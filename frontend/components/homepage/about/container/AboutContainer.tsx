@@ -7,16 +7,13 @@ export default async function AboutContainer() {
   const biographyItem = await services.biography.getBiography();
 
   return (
-    <section className="space-y-6">
+    <div className="space-y-6">
       <SectionTitle title={NavigationLabel.ABOUT} />
 
-      <section className="container space-y-6">
+      <div className="container space-y-6">
         <Biography biographyItem={biographyItem} />
-      </section>
-
-      <section className="container">
         
-      </section>
-    </section>
+      </div>
+    </div>
   );
 }
