@@ -57,22 +57,6 @@ class ApiClient {
       body: JSON.stringify(data),
     });
   }
-
-  async put<T>(
-    endpoint: string,
-    data?: object,
-    options?: FetchOptions,
-  ): Promise<T> {
-    return this.request<T>(endpoint, {
-      ...options,
-      method: "PUT",
-      body: JSON.stringify(data),
-    });
-  }
-
-  async delete<T>(endpoint: string, options?: FetchOptions): Promise<T> {
-    return this.request<T>(endpoint, { ...options, method: "DELETE" });
-  }
 }
 
 export const apiClient = new ApiClient();
