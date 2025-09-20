@@ -1,3 +1,4 @@
+import AboutContainer from "@/components/homepage/AboutContainer";
 import MusicContainer from "@/components/homepage/MusicContainer";
 import TourContainer from "@/components/homepage/TourContainer";
 import VideoContainer from "@/components/homepage/VideoContainer";
@@ -37,6 +38,7 @@ function Mobile() {
         <TourContainer />
         <MusicContainer />
         <VideoContainer />
+        <AboutContainer />
       </section>
     </main>
   );
