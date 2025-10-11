@@ -1,12 +1,12 @@
-import { ContactListItems } from "@/lib/interfaces/contact";
+import { ContactLists } from "@/lib/interfaces/contact";
 
 export const contactMock = {
-  async getContactListItems(): Promise<ContactListItems> {
+  async getContactLists(): Promise<ContactLists> {
     return {
-      items: [
+      lists: [
         {
           title: "Bookings",
-          contacts: [
+          items: [
             {
               prefix: "NL",
               postfix: null,

@@ -6,9 +6,9 @@ export interface ContactItem {
 
 export interface ContactList {
   title: string | null;
-  contacts: Array<ContactItem>;
+  items: Array<ContactItem>;
 }
 
-export interface ContactListItems {
-    items: Array<ContactList>;
+export interface ContactLists {
+    lists: Array<ContactList>;
 } 

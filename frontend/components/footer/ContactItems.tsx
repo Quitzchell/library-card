@@ -1,15 +1,15 @@
 import {
-  ContactListItems,
+  ContactLists,
   ContactItem,
   ContactList,
 } from "@/lib/interfaces/contact";
 import { services } from "@/lib/services.config";
 
 export default async function ContactListContainer() {
-  const contactListItems: ContactListItems = await services.contact.getContactListItems();
+  const contactListItems: ContactLists = await services.contact.getContactLists();
   return (
     <div className="flex flex-col">
-      {contactListItems.items.map(
+      {contactListItems.lists.map(
         (contactList: ContactList, index: number) => (
           <div key={index}>
             <p className="mb-2 font-bold text-white">{contactList.title}</p>
@@ -24,7 +24,7 @@ export default async function ContactListContainer() {
 function Contacts({ contactList: contactList }: { contactList : ContactList}) {
   return (
     <>
-      {contactList.contacts.map(
+      {contactList.items.map(
         (contactItem: ContactItem, index: number) => (
           <div className="flex space-x-2 text-white" key={index}>
             {contactItem.prefix && <p>{contactItem.prefix}:</p>}
