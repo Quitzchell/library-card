@@ -1,5 +1,7 @@
 import { tourService, musicService, videoService, biographyService, contactService } from "./api/services";
+import { SocialMediaService } from "./api/services/social-media.service";
 import { tourMock, musicMock, videoMock, biographyMock, contactMock } from "./mock/services";
+import { socialMediaMock } from "./mock/services/social-media.mock";
 
 
 const USE_MOCK_API = process.env.NEXT_PUBLIC_USE_MOCK_API === "true";
@@ -10,4 +12,5 @@ export const services = {
   video: USE_MOCK_API ? videoMock : videoService,
   biography: USE_MOCK_API ? biographyMock : biographyService,
   contact: USE_MOCK_API ? contactMock : contactService,
+  socialMedia: USE_MOCK_API ? socialMediaMock : SocialMediaService,
 };
