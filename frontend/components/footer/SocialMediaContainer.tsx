@@ -1,6 +1,6 @@
 import { SocialMediaItem, SocialMediaList } from "@/lib/interfaces/social-media";
 import { services } from "@/lib/services.config";
-import { resolveIcon } from "@/utils/icon-factory";
+import { resolveIcon } from "@/factories/icon-factory";
 import Link from "next/link";
 
 
