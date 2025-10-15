@@ -24,7 +24,6 @@ export default async function SocialMediaContainer() {
 
 function SocialMedia({socialMediaItem}: {socialMediaItem: SocialMediaItem}) {
     const icon = resolveIcon(socialMediaItem.icon, { size: 20 });
-    console.log(icon)
     return (
         <Link
             href={socialMediaItem.url}
