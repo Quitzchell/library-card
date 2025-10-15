@@ -5,10 +5,10 @@ export const socialMediaMock = {
     return {
       lists: [
         {
-          title: null,
+          title: "Follow us",
           items: [
             {
-              title: "instragram",
+              icon: "FaInstagram",
               url: "https://www.instagram.com/thisislibrarycard/",
             },
           ],
