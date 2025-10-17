@@ -8,7 +8,5 @@ interface NavBarProps {
 }
 
 export default function NavBar({ pathname }: NavBarProps) {
-  return (
-    <></>
-  );
+  return <></>;
 }

@@ -12,7 +12,6 @@ export default async function AboutContainer() {
 
       <div className="container space-y-6">
         <Biography biographyItem={biographyItem} />
-        
       </div>
     </div>
   );

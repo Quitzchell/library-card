@@ -10,5 +10,5 @@ export interface ContactItem {
 }
 
 export interface ContactLists {
-    lists: Array<ContactList>;
-} 
+  lists: Array<ContactList>;
+}

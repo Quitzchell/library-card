@@ -1,6 +1,6 @@
 export interface SocialMediaList {
-    title: string | null;
-    items: Array<SocialMediaItem>
+  title: string | null;
+  items: Array<SocialMediaItem>;
 }
 
 export interface SocialMediaItem {
@@ -9,5 +9,5 @@ export interface SocialMediaItem {
 }
 
 export interface SocialMediaLists {
-    lists: Array<SocialMediaList>
+  lists: Array<SocialMediaList>;
 }

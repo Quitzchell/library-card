@@ -1,5 +1,5 @@
-import { IconBaseProps } from 'react-icons';
-import * as FaIcons from 'react-icons/fa';
+import { IconBaseProps } from "react-icons";
+import * as FaIcons from "react-icons/fa";
 
 export type IconName = keyof typeof FaIcons;
 

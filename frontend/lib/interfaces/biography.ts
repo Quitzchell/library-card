@@ -1,4 +1,4 @@
 export interface BiographyItem {
-    title?: string;
-    text: string;
+  title?: string;
+  text: string;
 }

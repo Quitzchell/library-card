@@ -1,8 +1,10 @@
-import { SocialMediaItem, SocialMediaList } from "@/lib/interfaces/social-media";
+import {
+  SocialMediaItem,
+  SocialMediaList,
+} from "@/lib/interfaces/social-media";
 import { services } from "@/lib/services.config";
 import { resolveIcon } from "@/factories/icon-factory";
 import Link from "next/link";
-
 
 export default async function SocialMediaContainer() {
   const socialMediaLists = await services.socialMedia.getSocialMediaList();
@@ -12,9 +14,11 @@ export default async function SocialMediaContainer() {
         (socialMediaList: SocialMediaList, index: number) => (
           <div key={index}>
             <p className="mb-2 font-bold text-white">{socialMediaList.title}</p>
-            {socialMediaList.items.map((socialMediaItem: SocialMediaItem, index: number) => (
-                <SocialMedia key={index} socialMediaItem={socialMediaItem}/>
-            ))}
+            {socialMediaList.items.map(
+              (socialMediaItem: SocialMediaItem, index: number) => (
+                <SocialMedia key={index} socialMediaItem={socialMediaItem} />
+              ),
+            )}
           </div>
         ),
       )}
@@ -22,16 +26,20 @@ export default async function SocialMediaContainer() {
   );
 }
 
-function SocialMedia({socialMediaItem}: {socialMediaItem: SocialMediaItem}) {
-    const icon = resolveIcon(socialMediaItem.icon, { size: 20 });
-    return (
-        <Link
-            href={socialMediaItem.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-chart-1 transition-colors"
-        >
-            {icon}
-        </Link>
-    )
+function SocialMedia({
+  socialMediaItem,
+}: {
+  socialMediaItem: SocialMediaItem;
+}) {
+  const icon = resolveIcon(socialMediaItem.icon, { size: 20 });
+  return (
+    <Link
+      href={socialMediaItem.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-chart-1 text-white transition-colors"
+    >
+      {icon}
+    </Link>
+  );
 }

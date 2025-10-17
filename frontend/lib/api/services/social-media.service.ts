@@ -1,4 +1,4 @@
-import { SocialMediaLists } from "@/lib/interfaces/social-media"
+import { SocialMediaLists } from "@/lib/interfaces/social-media";
 import { apiClient } from "../client";
 
 export const SocialMediaService = {

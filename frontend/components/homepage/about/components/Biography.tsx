@@ -1,6 +1,10 @@
 import { BiographyItem } from "@/lib/interfaces/biography";
 
-export default function Biography({biographyItem}: {biographyItem: BiographyItem}) {
+export default function Biography({
+  biographyItem,
+}: {
+  biographyItem: BiographyItem;
+}) {
   return (
     <div className="flex flex-col space-y-4">
       {biographyItem.title && (

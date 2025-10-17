@@ -6,7 +6,7 @@ import { services } from "@/lib/services.config";
 
 export default async function VideoContainer() {
   const data = await services.video.getVideoItems(0, 4);
-  
+
   return (
     <div className="space-y-6">
       <SectionTitle title={NavigationLabel.VIDEO} />
@@ -15,7 +15,7 @@ export default async function VideoContainer() {
         <VideoList videoList={data} />
 
         <div className="flex justify-end">
-            <SectionLink href={NavigationRoute.VIDEO} text="All Videos"/>
+          <SectionLink href={NavigationRoute.VIDEO} text="All Videos" />
         </div>
       </div>
     </div>

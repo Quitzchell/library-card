@@ -1,7 +1,4 @@
-import {
-  TourDateDisplay,
-  TourResponse,
-} from "@/lib/interfaces/tour";
+import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
 
 export const tourMock = {
   async getTourDates(page = 0, perPage = 20): Promise<TourResponse> {
@@ -12,7 +9,7 @@ export const tourMock = {
     const lastPage = Math.ceil(totalItems / perPage);
 
     return {
-      data: data,
+      data: data.sort((a, b) => a.date.getTime() - b.date.getTime()),
       meta: {
         current_page: page,
         last_page: lastPage,
@@ -33,7 +30,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: "https://ticketurl.com",
     sold_out: false,
     description: undefined,
-    date: new Date("11-11-2025"),
+    date: new Date("2025-11-11"),
   },
   {
     id: 2,
@@ -43,7 +40,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: undefined,
     sold_out: undefined,
     description: undefined,
-    date: new Date("01-11-2025"),
+    date: new Date("2025-11-01"),
   },
   {
     id: 3,
@@ -53,7 +50,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: "https://ticketurl.com",
     sold_out: true,
     description: undefined,
-    date: new Date("02-23-2026"),
+    date: new Date("2026-02-23"),
   },
   {
     id: 4,
@@ -63,7 +60,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: "https://boweryballroom.com/tickets",
     sold_out: false,
     description: "Special acoustic set",
-    date: new Date("03-15-2025"),
+    date: new Date("2025-03-15"),
   },
   {
     id: 5,
@@ -73,7 +70,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: "https://troubadour.com/shows",
     sold_out: true,
     description: undefined,
-    date: new Date("03-18-2025"),
+    date: new Date("2025-03-18"),
   },
   {
     id: 6,
@@ -83,7 +80,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: undefined,
     sold_out: false,
     description: "All ages show",
-    date: new Date("03-22-2025"),
+    date: new Date("2025-03-22"),
   },
   {
     id: 7,
@@ -93,7 +90,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: "https://academymusicgroup.com/o2academybrixton",
     sold_out: true,
     description: undefined,
-    date: new Date("04-10-2025"),
+    date: new Date("2025-04-10"),
   },
   {
     id: 8,
@@ -103,7 +100,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: "https://roundhouse.org.uk",
     sold_out: false,
     description: "Album release show",
-    date: new Date("04-11-2025"),
+    date: new Date("2025-04-11"),
   },
   {
     id: 9,
@@ -113,7 +110,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: undefined,
     sold_out: false,
     description: undefined,
-    date: new Date("04-20-2025"),
+    date: new Date("2025-04-20"),
   },
   {
     id: 10,
@@ -123,7 +120,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: "https://olympiahall.com/tickets",
     sold_out: true,
     description: "Live recording",
-    date: new Date("04-21-2025"),
+    date: new Date("2025-04-21"),
   },
   {
     id: 11,
@@ -133,7 +130,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: "https://columbiahalle.de",
     sold_out: false,
     description: undefined,
-    date: new Date("05-02-2025"),
+    date: new Date("2025-05-02"),
   },
   {
     id: 12,
@@ -143,7 +140,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: undefined,
     sold_out: false,
     description: "Meet & greet available",
-    date: new Date("05-04-2025"),
+    date: new Date("2025-05-04"),
   },
   {
     id: 13,
@@ -153,7 +150,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: "https://sala-apolo.com",
     sold_out: true,
     description: undefined,
-    date: new Date("05-15-2025"),
+    date: new Date("2025-05-15"),
   },
   {
     id: 14,
@@ -163,7 +160,7 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: "https://joyeslava.com/eventos",
     sold_out: false,
     description: undefined,
-    date: new Date("05-17-2025"),
+    date: new Date("2025-05-17"),
   },
   {
     id: 15,
@@ -173,6 +170,6 @@ const TourDateList: Array<TourDateDisplay> = [
     ticket_url: undefined,
     sold_out: true,
     description: "Festival warm-up show",
-    date: new Date("06-01-2025"),
+    date: new Date("2025-06-01"),
   },
 ];
