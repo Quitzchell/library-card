@@ -14,7 +14,7 @@ export default function Home() {
         <TourContainer />
         <MusicContainer />
         <VideoContainer />
-        {/* <AboutContainer /> */}
+        <AboutContainer />
       </section>
     </main>
   );

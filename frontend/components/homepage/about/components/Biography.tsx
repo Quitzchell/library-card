@@ -8,7 +8,7 @@ export default function Biography({
   return (
     <div className="flex flex-col space-y-4">
       {biographyItem.title && (
-        <h3 className="font-bold">{biographyItem.title}</h3>
+        <h3 className="font-bold text-2xl">{biographyItem.title}</h3>
       )}
       <div
         className="prose prose-sm max-w-none space-y-4"
