@@ -12,8 +12,8 @@ export default function Home() {
 
       <section className="mb-8 space-y-8">
         <TourContainer />
-        {/* <MusicContainer /> */}
-        {/* <VideoContainer /> */}
+        <MusicContainer />
+        <VideoContainer />
         {/* <AboutContainer /> */}
       </section>
     </main>

@@ -15,7 +15,7 @@ export default function VideoList({
 }) {
   if (videoList) {
     return (
-      <Carousel opts={{ loop: true }} className="mx-auto max-w-2xl">
+      <Carousel opts={{ loop: true }} className="mx-auto max-w-2xl lg:max-w-3xl xl:max-w-5xl">
         <CarouselContent>
           {videoList.data.map((videoItem: VideoItemDisplay) => (
             <CarouselItem key={videoItem.id}>

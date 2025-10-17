@@ -17,14 +17,14 @@ export default function MusicItem({
 }) {
   return (
     <Dialog>
-      <DialogTrigger className="group hover:bg-secondary-foreground hover:text-primary-foreground dark:hover:bg-accent/50 h-64 w-full cursor-pointer space-y-2 p-2">
+      <DialogTrigger className="group -w-full cursor-pointer space-y-2 p-4 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black border border-black">
         <Image
           src={musicItem.cover_image}
           width={1080}
           height={1080}
           alt={musicItem.title}
         />
-        <p className="w-fit underline group-hover:text-white">
+        <p className="h-14 w-full text-left text-balance underline group-hover:text-white">
           {musicItem.title}
         </p>
       </DialogTrigger>

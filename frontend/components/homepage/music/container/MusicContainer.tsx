@@ -8,14 +8,14 @@ export default async function MusicContainer() {
   const musicItems = await services.music.getMusicItems(0, 4);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8 md:space-y-10">
       <SectionTitle title="Music" />
 
       <div className="container space-y-6">
         <MusicList musicItems={musicItems} />
       </div>
 
-      <div className="flex justify-end">
+      <div className="container flex justify-end">
         <SectionLink href={NavigationRoute.MUSIC} text="All music" />
       </div>
     </div>

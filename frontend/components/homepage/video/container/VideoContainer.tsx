@@ -5,14 +5,14 @@ import VideoList from "@/components/homepage/video/components/VideoCarousel";
 import { services } from "@/lib/services.config";
 
 export default async function VideoContainer() {
-  const data = await services.video.getVideoItems(0, 4);
+  const videoList = await services.video.getVideoItems(0, 4);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8 md:space-y-10">
       <SectionTitle title={NavigationLabel.VIDEO} />
 
       <div className="container space-y-6">
-        <VideoList videoList={data} />
+        <VideoList videoList={videoList} />
 
         <div className="flex justify-end">
           <SectionLink href={NavigationRoute.VIDEO} text="All Videos" />

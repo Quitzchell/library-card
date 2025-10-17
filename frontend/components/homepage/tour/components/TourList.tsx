@@ -11,7 +11,7 @@ const getBorderClasses = (idx: number, midpoint: number) => {
   return cn(
     "border-b border-black",
     (isFirstRow || isMidpoint) && "md:border-t",
-    (isFirstRow) && "border-t"
+    isFirstRow && "border-t",
   );
 };
 
@@ -88,7 +88,7 @@ function TicketButtonContent({
         )}
       >
         <Link href={tourDate.ticket_url} className="h-full w-full text-end">
-        <p className="underline">Get tickets</p>
+          <p className="underline">Get tickets</p>
         </Link>
       </Button>
     );

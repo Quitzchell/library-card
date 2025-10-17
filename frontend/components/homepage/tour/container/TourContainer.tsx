@@ -8,7 +8,7 @@ export default async function TourContainer() {
   const tourDates = await services.tour.getTourDates(0, 4);
 
   return (
-    <div className="space-y-6 md:space-y-8">
+    <div className="space-y-8 md:space-y-10">
       <SectionTitle title="Tour dates" />
 
       <div className="container space-y-6">
