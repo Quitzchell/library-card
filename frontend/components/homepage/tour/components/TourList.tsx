@@ -11,6 +11,7 @@ const getBorderClasses = (idx: number, midpoint: number) => {
   return cn(
     "border-b border-black",
     (isFirstRow || isMidpoint) && "md:border-t",
+    (isFirstRow) && "border-t"
   );
 };
 
