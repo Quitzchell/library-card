@@ -12,12 +12,10 @@ export default function Home() {
 
       <section className="mb-8 space-y-8">
         <TourContainer />
+        {/* <MusicContainer /> */}
+        {/* <VideoContainer /> */}
+        {/* <AboutContainer /> */}
       </section>
-
-      {/* todo: make all mobiles designs available for all viewports */}
-      {/* <section className="md:hidden"> */}
-      {/* <Mobile /> */}
-      {/* </section> */}
     </main>
   );
 }
@@ -40,18 +38,5 @@ function Hero() {
         </h1>
       </div>
     </section>
-  );
-}
-
-function Mobile() {
-  return (
-    <main>
-      <section className="mb-8 space-y-8">
-        <TourContainer />
-        <MusicContainer />
-        <VideoContainer />
-        <AboutContainer />
-      </section>
-    </main>
   );
 }
