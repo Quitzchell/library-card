@@ -5,17 +5,17 @@ import { Button } from "../../../ui/button";
 import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
 import { cn } from "@/utils/styling";
 
+const getBorderClasses = (idx: number, midpoint: number) => {
+  const isFirstRow = idx === 0;
+  const isMidpoint = midpoint === idx;
+  return cn(
+    "border-b border-black",
+    (isFirstRow || isMidpoint) && "md:border-t",
+  );
+};
+
 export default function TourList({ tourDates }: { tourDates: TourResponse }) {
   const midpoint = tourDates.data.length / 2 - 1;
-
-  const getBorderClasses = (idx: number) => {
-    const isFirstRow = idx === 0;
-    const isMidpoint = midpoint === idx;
-    return cn(
-      "border-b border-black",
-      (isFirstRow || isMidpoint) && "md:border-t",
-    );
-  };
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 md:gap-x-5">
@@ -23,7 +23,10 @@ export default function TourList({ tourDates }: { tourDates: TourResponse }) {
         <div className="grid grid-cols-12 gap-x-5" key={tourDate.id}>
           <Button
             variant="ghost"
-            className={cn("col-span-7 text-left", getBorderClasses(idx))}
+            className={cn(
+              "col-span-7 text-left",
+              getBorderClasses(idx, midpoint),
+            )}
           >
             <div>
               <p className="px-2 font-bold">
@@ -40,33 +43,64 @@ export default function TourList({ tourDates }: { tourDates: TourResponse }) {
             </div>
           </Button>
 
-          <Button
-            variant="ghost"
-            className={cn(
-              "col-span-5 flex justify-end p-2",
-              getBorderClasses(idx),
-            )}
-          >
-            <TicketButtonContent tourDate={tourDate} />
-          </Button>
+          <TicketButtonContent
+            tourDate={tourDate}
+            idx={idx}
+            midpoint={midpoint}
+          />
         </div>
       ))}
     </section>
   );
 }
 
-function TicketButtonContent({ tourDate }: { tourDate: TourDateDisplay }) {
+function TicketButtonContent({
+  tourDate,
+  idx,
+  midpoint,
+}: {
+  tourDate: TourDateDisplay;
+  idx: number;
+  midpoint: number;
+}) {
   if (tourDate.sold_out) {
-    return <p className="line-through">Sold out</p>;
+    return (
+      <div
+        className={cn(
+          "col-span-5 flex justify-end p-2",
+          getBorderClasses(idx, midpoint),
+        )}
+      >
+        <p className="line-through">Sold out</p>
+      </div>
+    );
   }
 
   if (tourDate.ticket_url) {
     return (
-      <Link href={tourDate.ticket_url} className="h-full w-full text-end">
+      <Button
+        asChild
+        variant="ghost"
+        className={cn(
+          "col-span-5 flex justify-end p-2",
+          getBorderClasses(idx, midpoint),
+        )}
+      >
+        <Link href={tourDate.ticket_url} className="h-full w-full text-end">
         <p className="underline">Get tickets</p>
-      </Link>
+        </Link>
+      </Button>
     );
   }
 
-  return <p>Free event</p>;
+  return (
+    <div
+      className={cn(
+        "col-span-5 flex justify-end p-2",
+        getBorderClasses(idx, midpoint),
+      )}
+    >
+      <p>Free event</p>
+    </div>
+  );
 }
