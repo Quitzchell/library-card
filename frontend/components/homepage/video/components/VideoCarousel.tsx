@@ -15,7 +15,10 @@ export default function VideoList({
 }) {
   if (videoList) {
     return (
-      <Carousel opts={{ loop: true }} className="mx-auto max-w-2xl lg:max-w-3xl xl:max-w-5xl">
+      <Carousel
+        opts={{ loop: true }}
+        className="mx-auto max-w-2xl lg:max-w-3xl xl:max-w-5xl"
+      >
         <CarouselContent>
           {videoList.data.map((videoItem: VideoItemDisplay) => (
             <CarouselItem key={videoItem.id}>
@@ -23,10 +26,12 @@ export default function VideoList({
             </CarouselItem>
           ))}
         </CarouselContent>
-        <div className="my-4 flex justify-center gap-2">
-          <CarouselPrevious className="static translate-x-0 translate-y-0" />
-          <CarouselNext className="static translate-x-0 translate-y-0" />
-        </div>
+        {videoList.data.length > 1 && (
+          <div className="my-4 flex justify-center gap-2">
+            <CarouselPrevious className="static -translate-x-4 translate-y-0" />
+            <CarouselNext className="static translate-x-4 translate-y-0" />
+          </div>
+        )}
       </Carousel>
     );
   }

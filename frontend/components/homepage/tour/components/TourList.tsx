@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../../../ui/button";
 import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
-import { cn } from "@/utils/styling";
+import { cn } from "@/utils/classnames";
 
 const getBorderClasses = (idx: number, midpoint: number) => {
   const isFirstRow = idx === 0;

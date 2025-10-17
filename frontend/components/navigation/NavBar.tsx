@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/utils/styling";
+import { cn } from "@/utils/classnames";
 import { navItems } from "@/lib/enums/navigation";
 
 interface NavBarProps {

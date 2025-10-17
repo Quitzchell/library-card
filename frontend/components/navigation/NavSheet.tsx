@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Menu } from "lucide-react";
-import { cn } from "@/utils/styling";
+import { cn } from "@/utils/classnames";
 import { homeItem, navItems } from "@/lib/enums/navigation";
 import { useState, useRef } from "react";
 
