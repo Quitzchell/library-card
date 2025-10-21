@@ -5,16 +5,16 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/classnames";
 
 const buttonVariants = cva(
-  "inline-flex gap-2 whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex gap-2 whitespace-nowrap transition-all hover:cursor-pointer disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
         default: "bg-primary text-white hover:bg-primary/90",
         ghost:
-          "hover:bg-black hover:text-white dark:hover:text-black dark:hover:bg-white",
+          "hover:bg-black hover:text-white ",
         outline:
-          "border bg-white shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-black dark:border-black dark:hover:bg-black/50",
-        link: "text-black dark:text-white underline-offset-4 hover:underline",
+          "border bg-white shadow-xs hover:bg-black  hover:text-white",
+        link: "text-black underline-offset-4 hover:underline",
       },
       size: {
         default: "py-2 has-[>svg]:px-3",
