@@ -12,7 +12,7 @@ export default async function AboutContainer() {
     <div className="space-y-8 md:space-y-10">
       <SectionTitle title={NavigationLabel.ABOUT} />
 
-      <div className="container space-y-8 md:grid xl:grid-cols-2 gap-x-10 ">
+      <div className="container space-y-8 gap-x-10 md:grid xl:grid-cols-2">
         <Biography biographyItem={biographyItem} />
         <ImageList imageList={imageList} />
       </div>

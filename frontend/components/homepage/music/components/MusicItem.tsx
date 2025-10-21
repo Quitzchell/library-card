@@ -17,7 +17,7 @@ export default function MusicItem({
 }) {
   return (
     <Dialog>
-      <DialogTrigger className="group -w-full cursor-pointer space-y-2 p-4 hover:bg-black hover:text-white  border border-black">
+      <DialogTrigger className="group -w-full cursor-pointer space-y-2 border border-black p-4 hover:bg-black hover:text-white">
         <Image
           src={musicItem.cover_image}
           width={1080}

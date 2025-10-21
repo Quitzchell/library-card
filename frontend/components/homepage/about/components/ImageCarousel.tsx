@@ -26,7 +26,9 @@ export default function ImageList({
                 height={1080}
                 className="aspect-video object-scale-down"
               />
-              <p className="mt-1 text-center italic text-sm">{imageItem.caption}</p>
+              <p className="mt-1 text-center text-sm italic">
+                {imageItem.caption}
+              </p>
             </CarouselItem>
           ))}
         </CarouselContent>
