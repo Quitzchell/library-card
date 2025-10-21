@@ -1,7 +1,6 @@
 export interface ImageItem {
   id: number;
   src: string;
-  caption?: string | null;
   alt: string;
   created_at: string;
   updated_at: string;

@@ -25,13 +25,11 @@ const ImageItemList: Array<ImageItemDisplay> = [
   {
     id: 1,
     src: "/images/mock-press-image-1.jpeg",
-    caption: "This is a caption",
     alt: "Mock image of The Beatles",
   },
   {
     id: 2,
     src: "/images/mock-press-image-2.jpeg",
-    caption: "",
     alt: "Mock image of The Beatles",
   },
 ];
