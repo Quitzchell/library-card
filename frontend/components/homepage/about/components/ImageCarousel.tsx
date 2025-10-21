@@ -26,16 +26,13 @@ export default function ImageList({
                 height={1080}
                 className="aspect-video object-scale-down"
               />
-              <p className="mt-1 text-center text-sm italic">
-                {imageItem.caption}
-              </p>
             </CarouselItem>
           ))}
         </CarouselContent>
         {imageList.data.length > 1 && (
           <div className="my-4 flex justify-center gap-2">
-            <CarouselPrevious className="static -translate-x-4 -translate-y-2" />
-            <CarouselNext className="static translate-x-4 -translate-y-2" />
+            <CarouselPrevious className="static -translate-x-4 translate-y-0" />
+            <CarouselNext className="static translate-x-4 translate-y-0" />
           </div>
         )}
       </Carousel>
