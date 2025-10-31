@@ -3,7 +3,6 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../../../ui/button";
 import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
-import { cn } from "@/utils/classnames";
 
 export default function TourList({ tourDates }: { tourDates: TourResponse }) {
   return (
