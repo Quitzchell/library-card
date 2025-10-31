@@ -1,21 +1,13 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import NavBar from "@/components/navigation/NavBar";
-import NavSheet from "@/components/navigation/NavSheet";
+import NavSheet2 from "./NavSheet";
 
 export default function Navigation() {
   const pathname = usePathname();
 
   return (
-    <>
-      <section className="hidden lg:block">
-        <NavBar pathname={pathname} />
-      </section>
 
-      <section className="lg:hidden">
-        <NavSheet pathname={pathname} />
-      </section>
-    </>
+    <NavSheet2 pathname={pathname}/>
   );
 }

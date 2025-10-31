@@ -43,38 +43,6 @@
   --color-primary: #1c451f;
 }
 
-@keyframes slide-in-from-top {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-out-to-top {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-}
-
-@utility animate-slide-in-from-top {
-  animation: slide-in-from-top 0.4s ease-out;
-}
-
-@utility animate-slide-out-to-top {
-  animation: slide-out-to-top 0.4s ease-out;
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
