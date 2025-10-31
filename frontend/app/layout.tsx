@@ -20,10 +20,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${ibmPlexMono.variable} antialiased`}>
+    <html lang="en" className="h-full">
+      <body
+        className={`${ibmPlexMono.variable} flex h-full flex-col antialiased`}
+      >
         <Navigation />
-        {children}
+        <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
       </body>
     </html>

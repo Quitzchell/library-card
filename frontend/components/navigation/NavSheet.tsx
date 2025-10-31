@@ -38,7 +38,9 @@ export default function NavSheet2({ pathname }: NavSheetProps) {
         <Menu className="size-8 cursor-pointer" />
       </SheetTrigger>
       <SheetContent className="max-w-1/3">
-        <SheetHeader />
+        <SheetHeader>
+          <p>Library Card</p>
+        </SheetHeader>
         <div className={cn("grid flex-1 auto-rows-min gap-4 px-4")}>
           {[homeItem, ...navItems].map((item) => (
             <Link
@@ -48,8 +50,7 @@ export default function NavSheet2({ pathname }: NavSheetProps) {
               className={cn(
                 "cursor-pointer text-lg font-medium transition-all duration-200",
                 "hover:underline hover:underline-offset-4",
-                pathname.endsWith(item.href) &&
-                  "font-extrabold",
+                pathname.endsWith(item.href) && "font-extrabold",
               )}
             >
               {item.name}
