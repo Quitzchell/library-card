@@ -1,8 +1,9 @@
+import Hero from "@/components/common/Hero";
 import AboutContainer from "@/components/homepage/AboutContainer";
 import MusicContainer from "@/components/homepage/MusicContainer";
 import TourSection from "@/components/homepage/TourSection";
 import VideoContainer from "@/components/homepage/VideoContainer";
-import Image from "next/image";
+
 import React from "react";
 
 export default function Home() {
@@ -17,26 +18,5 @@ export default function Home() {
         <AboutContainer />
       </section>
     </main>
-  );
-}
-
-function Hero() {
-  return (
-    <section className="h-dvh">
-      <div className="bg-primary flex h-9/10 items-center justify-center">
-        <Image
-          src="/images/library-card.jpg"
-          width={1080}
-          height={1080}
-          className="size-50 md:size-100"
-          alt={"Snakes Illustration by Lot van Teylingen"}
-        />
-      </div>
-      <div className="flex h-1/10 items-center bg-white">
-        <h1 className="container text-end text-2xl text-black md:text-5xl">
-          This is Library Card
-        </h1>
-      </div>
-    </section>
   );
 }
