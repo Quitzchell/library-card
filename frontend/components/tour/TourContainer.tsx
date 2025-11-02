@@ -3,116 +3,71 @@
 import { useEffect, useState } from "react";
 import { TourResponse } from "@/lib/interfaces/tour";
 import { services } from "@/lib/services.config";
-import TourList from "../common/TourList";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "../ui/pagination";
-import { cn } from "@/utils/classnames";
+import TourList from "./TourList";
+import PaginationContainer from "../common/Pagination";
+import { TourDateEnum } from "@/lib/enums/tour";
 
-export default function TourContainer() {
+const PER_PAGE = 4;
+
+export default function TourContainer({ direction }: { direction: TourDateEnum }) {
   const [tourDates, setTourDates] = useState<TourResponse>({
     data: [],
     meta: { current_page: 1, total_pages: 1, per_page: 0, total: 1 },
   });
+  const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const { total_pages } = tourDates.meta;
+
+  const handlePrev = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+  const handleNext = () =>
+    setCurrentPage((prev) => Math.min(prev + 1, total_pages));
+  const handleNumber = (i: number) => setCurrentPage(i + 1);
 
   useEffect(() => {
     const fetchTourDates = async () => {
+      setLoading(true);
+      setError(null);
       try {
-        const response = await services.tour.getTourDates(tourDates.meta.current_page, 4);
+        const response = await services.tour.getTourDates(
+          currentPage,
+          PER_PAGE,
+          direction,
+        );
         setTourDates(response);
-      } catch (error) {
-        console.error("Error fetching tour dates:", error);
+      } catch (err) {
+        console.error("Error fetching tour dates:", err);
+        setError("Failed to load tour dates. Please try again.");
       } finally {
         setLoading(false);
       }
     };
 
     fetchTourDates();
-  }, [tourDates.meta.current_page]);
-
-  if (loading) return <p>Loading tour dates...</p>;
-
-  const { total_pages, current_page } = tourDates.meta;
-  const canGoPrev = current_page > 1;
-  const canGoNext = current_page < total_pages;
-
-  console.log(total_pages, current_page);
+  }, [currentPage, direction]);
 
   return (
-    <section className="space-y-5">
-      {tourDates.data.length > 0 ? (
-        <TourList tourDates={tourDates} />
-      ) : (
+    <section className="flex flex-col space-y-5">
+      {loading && <p>Loading tour dates...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+      {!loading && !error && tourDates.data.length === 0 && (
         <p>No tour dates found.</p>
       )}
 
-      {total_pages !== 1 && (
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                aria-disabled={!canGoPrev}
-                className={cn(!canGoPrev && "pointer-events-none opacity-50")}
-                onClick={() =>
-                  canGoPrev &&
-                  setTourDates((prev) => ({
-                    ...prev,
-                    meta: {
-                      ...prev.meta,
-                      current_page: prev.meta.current_page - 1,
-                    },
-                  }))
-                }
-              />
-            </PaginationItem>
-
-            {Array.from({ length: total_pages }).map((_, i) => (
-              <PaginationItem key={i+1}>
-                <PaginationLink
-                  className={cn(
-                    "flex items-center justify-center",
-                    i+1 === current_page &&
-                      "pointer-events-none bg-neutral-300 opacity-50",
-                  )}
-                  onClick={() =>
-                    setTourDates((prev) => ({
-                      ...prev,
-                      meta: {
-                        ...prev.meta,
-                        current_page: i+1,
-                      },
-                    }))
-                  }
-                >
-                  {i + 1}
-                </PaginationLink>
-              </PaginationItem>
-            ))}
-
-            <PaginationItem>
-              <PaginationNext
-                aria-disabled={!canGoNext}
-                className={!canGoNext ? "pointer-events-none opacity-50" : ""}
-                onClick={() =>
-                  canGoNext &&
-                  setTourDates((prev) => ({
-                    ...prev,
-                    meta: {
-                      ...prev.meta,
-                      current_page: prev.meta.current_page + 1,
-                    },
-                  }))
-                }
-              />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
+      {!loading && !error && tourDates.data.length > 0 && (
+        <>
+          <section className="grid gap-4 min-h-120">
+            <TourList tourDates={tourDates} direction={direction} />
+          </section>
+          <PaginationContainer
+            totalPages={total_pages}
+            currentPage={currentPage}
+            handleNext={handleNext}
+            handlePrev={handlePrev}
+            handleNumber={handleNumber}
+          />
+        </>
       )}
     </section>
   );

@@ -1,6 +1,6 @@
 import AboutContainer from "@/components/homepage/AboutContainer";
 import MusicContainer from "@/components/homepage/MusicContainer";
-import TourContainer from "@/components/homepage/TourContainer";
+import TourSection from "@/components/homepage/TourSection";
 import VideoContainer from "@/components/homepage/VideoContainer";
 import Image from "next/image";
 import React from "react";
@@ -11,7 +11,7 @@ export default function Home() {
       <Hero />
 
       <section className="mb-8 space-y-8">
-        <TourContainer />
+        <TourSection />
         <MusicContainer />
         <VideoContainer />
         <AboutContainer />
