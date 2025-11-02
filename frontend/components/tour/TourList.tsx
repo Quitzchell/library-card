@@ -65,13 +65,19 @@ function TourRow({
 
 function TicketButtonContent({ tourDate }: { tourDate: TourDateDisplay }) {
   const baseClasses =
-    "col-span-4 md:col-span-2 px-4 text-center flex size-full items-center justify-center border";
+    "col-span-4 md:col-span-2 px-4 flex size-full items-center justify-center border";
 
   if (tourDate.sold_out)
     return (
-      <div className={baseClasses}>
+      <Button
+        variant="outline"
+        disabled
+        aria-disabled
+        asChild
+        className={cn(baseClasses, 'hover:cursor-not-allowed')}
+      >
         <p className="font-semibold text-balance line-through">Sold out</p>
-      </div>
+      </Button>
     );
 
   if (tourDate.ticket_url)
@@ -84,8 +90,14 @@ function TicketButtonContent({ tourDate }: { tourDate: TourDateDisplay }) {
     );
 
   return (
-    <div className={baseClasses}>
+    <Button
+      asChild
+      variant="outline"
+      disabled
+      aria-disabled
+      className={cn(baseClasses, "hover:cursor-not-allowed")}
+    >
       <p className="font-semibold text-balance">Free event</p>
-    </div>
+    </Button>
   );
 }
