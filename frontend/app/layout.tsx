@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/navigation/Navigation";
-import Footer from "@/components/footer/Footer";
+import Footer from "@/components/footer/FooterContainer";
 
 const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],

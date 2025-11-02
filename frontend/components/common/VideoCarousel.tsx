@@ -6,7 +6,7 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel";
 import { VideoItemDisplay, VideoItemResponse } from "@/lib/interfaces/video";
-import VideoItem from "@/components/homepage/video/components/VideoItem";
+import VideoItem from "@/components/common/VideoItem";
 
 export default function VideoList({
   videoList,

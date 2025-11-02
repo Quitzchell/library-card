@@ -18,7 +18,7 @@ interface NavSheetProps {
   pathname: string;
 }
 
-export default function NavSheet2({ pathname }: NavSheetProps) {
+export default function NavSheet({ pathname }: NavSheetProps) {
   const [open, setOpen] = useState(false);
 
   const handleLinkClick = () => {

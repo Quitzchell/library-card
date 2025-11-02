@@ -1,7 +1,7 @@
-import AboutContainer from "@/components/homepage/about/container/AboutContainer";
-import MusicContainer from "@/components/homepage/music/container/MusicContainer";
-import TourContainer from "@/components/homepage/tour/container/TourContainer";
-import VideoContainer from "@/components/homepage/video/container/VideoContainer";
+import AboutContainer from "@/components/homepage/AboutContainer";
+import MusicContainer from "@/components/homepage/MusicContainer";
+import TourContainer from "@/components/homepage/TourContainer";
+import VideoContainer from "@/components/homepage/VideoContainer";
 import Image from "next/image";
 import React from "react";
 

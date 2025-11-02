@@ -1,7 +1,7 @@
 import { NavigationRoute } from "@/lib/enums/navigation";
-import TourList from "@/components/homepage/tour/components/TourList";
-import SectionTitle from "../../common/SectionTitle";
-import SectionLink from "../../common/SectionLink";
+import TourList from "@/components/common/TourList";
+import SectionTitle from "../common/SectionTitle";
+import SectionLink from "../common/SectionLink";
 import { services } from "@/lib/services.config";
 
 export default async function TourContainer() {

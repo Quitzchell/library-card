@@ -1,7 +1,7 @@
 import { formatDate } from "@/utils/date";
 import Link from "next/link";
 import React from "react";
-import { Button } from "../../../ui/button";
+import { Button } from "../ui/button";
 import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
 
 export default function TourList({ tourDates }: { tourDates: TourResponse }) {
