@@ -1,18 +1,18 @@
 import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
 
 export const tourMock = {
-  async getTourDates(page = 0, perPage = 20): Promise<TourResponse> {
-    const from = page * perPage;
+  async getTourDates(page = 1, perPage = 20): Promise<TourResponse> {
+    const from = page * perPage - perPage;
     const to = from + perPage;
     const data: TourDateDisplay[] = TourDateList.slice(from, to);
     const totalItems = TourDateList.length;
-    const lastPage = Math.ceil(totalItems / perPage);
+    const totalPages = Math.ceil(totalItems / perPage);
 
     return {
       data: data.sort((a, b) => a.date.getTime() - b.date.getTime()),
       meta: {
         current_page: page,
-        last_page: lastPage,
+        total_pages: totalPages,
         per_page: perPage,
         total: totalItems,
       },

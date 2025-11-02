@@ -1,4 +1,4 @@
-import TourContainer from "@/components/homepage/TourContainer";
+import TourContainer from "@/components/tour/TourContainer";
 
 export default function TourPage() {
   return (
