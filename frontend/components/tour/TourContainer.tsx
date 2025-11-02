@@ -57,7 +57,7 @@ export default function TourContainer({ direction }: { direction: TourDateEnum }
 
       {!loading && !error && tourDates.data.length > 0 && (
         <>
-          <section className="grid gap-4 min-h-120">
+          <section className="grid gap-4 min-h-110">
             <TourList tourDates={tourDates} direction={direction} />
           </section>
           <PaginationContainer
