@@ -74,7 +74,7 @@ function TicketButtonContent({ tourDate }: { tourDate: TourDateDisplay }) {
         disabled
         aria-disabled
         asChild
-        className={cn(baseClasses, 'hover:cursor-not-allowed')}
+        className={cn(baseClasses, "hover:cursor-not-allowed")}
       >
         <p className="font-semibold text-balance line-through">Sold out</p>
       </Button>

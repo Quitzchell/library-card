@@ -1,12 +1,7 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTrigger,
-} from "../ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
 import { homeItem, navItems } from "@/lib/enums/navigation";
 
 import Link from "next/link";
@@ -38,7 +33,9 @@ export default function NavSheet({ pathname }: NavSheetProps) {
       </SheetTrigger>
       <SheetContent className="max-w-1/4">
         <SheetHeader>
-          <DialogTitle className="text-lg font-normal">Library Card</DialogTitle>
+          <DialogTitle className="text-lg font-normal">
+            Library Card
+          </DialogTitle>
         </SheetHeader>
         <div className={cn("grid flex-1 auto-rows-min gap-4 px-4")}>
           {[homeItem, ...navItems].map((item) => (

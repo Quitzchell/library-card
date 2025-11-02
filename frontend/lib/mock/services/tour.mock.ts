@@ -1,7 +1,11 @@
 import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
 
 export const tourMock = {
-  async getTourDates(page = 1, perPage = 20, direction: string): Promise<TourResponse> {
+  async getTourDates(
+    page = 1,
+    perPage = 20,
+    direction: string,
+  ): Promise<TourResponse> {
     const from = page * perPage - perPage;
     const to = from + perPage;
     const rawData =

@@ -9,7 +9,11 @@ import { TourDateEnum } from "@/lib/enums/tour";
 
 const PER_PAGE = 4;
 
-export default function TourContainer({ direction }: { direction: TourDateEnum }) {
+export default function TourContainer({
+  direction,
+}: {
+  direction: TourDateEnum;
+}) {
   const [tourDates, setTourDates] = useState<TourResponse>({
     data: [],
     meta: { current_page: 1, total_pages: 1, per_page: 0, total: 1 },
@@ -57,7 +61,7 @@ export default function TourContainer({ direction }: { direction: TourDateEnum }
 
       {!loading && !error && tourDates.data.length > 0 && (
         <>
-          <section className="grid gap-4 min-h-110">
+          <section className="grid min-h-110 gap-4">
             <TourList tourDates={tourDates} direction={direction} />
           </section>
           <PaginationContainer

@@ -1,4 +1,4 @@
-export enum  TourDateEnum {
-    UPCOMING = "desc",
-    PAST = "asc"
+export enum TourDateEnum {
+  UPCOMING = "desc",
+  PAST = "asc",
 }
