@@ -47,7 +47,7 @@ function TourRow({
           <p className="font-bold">
             {formatDate(tourDate.date, "full", {
               day: "2-digit",
-              month: "short",
+              month: "long",
               year: "numeric",
             })}
           </p>

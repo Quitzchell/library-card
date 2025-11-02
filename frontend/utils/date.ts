@@ -19,5 +19,5 @@ export const formatDate = (
 
   const formatOptions = options || baseOptions[partial];
 
-  return dateObj.toLocaleDateString("nl-NL", formatOptions);
+  return dateObj.toLocaleDateString("en-EN", formatOptions);
 };
