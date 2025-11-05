@@ -14,7 +14,7 @@
   /* base font + colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-family-mono: var(--font‑ibm‑plex‑mono);
+  --font-family-mono: var(--font-ibm-plex-mono);
 
   /* border radii */
   --radius-sm: calc(var(--radius) - 4px);
