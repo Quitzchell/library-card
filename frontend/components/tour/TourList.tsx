@@ -44,16 +44,16 @@ function TourRow({
         )}
       >
         <div className="px-4 py-2">
-          <p className="font-bold">
+          <p className="font-bold text-lg text-balance">{tourDate.venue}</p>
+          <p className="text-balance">
+            {tourDate.city}, {tourDate.country}
+          </p>
+          <p className="text-sm">
             {formatDate(tourDate.date, "full", {
               day: "2-digit",
               month: "long",
               year: "numeric",
             })}
-          </p>
-          <p className="text-balance">{tourDate.venue}</p>
-          <p className="text-sm text-balance">
-            {tourDate.city}, {tourDate.country}
           </p>
         </div>
       </Button>
@@ -65,7 +65,7 @@ function TourRow({
 
 function TicketButtonContent({ tourDate }: { tourDate: TourDateDisplay }) {
   const baseClasses =
-    "col-span-4 md:col-span-2 px-4 flex size-full items-center justify-center border";
+    "col-span-4 md:col-span-2 px-4 flex size-full text-center items-center justify-center border";
 
   if (tourDate.sold_out)
     return (
@@ -84,7 +84,7 @@ function TicketButtonContent({ tourDate }: { tourDate: TourDateDisplay }) {
     return (
       <Button asChild variant="outline" className={baseClasses}>
         <Link href={tourDate.ticket_url}>
-          <p className="font-semibold text-balance">Get tickets</p>
+          <p className="font-semibold text-balance">Tickets</p>
         </Link>
       </Button>
     );
