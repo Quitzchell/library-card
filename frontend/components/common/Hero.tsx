@@ -9,6 +9,7 @@ export default function Hero() {
           width={1080}
           height={1080}
           className="size-50 md:size-100"
+          priority={true}
           alt={"Snakes Illustration by Lot van Teylingen"}
         />
       </div>
