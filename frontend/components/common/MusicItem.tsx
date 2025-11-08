@@ -1,5 +1,8 @@
 import Image from "next/image";
-import { MusicItemDisplay, ServiceVariant } from "@/lib/interfaces/music";
+import {
+  MusicItemDisplay,
+  ServiceVariant,
+} from "@/lib/interfaces/music";
 import {
   Dialog,
   DialogContent,
@@ -17,14 +20,14 @@ export default function MusicItem({
 }) {
   return (
     <Dialog>
-      <DialogTrigger className="group -w-full cursor-pointer space-y-2 border border-black p-4 hover:bg-black hover:text-white">
+      <DialogTrigger className="group-w-full cursor-pointer space-y-2 border border-black p-4 hover:bg-black hover:text-white">
         <Image
           src={musicItem.cover_image}
           width={1080}
           height={1080}
           alt={musicItem.title}
         />
-        <p className="h-14 w-full text-left text-balance underline group-hover:text-white">
+        <p className="h-12 w-full text-left text-balance underline group-hover:text-white">
           {musicItem.title}
         </p>
       </DialogTrigger>
