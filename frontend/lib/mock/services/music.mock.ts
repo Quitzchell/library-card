@@ -2,18 +2,18 @@ import { MusicItemDisplay, MusicItemResponse } from "@/lib/interfaces/music";
 import { MusicServiceName } from "@/lib/enums";
 
 export const musicMock = {
-  async getMusicItems(page = 0, perPage = 10): Promise<MusicItemResponse> {
-    const from = page * perPage;
+  async getMusicItems(page = 1, perPage = 8): Promise<MusicItemResponse> {
+    const from = page * perPage - perPage;
     const to = from + perPage;
     const data: MusicItemDisplay[] = MusicItemList.slice(from, to);
     const totalItems = MusicItemList.length;
-    const lastPage = Math.ceil(totalItems / perPage);
+    const totalPages = Math.ceil(totalItems / perPage);
 
     return {
       data: data,
       meta: {
         current_page: page,
-        last_page: lastPage,
+        total_pages: totalPages,
         per_page: perPage,
         total: totalItems,
       },
