@@ -10,14 +10,11 @@ import { usePagination } from "@/hooks/usePagination";
 
 type TourContainerProps = {
   direction: TourDateEnum;
-
-}
+};
 
 const PER_PAGE = 4;
 
-export default function TourContainer({
-  direction,
-}: TourContainerProps) {
+export default function TourContainer({ direction }: TourContainerProps) {
   const [tourDates, setTourDates] = useState<TourResponse>({
     data: [],
     meta: { current_page: 1, total_pages: 1, per_page: 0, total: 1 },

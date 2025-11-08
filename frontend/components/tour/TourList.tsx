@@ -44,7 +44,7 @@ function TourRow({
         )}
       >
         <div className="px-4 py-2">
-          <p className="font-bold text-lg text-balance">{tourDate.venue}</p>
+          <p className="text-lg font-bold text-balance">{tourDate.venue}</p>
           <p className="text-balance">
             {tourDate.city}, {tourDate.country}
           </p>

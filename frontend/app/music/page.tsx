@@ -6,7 +6,7 @@ export default function MusicPage() {
       <h1 className="mb-8 text-4xl font-bold">Music</h1>
 
       <section className="h-full space-y-12">
-        <MusicContainer/>
+        <MusicContainer />
       </section>
     </div>
   );

@@ -1,8 +1,5 @@
 import Image from "next/image";
-import {
-  MusicItemDisplay,
-  ServiceVariant,
-} from "@/lib/interfaces/music";
+import { MusicItemDisplay, ServiceVariant } from "@/lib/interfaces/music";
 import {
   Dialog,
   DialogContent,
