@@ -23,7 +23,6 @@ export default function TourContainer({ direction }: TourContainerProps) {
   const [error, setError] = useState<string | null>(null);
 
   const { total_pages } = tourDates.meta;
-
   const { currentPage, handleNext, handlePrev, handleNumber } =
     usePagination(total_pages);
 
