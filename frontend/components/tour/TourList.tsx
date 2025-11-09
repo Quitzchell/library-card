@@ -9,9 +9,14 @@ import { TourDateEnum } from "@/lib/enums/tour";
 type TourListProps = {
   tourDates: TourResponse;
   direction: TourDateEnum;
+  emptySlots?: number;
 };
 
-export default function TourList({ tourDates, direction }: TourListProps) {
+export default function TourList({
+  tourDates,
+  direction,
+  emptySlots = 0,
+}: TourListProps) {
   const isUpcoming = direction === TourDateEnum.UPCOMING;
 
   return (
@@ -21,6 +26,13 @@ export default function TourList({ tourDates, direction }: TourListProps) {
           key={tourDate.id}
           tourDate={tourDate}
           showTickets={isUpcoming}
+        />
+      ))}
+
+      {Array.from({ length: emptySlots }).map((_, i) => (
+        <div
+          key={`empty-${i}`}
+          className="bg-black w-full h-26.5 shadow-xs"
         />
       ))}
     </div>

@@ -27,6 +27,8 @@ export default function TourContainer({ direction }: TourContainerProps) {
   const { currentPage, handleNext, handlePrev, handleNumber } =
     usePagination(total_pages);
 
+  const emptySlots = Math.max(0, PER_PAGE - tourDates.data.length);
+
   useEffect(() => {
     const fetchTourDates = async () => {
       setLoading(true);
@@ -59,8 +61,8 @@ export default function TourContainer({ direction }: TourContainerProps) {
 
       {!loading && !error && tourDates.data.length > 0 && (
         <>
-          <section className="grid min-h-112 gap-4">
-            <TourList tourDates={tourDates} direction={direction} />
+          <section className="grid gap-4">
+            <TourList tourDates={tourDates} direction={direction} emptySlots={emptySlots} />
           </section>
           <PaginationContainer
             totalPages={total_pages}
