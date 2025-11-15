@@ -26,7 +26,6 @@ export default function MusicContainer() {
   const [error, setError] = useState<string | null>(null);
 
   const { total_pages } = musicItems.meta;
-
   const { currentPage, handleNext, handlePrev, handleNumber } =
     usePagination(total_pages);
 
@@ -36,14 +35,21 @@ export default function MusicContainer() {
     const fetchMusicItems = async () => {
       setLoading(true);
       setError(null);
+
       try {
         const response = await services.music.getMusicItems(
           currentPage,
           PER_PAGE,
         );
+
+        if (response.meta.current_page > response.meta.total_pages) {
+          handlePrev()
+          return;
+        }
+
         setMusicItems(response);
       } catch (err) {
-        console.error("Error fetching music items: ", err);
+        console.error("Error fetching music items:", err);
         setError("Failed to load music items. Please try again.");
       } finally {
         setLoading(false);
@@ -51,14 +57,14 @@ export default function MusicContainer() {
     };
 
     fetchMusicItems();
-  }, [currentPage, PER_PAGE]);
+  }, [currentPage, PER_PAGE, handlePrev]);
 
   return (
     <section className="flex h-full flex-col justify-center space-y-5">
       {loading && <p>Loading music items...</p>}
       {error && <p className="text-red-500">{error}</p>}
       {!loading && !error && musicItems.data.length === 0 && (
-        <p>No tour dates found.</p>
+        <p>No music items found.</p>
       )}
 
       {!loading && !error && musicItems.data.length > 0 && (

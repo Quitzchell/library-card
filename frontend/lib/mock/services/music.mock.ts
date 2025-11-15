@@ -108,4 +108,50 @@ const MusicItemList: Array<MusicItemDisplay> = [
       },
     ],
   },
+  {
+    id: 2,
+    title: "Nothing, Interesting",
+    release_date: "2024-03-15",
+    cover_image: "/images/nothing-interesting-artwork.jpg",
+    services: [
+      {
+        name: MusicServiceName.ATEASE,
+        url: "https://shop.atease.ltd/products/library-card-nothing-interesting",
+        postfix: "Buy now!",
+      },
+      {
+        name: MusicServiceName.SPOTIFY,
+        url: "https://open.spotify.com/album/4wzy3foMTOWeACd3J2FXoC?si=e3fn2cSqQ0CvfQ6wv-MIag",
+      },
+      {
+        name: MusicServiceName.BANDCAMP,
+        url: "https://thisislibrarycard.bandcamp.com/album/nothing-interesting",
+      },
+      {
+        name: MusicServiceName.APPLE_MUSIC,
+        url: "https://music.apple.com/us/album/nothing-interesting-ep/1722176456",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Sunflowers",
+    release_date: "2023-03-09",
+    cover_image: "/images/sunflowers-artwork.jpg",
+    services: [
+      {
+        name: MusicServiceName.SPOTIFY,
+        url: "https://open.spotify.com/album/5PY6ZHSv3OwcLNwi6qSm8P?si=s7X1JY32RgmKPfTdqA3ecg",
+      },
+      {
+        name: MusicServiceName.BANDCAMP,
+        url: "https://thisislibrarycard.bandcamp.com/track/sunflowers",
+      },
+      {
+        name: MusicServiceName.APPLE_MUSIC,
+        url: "https://music.apple.com/us/album/sunflowers-single/1672448083",
+      },
+    ],
+  },
+  
 ];
