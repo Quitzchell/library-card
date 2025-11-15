@@ -19,11 +19,8 @@ export default function MusicList({
       {Array.from({ length: emptySlots }).map((_, i) => (
         <div
           key={`empty-${i}`}
-          className="group bg-primary/20 flex w-full cursor-default flex-col space-y-2 border border-black p-4"
-        >
-          <div className="flex aspect-square w-full items-center justify-center" />
-          <div className="h-12 w-full" />
-        </div>
+          className="relative w-full border border-black bg-black before:block before:bg-inherit before:pt-[100%] before:content-[''] after:block after:h-14 after:bg-inherit after:content-['']"
+        />
       ))}
     </div>
   );
