@@ -1,14 +1,21 @@
 import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
 
-const sortDataByDirection = (direction : string) => direction === "asc"
-        ? TourDateList.sort(
-            (a, b) => b.date.getTime() - a.date.getTime(),
-          ).filter((tourDate) => tourDate.date <= new Date())
-        : TourDateList.sort(
-            (a, b) => a.date.getTime() - b.date.getTime(),
-          ).filter((tourDate) => tourDate.date > new Date());
+const sortDataByDirection = (direction: string) =>
+  direction === "asc"
+    ? TourDateList.sort((a, b) => b.date.getTime() - a.date.getTime()).filter(
+        (tourDate) => tourDate.date <= new Date(),
+      )
+    : TourDateList.sort((a, b) => a.date.getTime() - b.date.getTime()).filter(
+        (tourDate) => tourDate.date > new Date(),
+      );
 
 export const tourMock = {
+  async getAllTourItems(): Promise<TourResponse> {
+    return {
+      data: TourDateList,
+    };
+  },
+
   async getTourDates(
     page = 1,
     perPage = 20,
@@ -16,7 +23,7 @@ export const tourMock = {
   ): Promise<TourResponse> {
     const from = page * perPage - perPage;
     const to = from + perPage;
-    const sortedData = sortDataByDirection(direction)
+    const sortedData = sortDataByDirection(direction);
     const data: TourDateDisplay[] = sortedData.slice(from, to);
     const totalItems = sortedData.length;
     const totalPages = Math.ceil(totalItems / perPage);
@@ -29,6 +36,24 @@ export const tourMock = {
         per_page: perPage,
         total: totalItems,
       },
+    };
+  },
+
+  async getTourDateById(id: number): Promise<TourResponse | null> {
+    const item = TourDateList.find((t) => t.id === id);
+
+    return item ? { data: item } : null;
+  },
+
+  async getUpcomingDates(): Promise<TourResponse> {
+    return {
+      data: sortDataByDirection("desc"),
+    };
+  },
+
+  async getPastDates(): Promise<TourResponse> {
+    return {
+      data: sortDataByDirection("asc"),
     };
   },
 };
