@@ -14,7 +14,7 @@ export interface TourDate {
 export type TourDateDisplay = Omit<TourDate, "created_at" | "updated_at">;
 
 export interface TourResponse {
-  data: TourDateDisplay | TourDateDisplay[];
+  data: TourDateDisplay[];
   meta?: {
     current_page: number;
     total_pages: number;

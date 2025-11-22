@@ -4,9 +4,5 @@ import MusicClient from "./MusicClient";
 export default async function MusicServer() {
   const { data } = await services.music.getAllMusicItems();
 
-  return (
-    <div>
-      <MusicClient items={data} />
-    </div>
-  );
+  return <MusicClient items={data} />;
 }

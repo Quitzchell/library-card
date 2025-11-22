@@ -20,6 +20,12 @@ export const musicMock = {
     };
   },
 
+  async getMusicItemById(id: number): Promise<MusicItemDisplay | null> {
+    const item = MusicItemList.find((m) => m.id === id);
+
+    return item ?? null;
+  },
+
   async getAllMusicItems(): Promise<MusicItemResponse> {
     return {
       data: MusicItemList,

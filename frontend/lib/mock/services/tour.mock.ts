@@ -10,7 +10,7 @@ const sortDataByDirection = (direction: string) =>
       );
 
 export const tourMock = {
-  async getAllTourItems(): Promise<TourResponse> {
+  async getAllTourDates(): Promise<TourResponse> {
     return {
       data: TourDateList,
     };
@@ -39,10 +39,10 @@ export const tourMock = {
     };
   },
 
-  async getTourDateById(id: number): Promise<TourResponse | null> {
+  async getTourDateById(id: number): Promise<TourDateDisplay | null> {
     const item = TourDateList.find((t) => t.id === id);
 
-    return item ? { data: item } : null;
+    return item ?? null;
   },
 
   async getUpcomingDates(): Promise<TourResponse> {

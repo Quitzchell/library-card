@@ -1,5 +1,5 @@
 import { NavigationRoute } from "@/lib/enums/navigation";
-import TourList from "@/components/tour/TourList";
+import TourList from "@/components/common/TourList";
 import SectionTitle from "../common/SectionTitle";
 import SectionLink from "../common/SectionLink";
 import { services } from "@/lib/services.config";

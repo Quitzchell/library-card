@@ -1,8 +1,8 @@
 import { apiClient } from "../client";
-import { TourDate, TourResponse } from "../../interfaces/tour";
+import { TourDate, TourDateDisplay, TourResponse } from "../../interfaces/tour";
 
 export const tourService = {
-  async getAllDates(): Promise<TourResponse> {
+  async getAllTourDates(): Promise<TourResponse> {
     return apiClient.get<{ data: TourDate[] }>("/tour");
   },
 
@@ -12,8 +12,8 @@ export const tourService = {
     );
   },
 
-  async getTourDateById(id: number): Promise<TourResponse> {
-    return apiClient.get<{ data: TourDate }>(`/tour/${id}`);
+  async getTourDateById(id: number): Promise<TourDateDisplay> {
+    return apiClient.get<TourDateDisplay>(`/tour/${id}`);
   },
 
   async getUpcomingDates(): Promise<TourResponse> {
