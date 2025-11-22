@@ -5,7 +5,7 @@ import { services } from "@/lib/services.config";
 import MusicList from "../common/MusicList";
 
 export default async function MusicContainer() {
-  const musicItems = await services.music.getMusicItems(0, 4);
+  const musicItems = await services.music.getMusicItems(1, 4);
 
   return (
     <div className="space-y-8 md:space-y-10">
