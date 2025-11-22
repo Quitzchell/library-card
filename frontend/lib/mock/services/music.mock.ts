@@ -19,6 +19,12 @@ export const musicMock = {
       },
     };
   },
+
+  async getAllMusicItems(): Promise<MusicItemResponse> {
+    return {
+      data: MusicItemList,
+    };
+  },
 };
 
 // Mockdata

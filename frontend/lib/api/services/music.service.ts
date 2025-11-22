@@ -7,4 +7,10 @@ export const musicService = {
       `/music?page=${page}&per_page=${perPage}`,
     );
   },
+
+  async getAllMusicItems(): Promise<MusicItemResponse> {
+    return apiClient.get<MusicItemResponse>(
+      `/music`,
+    );
+  }
 };
