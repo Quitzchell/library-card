@@ -20,7 +20,7 @@ export interface MusicItem {
 export type MusicItemDisplay = Omit<MusicItem, "created_at" | "updated_at">;
 
 export interface MusicItemResponse {
-  data: MusicItemDisplay[];
+  data: MusicItemDisplay | MusicItemDisplay[];
   meta?: {
     current_page: number;
     total_pages: number;
