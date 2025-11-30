@@ -20,16 +20,12 @@ export default function TourClient({
   const { currentPage, handleNext, handlePrev, handleNumber } =
     usePagination(totalPages);
 
-  const paginated = useMemo(() => {
-    let start;
-    if (currentPage > totalPages) {
-      start = (currentPage - 2) * PER_PAGE;
-    } else {
-      start = (currentPage - 1) * PER_PAGE;
-    }
+  const safePage = Math.min(currentPage, totalPages);
+  const start = (safePage - 1) * PER_PAGE;
 
+  const paginated = useMemo(() => {
     return items.slice(start, start + PER_PAGE);
-  }, [currentPage, totalPages, items, PER_PAGE]);
+  }, [items, start]);
 
   const emptySlots = Math.max(0, PER_PAGE - paginated.length);
 
@@ -42,13 +38,15 @@ export default function TourClient({
           emptySlots={emptySlots}
         />
       </section>
-      <PaginationContainer
-        totalPages={totalPages}
-        currentPage={currentPage}
-        handleNext={handleNext}
-        handlePrev={handlePrev}
-        handleNumber={handleNumber}
-      />
+      {totalPages > 1 && (
+        <PaginationContainer
+          totalPages={totalPages}
+          currentPage={currentPage}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          handleNumber={handleNumber}
+        />
+      )}
     </section>
   );
 }

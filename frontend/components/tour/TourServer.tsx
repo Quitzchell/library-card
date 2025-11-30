@@ -2,15 +2,16 @@ import { services } from "@/lib/services.config";
 import TourClient from "./TourClient";
 import { TourDateEnum } from "@/lib/enums/tour";
 
-export default async function MusicServer({
+export default async function TourServer({
   direction,
 }: {
   direction: TourDateEnum;
 }) {
-  const { data } =
+  const fetcher =
     direction === TourDateEnum.UPCOMING
-      ? await services.tour.getUpcomingDates()
-      : await services.tour.getPastDates();
+      ? services.tour.getUpcomingDates
+      : services.tour.getPastDates;
 
+  const { data } = await fetcher();
   return <TourClient items={data} direction={direction} />;
 }
