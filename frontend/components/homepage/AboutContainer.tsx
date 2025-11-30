@@ -1,8 +1,8 @@
 import { NavigationLabel } from "@/lib/enums";
-import SectionTitle from "../common/SectionTitle";
-import Biography from "../common/Biography";
+import SectionTitle from "@/components/common/SectionTitle";
+import Biography from "@/components/common/Biography";
 import { services } from "@/lib/services.config";
-import ImageList from "../common/ImageCarousel";
+import ImageList from "@/components/common/ImageCarousel";
 
 export default async function AboutContainer() {
   const biographyItem = await services.biography.getBiography();
