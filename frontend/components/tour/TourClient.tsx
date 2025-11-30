@@ -3,8 +3,8 @@
 import { usePagination } from "@/hooks/usePagination";
 import { TourDateDisplay } from "@/lib/interfaces/tour";
 import { useMemo } from "react";
-import TourList from "../common/TourList";
-import PaginationContainer from "../common/Pagination";
+import TourList from "@/components/common/TourList";
+import PaginationContainer from "@/components/common/Pagination";
 import { TourDateEnum } from "@/lib/enums/tour";
 
 export default function TourClient({

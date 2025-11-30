@@ -1,5 +1,5 @@
 import { services } from "@/lib/services.config";
-import TourClient from "./TourClient";
+import TourClient from "@/components/tour/TourClient";
 import { TourDateEnum } from "@/lib/enums/tour";
 
 export default async function TourServer({
