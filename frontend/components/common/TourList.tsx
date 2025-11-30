@@ -30,10 +30,7 @@ export default function TourList({
       ))}
 
       {Array.from({ length: emptySlots }).map((_, i) => (
-        <div
-          key={`empty-${i}`}
-          className="bg-black w-full h-26.5 shadow-xs"
-        />
+        <div key={`empty-${i}`} className="h-26.5 w-full bg-black shadow-xs" />
       ))}
     </div>
   );

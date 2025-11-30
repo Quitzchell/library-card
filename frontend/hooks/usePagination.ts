@@ -11,12 +11,9 @@ export function usePagination(totalPages: number) {
     setCurrentPage((prev) => Math.max(prev - 1, 1));
   }, []);
 
-  const handleNumber = useCallback(
-    (page: number) => {
-      setCurrentPage(page + 1);
-    },
-    [],
-  );
+  const handleNumber = useCallback((page: number) => {
+    setCurrentPage(page + 1);
+  }, []);
   return {
     currentPage,
     setCurrentPage,

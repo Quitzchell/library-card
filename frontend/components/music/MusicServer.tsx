@@ -1,5 +1,5 @@
 import { services } from "@/lib/services.config";
-import MusicClient from "./MusicClient";
+import MusicClient from "@/components/music/MusicClient";
 
 export default async function MusicServer() {
   const { data } = await services.music.getAllMusicItems();

@@ -9,12 +9,10 @@ export const musicService = {
   },
 
   async getMusicItemById(id: number): Promise<MusicItemDisplay> {
-      return apiClient.get<MusicItemDisplay>(`/music/${id}`);
+    return apiClient.get<MusicItemDisplay>(`/music/${id}`);
   },
 
   async getAllMusicItems(): Promise<MusicItemResponse> {
-    return apiClient.get<MusicItemResponse>(
-      `/music`,
-    );
-  }
+    return apiClient.get<MusicItemResponse>(`/music`);
+  },
 };
