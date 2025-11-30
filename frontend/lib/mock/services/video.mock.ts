@@ -1,23 +1,35 @@
 import { VideoItemDisplay, VideoItemResponse } from "@/lib/interfaces/video";
 
 export const videoMock = {
-  async getVideoItems(page = 0, perPage = 10): Promise<VideoItemResponse> {
-    const from = page * perPage;
+  async getVideoItems(page = 1, perPage = 10): Promise<VideoItemResponse> {
+    const from = page * perPage - perPage;
     const to = from + perPage;
     const data: VideoItemDisplay[] = VideoItemList.slice(from, to);
     const totalItems = VideoItemList.length;
-    const lastPage = Math.ceil(totalItems / perPage);
+    const totalPages = Math.ceil(totalItems / perPage);
 
     return {
       data: data,
       meta: {
         current_page: page,
-        last_page: lastPage,
+        total_pages: totalPages,
         per_page: perPage,
         total: totalItems,
       },
     };
   },
+
+  async getVideoItemById(id: number): Promise<VideoItemDisplay | null> {
+    const item = VideoItemList.find((v) => v.id === id)
+
+    return item ?? null;
+  },
+
+  async getAllVideoItems(): Promise<VideoItemResponse> {
+    return {
+      data: VideoItemList
+    }
+  } 
 };
 
 // Mockdata

@@ -1,10 +1,13 @@
+import VideoServer from "@/components/video/VideoServer"
+
 export default function VideoPage() {
   return (
-    <div className="min-h-screen">
-      <main className="container mx-auto px-4 py-8">
-        <h1 className="font-playfair mb-8 text-4xl font-bold">Video</h1>
-        <p className="text-lg text-gray-600">Watch our latest videos.</p>
-      </main>
+    <div className="container flex grow-1 flex-col py-8">
+      <h1 className="mb-8 text-4xl font-bold">Video</h1>
+
+      <section className="h-full space-y-12">
+        <VideoServer />
+      </section>
     </div>
   );
 }
