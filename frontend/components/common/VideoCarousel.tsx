@@ -8,7 +8,7 @@ import {
 import { VideoItemDisplay, VideoItemResponse } from "@/lib/interfaces/video";
 import VideoItem from "@/components/common/VideoItem";
 
-export default function VideoList({
+export default function VideoCarousel({
   videoList,
 }: {
   videoList?: VideoItemResponse | null;
