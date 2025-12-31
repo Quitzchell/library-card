@@ -1,7 +1,10 @@
+import { VideoCategory } from "../enums/video";
+
 export interface VideoItem {
   id: number;
   title: string;
   video_id: string;
+  category: VideoCategory
   created_at: string;
   updated_at: string;
 }
