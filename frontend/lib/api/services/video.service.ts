@@ -1,9 +1,13 @@
-import { apiClient } from "../client";
-import { VideoItemDisplay, VideoItemResponse } from "../../interfaces/video";
+import { apiClient } from "@/lib/api/client";
+import { VideoItemDisplay, VideosByCategoryResponse } from "@/lib/interfaces/video";
+import { PaginatedResponse } from "@/lib/interfaces/paginated-response";
 
 export const videoService = {
-  async getVideoItems(page = 1, perPage = 10): Promise<VideoItemResponse> {
-    return apiClient.get<VideoItemResponse>(
+  async getVideoItems(
+    page = 1,
+    perPage = 10,
+  ): Promise<PaginatedResponse<VideoItemDisplay>> {
+    return apiClient.get<PaginatedResponse<VideoItemDisplay>>(
       `/video?page=${page}&per_page=${perPage}`,
     );
   },
@@ -12,7 +16,7 @@ export const videoService = {
     return apiClient.get<VideoItemDisplay>(`/video/${id}`);
   },
 
-  async getAllVideoItems(): Promise<VideoItemResponse> {
-    return apiClient.get<VideoItemResponse>(`/video`);
+  async getVideosByCategory(): Promise<VideosByCategoryResponse> {
+    return apiClient.get<VideosByCategoryResponse>(`/video`);
   },
 };

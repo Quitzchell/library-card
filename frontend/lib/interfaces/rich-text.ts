@@ -1,4 +1,4 @@
-export interface BiographyItem {
+export interface RichTextItem {
   title?: string;
   text: string;
 }

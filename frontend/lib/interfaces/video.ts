@@ -4,19 +4,15 @@ export interface VideoItem {
   id: number;
   title: string;
   video_id: string;
-  category: VideoCategory
+  category: VideoCategory;
   created_at: string;
   updated_at: string;
 }
 
 export type VideoItemDisplay = Omit<VideoItem, "created_at" | "updated_at">;
 
-export interface VideoItemResponse {
-  data: VideoItemDisplay[];
-  meta?: {
-    current_page: number;
-    total_pages: number;
-    per_page: number;
-    total: number;
-  };
+export type VideosByCategory = Record<VideoCategory, VideoItemDisplay[]>;
+
+export interface VideosByCategoryResponse {
+  data: VideosByCategory;
 }

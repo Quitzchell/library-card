@@ -1,5 +1,5 @@
 import { MusicItemDisplay, MusicItemResponse } from "@/lib/interfaces/music";
-import MusicItem from "./MusicItem";
+import MusicItem from "@/components/music/MusicItem";
 
 type musicListProps = {
   musicItems: MusicItemResponse;

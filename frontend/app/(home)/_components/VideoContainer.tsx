@@ -1,7 +1,7 @@
 import { NavigationLabel, NavigationRoute } from "@/lib/enums";
-import SectionTitle from "@/components/common/SectionTitle";
-import SectionLink from "@/components/common/SectionLink";
-import VideoList from "@/components/common/VideoCarousel";
+import SectionTitle from "@/app/(home)/_components/SectionTitle";
+import SectionLink from "@/app/(home)/_components/SectionLink";
+import VideoList from "@/components/video/VideoCarousel";
 import { services } from "@/lib/services.config";
 
 export default async function VideoContainer() {

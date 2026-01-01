@@ -5,13 +5,14 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
-import { VideoItemDisplay, VideoItemResponse } from "@/lib/interfaces/video";
-import VideoItem from "@/components/common/VideoItem";
+import { VideoItemDisplay } from "@/lib/interfaces/video";
+import VideoItem from "@/components/video/VideoItem";
+import { PaginatedResponse } from "@/lib/interfaces/paginated-response";
 
 export default function VideoCarousel({
   videoList,
 }: {
-  videoList?: VideoItemResponse | null;
+  videoList?: PaginatedResponse<VideoItemDisplay> | null;
 }) {
   if (videoList) {
     return (

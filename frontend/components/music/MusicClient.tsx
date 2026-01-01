@@ -4,7 +4,7 @@ import { usePagination } from "@/hooks/usePagination";
 import { useResponsivePerPage } from "@/hooks/useResponsivePerPage";
 import { TailwindScreens } from "@/lib/enums/tailwind-screen";
 import { useMemo } from "react";
-import MusicList from "../common/MusicList";
+import MusicList from "./MusicList";
 import PaginationContainer from "../common/Pagination";
 import { MusicItemDisplay } from "@/lib/interfaces/music";
 
