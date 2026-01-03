@@ -25,7 +25,7 @@ export default function NavSheet({ pathname }: NavSheetProps) {
       <SheetTrigger
         asChild
         className={cn(
-          "absolute top-4 right-6",
+          "absolute top-8 right-6",
           pathname.endsWith(homeItem.href) && "text-white",
         )}
       >
