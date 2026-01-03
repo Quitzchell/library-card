@@ -1,4 +1,4 @@
-import { apiClient } from "../client";
+import { apiClient } from "@/lib/api/client";
 import { ImageItemResponse } from "@/lib/interfaces/image";
 
 export const imageService = {

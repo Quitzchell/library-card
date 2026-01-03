@@ -8,11 +8,11 @@ import {
 import { ImageItemDisplay, ImageItemResponse } from "@/lib/interfaces/image";
 import Image from "next/image";
 
-export default function ImageList({
-  imageList,
-}: {
+type ImageListProps = {
   imageList?: ImageItemResponse | null;
-}) {
+};
+
+export default function ImageList({ imageList }: ImageListProps) {
   if (imageList) {
     return (
       <Carousel opts={{ loop: true }} className="mx-auto w-full">

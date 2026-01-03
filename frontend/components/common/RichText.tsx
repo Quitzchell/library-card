@@ -1,10 +1,12 @@
 import { RichTextItem } from "@/lib/interfaces/rich-text";
 
+type RichTextProps = {
+  biographyItem: RichTextItem;
+};
+
 export default function RichText({
   biographyItem: richTextItem,
-}: {
-  biographyItem: RichTextItem;
-}) {
+}: RichTextProps) {
   return (
     <div className="flex flex-col space-y-4">
       {richTextItem.title && (

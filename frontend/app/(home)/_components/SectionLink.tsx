@@ -1,13 +1,12 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function SectionLink({
-  href,
-  text,
-}: {
+type SectionLinkProps = {
   href: string;
   text: string;
-}) {
+};
+
+export default function SectionLink({ href, text }: SectionLinkProps) {
   return (
     <Button variant={"ghost"}>
       <Link
