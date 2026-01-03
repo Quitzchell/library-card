@@ -1,7 +1,10 @@
+import { NavigationLabel } from "../enums";
+
 export interface ImageItem {
   id: number;
   src: string;
   alt: string;
+  target: NavigationLabel;
   created_at: string;
   updated_at: string;
 }
