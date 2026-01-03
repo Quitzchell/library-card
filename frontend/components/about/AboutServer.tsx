@@ -1,5 +1,5 @@
 import { services } from "@/lib/services.config";
-import AboutClient from "./AboutClient";
+import AboutClient from "@/components/about/AboutClient";
 
 export default async function AboutServer() {
     const biography = await services.biography.getBiography();
