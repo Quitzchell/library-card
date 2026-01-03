@@ -1,12 +1,13 @@
+import { GetImageItemsParams } from "@/lib/api/interfaces";
 import { NavigationLabel } from "@/lib/enums";
 import { ImageItemDisplay, ImageItemResponse } from "@/lib/interfaces/image";
 
 export const imageMock = {
-  async getImageItems(
+  async getImageItems({
     page = 0,
     perPage = 10,
     target = null,
-  ): Promise<ImageItemResponse> {
+  }: GetImageItemsParams = {}): Promise<ImageItemResponse> {
     const from = page * perPage;
     const to = from + perPage;
 

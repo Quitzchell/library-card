@@ -1,10 +1,19 @@
 import { apiClient } from "@/lib/api/client";
 import { ImageItemResponse } from "@/lib/interfaces/image";
+import { GetImageItemsParams } from "../interfaces";
 
 export const imageService = {
-  async getImageItems(page = 1, perPage = 10): Promise<ImageItemResponse> {
-    return apiClient.get<ImageItemResponse>(
-      `/image?page=${page}&per_page=${perPage}`,
-    );
+  async getImageItems({
+    page = 0,
+    perPage = 10,
+    target = null,
+  }: GetImageItemsParams = {}): Promise<ImageItemResponse> {
+    const params = new URLSearchParams({
+      page: page.toString(),
+      per_page: perPage.toString(),
+      ...(target && { target }),
+    });
+
+    return apiClient.get<ImageItemResponse>(`/image?${params.toString()}`);
   },
 };
