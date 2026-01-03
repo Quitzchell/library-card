@@ -1,4 +1,4 @@
-import ContactContainer from "./Contacts";
+import ContactContainer from "./ContactContainer";
 import SocialMediaContainer from "./SocialMediaLinks";
 
 export default async function Footer() {
