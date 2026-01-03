@@ -1,5 +1,5 @@
 import { NavigationLabel } from "@/lib/enums";
-import SectionTitle from "@/app/(home)/_components/SectionTitle";
+import SectionTitle from "@/components/common/SectionTitle";
 import Biography from "@/components/common/RichText";
 import { services } from "@/lib/services.config";
 import ImageList from "@/components/common/ImageCarousel";

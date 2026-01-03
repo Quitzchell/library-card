@@ -1,6 +1,6 @@
 import { NavigationRoute } from "@/lib/enums/navigation";
 import TourList from "@/components/tour/TourList";
-import SectionTitle from "@/app/(home)/_components/SectionTitle";
+import SectionTitle from "@/components/common/SectionTitle";
 import SectionLink from "@/app/(home)/_components/SectionLink";
 import { services } from "@/lib/services.config";
 import { TourDateEnum } from "@/lib/enums/tour";

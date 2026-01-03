@@ -1,6 +1,7 @@
 import { VideoCategory } from "@/lib/enums/video";
 import { VideoItemDisplay } from "@/lib/interfaces/video";
 import VideoItem from "./VideoItem";
+import SectionTitle from "../common/SectionTitle";
 
 const PER_ROW = 2;
 
@@ -16,9 +17,9 @@ export default function VideoList({
 
   return (
     <section className="space-y-4">
-      <h2 className="text-xl font-semibold">{category}</h2>
+      <SectionTitle title={category} />
 
-      <ul className="grid md:grid-cols-2 gap-4">
+      <ul className="container grid md:grid-cols-2 gap-4">
         {videos.map((video: VideoItemDisplay, index: number) => (
           <li key={index}>
             <VideoItem videoItem={video} />
