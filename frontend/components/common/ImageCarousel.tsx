@@ -12,7 +12,7 @@ type ImageListProps = {
   imageList?: ImageItemResponse | null;
 };
 
-export default function ImageList({ imageList }: ImageListProps) {
+export default function ImageCarousel({ imageList }: ImageListProps) {
   if (imageList) {
     return (
       <Carousel opts={{ loop: true }} className="mx-auto w-full">
