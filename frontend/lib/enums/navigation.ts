@@ -4,7 +4,6 @@ export enum NavigationRoute {
   MUSIC = "/music",
   VIDEO = "/video",
   ABOUT = "/about",
-  CONTACT = "/contact",
 }
 
 export enum NavigationLabel {
@@ -13,7 +12,6 @@ export enum NavigationLabel {
   MUSIC = "Music",
   VIDEO = "Video",
   ABOUT = "About",
-  CONTACT = "Contact",
 }
 
 export const navItems = [
@@ -21,7 +19,6 @@ export const navItems = [
   { name: NavigationLabel.MUSIC, href: NavigationRoute.MUSIC },
   { name: NavigationLabel.VIDEO, href: NavigationRoute.VIDEO },
   { name: NavigationLabel.ABOUT, href: NavigationRoute.ABOUT },
-  { name: NavigationLabel.CONTACT, href: NavigationRoute.CONTACT },
 ];
 
 export const homeItem = {
