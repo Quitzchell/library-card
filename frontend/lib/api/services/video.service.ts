@@ -1,5 +1,8 @@
 import { apiClient } from "@/lib/api/client";
-import { VideoItemDisplay, VideosByCategoryResponse } from "@/lib/interfaces/video";
+import {
+  VideoItemDisplay,
+  VideosByCategoryResponse,
+} from "@/lib/interfaces/video";
 import { PaginatedResponse } from "@/lib/interfaces/paginated-response";
 
 export const videoService = {

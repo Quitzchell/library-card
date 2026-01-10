@@ -13,13 +13,13 @@ export default function VideoList({
   videos: VideoItemDisplay[];
 }) {
   const emptySlots = Math.max(0, PER_ROW % videos.length);
-  console.log(emptySlots)
+  console.log(emptySlots);
 
   return (
     <section className="space-y-4">
       <SectionTitle title={category} />
 
-      <ul className="container grid md:grid-cols-2 gap-4">
+      <ul className="container grid gap-4 md:grid-cols-2">
         {videos.map((video: VideoItemDisplay, index: number) => (
           <li key={index}>
             <VideoItem videoItem={video} />
@@ -29,7 +29,7 @@ export default function VideoList({
         {Array.from({ length: emptySlots }).map((_, i) => (
           <div
             key={`empty-${i}`}
-            className="h-full w-full bg-black hidden md:block"
+            className="hidden h-full w-full bg-black md:block"
           />
         ))}
       </ul>

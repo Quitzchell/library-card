@@ -1,4 +1,4 @@
-import VideoServer from "@/components/video/VideoServer"
+import VideoServer from "@/components/video/VideoServer";
 
 export default function VideoPage() {
   return (
