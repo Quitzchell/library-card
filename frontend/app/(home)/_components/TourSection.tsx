@@ -12,19 +12,19 @@ export default async function TourSection() {
     TourDateEnum.UPCOMING,
   );
 
+  if (tourDates.data.length <= 1) return null;
+
   return (
-    <div className="space-y-8 md:space-y-10">
+    <section className="space-y-8 md:space-y-10">
       <SectionTitle title="Tour dates" />
 
       <div className="container space-y-6">
-        <section className="grid grid-cols-1 gap-y-4">
-          <TourList tourDates={tourDates} direction={TourDateEnum.UPCOMING} />
-        </section>
+        <TourList tourDates={tourDates} direction={TourDateEnum.UPCOMING} />
 
         <div className="flex justify-end">
           <SectionLink href={NavigationRoute.TOUR} text="All tourdates" />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

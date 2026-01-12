@@ -48,7 +48,7 @@ export default function TourClient({
               emptySlots={emptySlots}
             />
           ) : (
-            <p>No upcoming shows</p>
+            <p className="text-lg font-bold">No upcoming shows...</p>
           )}
         </section>
         {totalPages > 1 && (
