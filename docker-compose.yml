@@ -1,0 +1,37 @@
+services:
+  # Next.js Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend.dev.dockerfile
+    container_name: library-card-frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./frontend/.env.local
+    depends_on:
+      - backend
+    stdin_open: true
+    tty: true
+
+  # Django Backend
+  backend:
+    build:
+      context: .
+      dockerfile: backend.dev.dockerfile
+    container_name: library-card-backend
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    stdin_open: true
+    tty: true
