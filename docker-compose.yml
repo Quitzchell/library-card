@@ -6,17 +6,24 @@ services:
       dockerfile: frontend.dev.dockerfile
     container_name: library-card-frontend
     volumes:
-      - ./frontend:/app
-      - /app/node_modules
-      - /app/.next
+      - ./frontend:/var/www/html
+      - /var/www/html/node_modules
+      - /var/www/html/.next
     ports:
       - "3000:3000"
     env_file:
       - ./frontend/.env.local
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     stdin_open: true
     tty: true
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   # Django Backend
   backend:
@@ -25,8 +32,9 @@ services:
       dockerfile: backend.dev.dockerfile
     container_name: library-card-backend
     volumes:
-      - ./backend:/app
-      - /app/__pycache__
+      - ./backend:/var/www/html
+      - /var/www/html/__pycache__
+      - backend_venv:/opt/venv
     ports:
       - "8000:8000"
     env_file:
@@ -35,3 +43,12 @@ services:
       - "host.docker.internal:host-gateway"
     stdin_open: true
     tty: true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/admin/')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  backend_venv:

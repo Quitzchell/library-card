@@ -1,16 +1,10 @@
-# Use Node.js 24 LTS Alpine
 FROM node:24-alpine
 
-# Set working directory
-WORKDIR /app
+RUN mkdir -p /var/www/html
+COPY ./frontend.entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
-# Copy entrypoint script and make executable
-COPY frontend.entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+WORKDIR /var/www/html
 
-# Expose port 3000
-EXPOSE 3000
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Set entrypoint and default command
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["npm", "run", "dev"]
+ENTRYPOINT ["docker-entrypoint.sh"]

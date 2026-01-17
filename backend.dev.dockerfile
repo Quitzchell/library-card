@@ -1,16 +1,14 @@
-# Use Python 3.12
-FROM python:3.12-slim
+FROM python:3.14-slim
 
-# Set environment variables
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    VIRTUAL_ENV=/opt/venv \
+    PATH="/opt/venv/bin:$PATH"
 
-# Set work directory
-WORKDIR /app
+RUN mkdir -p /opt/venv
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
     postgresql-client \
     build-essential \
@@ -18,13 +16,23 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy entrypoint script and make executable
-COPY backend.entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN useradd --create-home --shell /bin/bash docker
 
-# Expose port 8000
+RUN mkdir -p /var/www/html && chown docker:docker /var/www/html /opt/venv
+
+WORKDIR /var/www/html
+
+COPY backend.entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+USER docker
+
+RUN python -m venv $VIRTUAL_ENV
+
+COPY --chown=docker:docker backend/requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+
 EXPOSE 8000
 
-# Set entrypoint and default command
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
