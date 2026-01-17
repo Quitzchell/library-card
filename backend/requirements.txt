@@ -1,0 +1,19 @@
+# Django
+Django>=5.0,<5.1
+djangorestframework>=3.14.0
+django-cors-headers>=4.3.0
+
+# Database
+psycopg2-binary>=2.9.9
+
+# Image handling
+Pillow>=10.0.0
+
+# Development tools
+django-extensions>=3.2.0
+ipython>=8.12.0
+
+# Code quality
+black>=23.0.0
+flake8>=6.0.0
+isort>=5.12.0

@@ -1,0 +1,22 @@
+services:
+  # Django Backend
+  web:
+    build:
+      context: .
+      dockerfile: dev.dockerfile
+    container_name: library-card-django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+      - /app/__pycache__
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - DATABASE_URL=postgresql://REDACTED:REDACTED@host.docker.internal:5433/library_card
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+      - CORS_ALLOWED_ORIGINS=http://localhost:3000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    stdin_open: true
+    tty: true
