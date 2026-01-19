@@ -22,8 +22,8 @@ detached:
 login-front:
 	docker exec -it library-card-frontend /bin/sh
 
-.PHONY: login-backend
-login-backend:
+.PHONY: login-back
+login-back:
 	docker exec -it library-card-backend /bin/bash
 
 .PHONY: clean
