@@ -1,26 +1,26 @@
-import { MusicServiceName } from "@/lib/enums";
+import { StreamingServiceName } from "@/lib/enums";
 
-export type ServiceVariant = {
-  name: MusicServiceName;
+export type Service = {
+  name: StreamingServiceName;
   url: string;
   prefix?: string;
   postfix?: string;
 };
 
-export interface MusicItem {
+export interface Release {
   id: number;
   title: string;
   release_date?: string;
   cover_image: string;
-  services: Array<ServiceVariant>;
+  services: Array<Service>;
   created_at: string;
   updated_at: string;
 }
 
-export type MusicItemDisplay = Omit<MusicItem, "created_at" | "updated_at">;
+export type ReleaseDisplay = Omit<Release, "created_at" | "updated_at">;
 
-export interface MusicItemResponse {
-  data: MusicItemDisplay[];
+export interface ReleaseResponse {
+  data: ReleaseDisplay[];
   meta?: {
     current_page: number;
     total_pages: number;

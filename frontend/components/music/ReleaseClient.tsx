@@ -3,12 +3,12 @@
 import { usePagination } from "@/hooks/usePagination";
 import { useResponsivePerPage } from "@/hooks/useResponsivePerPage";
 import { TailwindScreens } from "@/lib/enums/tailwind-screen";
+import { ReleaseDisplay } from "@/lib/interfaces/music";
 import { useMemo } from "react";
-import MusicList from "./MusicList";
 import PaginationContainer from "../common/Pagination";
-import { MusicItemDisplay } from "@/lib/interfaces/music";
+import ReleaseList from "./ReleaseList";
 
-export default function MusicClient({ items }: { items: MusicItemDisplay[] }) {
+export default function ReleaseClient({ items }: { items: ReleaseDisplay[] }) {
   const PER_PAGE = useResponsivePerPage(
     [
       { query: `(min-width: ${TailwindScreens.MD})`, value: 8 },
@@ -36,7 +36,7 @@ export default function MusicClient({ items }: { items: MusicItemDisplay[] }) {
 
   return (
     <section className="flex h-full flex-col justify-center space-y-5">
-      <MusicList musicItems={{ data: paginated }} emptySlots={emptySlots} />
+      <ReleaseList release={{ data: paginated }} emptySlots={emptySlots} />
 
       <PaginationContainer
         totalPages={totalPages}

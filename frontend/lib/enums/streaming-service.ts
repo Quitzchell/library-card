@@ -1,4 +1,4 @@
-export enum MusicServiceName {
+export enum StreamingServiceName {
   SPOTIFY = "Spotify",
   APPLE_MUSIC = "Apple Music",
   YOUTUBE = "YouTube",

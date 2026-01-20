@@ -1,2 +1,2 @@
-from .music_item import MusicItem
-from .music_service import MusicService
+from .release import Release
+from .streaming_service import StreamingService

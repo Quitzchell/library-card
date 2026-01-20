@@ -1,12 +1,12 @@
-import { MusicItemDisplay, MusicItemResponse } from "@/lib/interfaces/music";
-import { MusicServiceName } from "@/lib/enums";
+import { StreamingServiceName } from "@/lib/enums";
+import { ReleaseDisplay, ReleaseResponse } from "@/lib/interfaces/music";
 
 export const musicMock = {
-  async getMusicItems(page = 1, perPage = 8): Promise<MusicItemResponse> {
+  async getReleases(page = 1, perPage = 8): Promise<ReleaseResponse> {
     const from = page * perPage - perPage;
     const to = from + perPage;
-    const data: MusicItemDisplay[] = MusicItemList.slice(from, to);
-    const totalItems = MusicItemList.length;
+    const data: ReleaseDisplay[] = ReleaseList.slice(from, to);
+    const totalItems = ReleaseList.length;
     const totalPages = Math.ceil(totalItems / perPage);
 
     return {
@@ -20,21 +20,21 @@ export const musicMock = {
     };
   },
 
-  async getMusicItemById(id: number): Promise<MusicItemDisplay | null> {
-    const item = MusicItemList.find((m) => m.id === id);
+  async getReleaseById(id: number): Promise<ReleaseDisplay | null> {
+    const item = ReleaseList.find((m) => m.id === id);
 
     return item ?? null;
   },
 
-  async getAllMusicItems(): Promise<MusicItemResponse> {
+  async getAllReleases(): Promise<ReleaseResponse> {
     return {
-      data: MusicItemList,
+      data: ReleaseList,
     };
   },
 };
 
 // Mockdata
-const MusicItemList: Array<MusicItemDisplay> = [
+const ReleaseList: Array<ReleaseDisplay> = [
   {
     id: 1,
     title: "Art School",
@@ -42,15 +42,15 @@ const MusicItemList: Array<MusicItemDisplay> = [
     cover_image: "/images/art-school-artwork.jpg",
     services: [
       {
-        name: MusicServiceName.SPOTIFY,
+        name: StreamingServiceName.SPOTIFY,
         url: "https://open.spotify.com/track/2pjSXlkwwlqEhoGtUpXeqr?si=27494075ad234820",
       },
       {
-        name: MusicServiceName.BANDCAMP,
+        name: StreamingServiceName.BANDCAMP,
         url: "https://thisislibrarycard.bandcamp.com/track/art-school",
       },
       {
-        name: MusicServiceName.APPLE_MUSIC,
+        name: StreamingServiceName.APPLE_MUSIC,
         url: "https://music.apple.com/us/song/art-school/1823574040",
       },
     ],
@@ -62,20 +62,20 @@ const MusicItemList: Array<MusicItemDisplay> = [
     cover_image: "/images/nothing-interesting-artwork.jpg",
     services: [
       {
-        name: MusicServiceName.ATEASE,
+        name: StreamingServiceName.ATEASE,
         url: "https://shop.atease.ltd/products/library-card-nothing-interesting",
         postfix: "Buy now!",
       },
       {
-        name: MusicServiceName.SPOTIFY,
+        name: StreamingServiceName.SPOTIFY,
         url: "https://open.spotify.com/album/4wzy3foMTOWeACd3J2FXoC?si=e3fn2cSqQ0CvfQ6wv-MIag",
       },
       {
-        name: MusicServiceName.BANDCAMP,
+        name: StreamingServiceName.BANDCAMP,
         url: "https://thisislibrarycard.bandcamp.com/album/nothing-interesting",
       },
       {
-        name: MusicServiceName.APPLE_MUSIC,
+        name: StreamingServiceName.APPLE_MUSIC,
         url: "https://music.apple.com/us/album/nothing-interesting-ep/1722176456",
       },
     ],
@@ -87,15 +87,15 @@ const MusicItemList: Array<MusicItemDisplay> = [
     cover_image: "/images/sunflowers-artwork.jpg",
     services: [
       {
-        name: MusicServiceName.SPOTIFY,
+        name: StreamingServiceName.SPOTIFY,
         url: "https://open.spotify.com/album/5PY6ZHSv3OwcLNwi6qSm8P?si=s7X1JY32RgmKPfTdqA3ecg",
       },
       {
-        name: MusicServiceName.BANDCAMP,
+        name: StreamingServiceName.BANDCAMP,
         url: "https://thisislibrarycard.bandcamp.com/track/sunflowers",
       },
       {
-        name: MusicServiceName.APPLE_MUSIC,
+        name: StreamingServiceName.APPLE_MUSIC,
         url: "https://music.apple.com/us/album/sunflowers-single/1672448083",
       },
     ],
@@ -107,15 +107,15 @@ const MusicItemList: Array<MusicItemDisplay> = [
     cover_image: "/images/mirror-factory-artwork.jpg",
     services: [
       {
-        name: MusicServiceName.SPOTIFY,
+        name: StreamingServiceName.SPOTIFY,
         url: "https://open.spotify.com/track/0D5W10M58DccbwOOxrdkxM?si=a27b56e81f6a4c2c",
       },
       {
-        name: MusicServiceName.BANDCAMP,
+        name: StreamingServiceName.BANDCAMP,
         url: "https://thisislibrarycard.bandcamp.com/album/mirror-factory",
       },
       {
-        name: MusicServiceName.APPLE_MUSIC,
+        name: StreamingServiceName.APPLE_MUSIC,
         url: "https://music.apple.com/us/song/mirror-factory/1625081184",
       },
     ],
@@ -127,20 +127,20 @@ const MusicItemList: Array<MusicItemDisplay> = [
     cover_image: "/images/nothing-interesting-artwork.jpg",
     services: [
       {
-        name: MusicServiceName.ATEASE,
+        name: StreamingServiceName.ATEASE,
         url: "https://shop.atease.ltd/products/library-card-nothing-interesting",
         postfix: "Buy now!",
       },
       {
-        name: MusicServiceName.SPOTIFY,
+        name: StreamingServiceName.SPOTIFY,
         url: "https://open.spotify.com/album/4wzy3foMTOWeACd3J2FXoC?si=e3fn2cSqQ0CvfQ6wv-MIag",
       },
       {
-        name: MusicServiceName.BANDCAMP,
+        name: StreamingServiceName.BANDCAMP,
         url: "https://thisislibrarycard.bandcamp.com/album/nothing-interesting",
       },
       {
-        name: MusicServiceName.APPLE_MUSIC,
+        name: StreamingServiceName.APPLE_MUSIC,
         url: "https://music.apple.com/us/album/nothing-interesting-ep/1722176456",
       },
     ],
@@ -152,15 +152,15 @@ const MusicItemList: Array<MusicItemDisplay> = [
     cover_image: "/images/sunflowers-artwork.jpg",
     services: [
       {
-        name: MusicServiceName.SPOTIFY,
+        name: StreamingServiceName.SPOTIFY,
         url: "https://open.spotify.com/album/5PY6ZHSv3OwcLNwi6qSm8P?si=s7X1JY32RgmKPfTdqA3ecg",
       },
       {
-        name: MusicServiceName.BANDCAMP,
+        name: StreamingServiceName.BANDCAMP,
         url: "https://thisislibrarycard.bandcamp.com/track/sunflowers",
       },
       {
-        name: MusicServiceName.APPLE_MUSIC,
+        name: StreamingServiceName.APPLE_MUSIC,
         url: "https://music.apple.com/us/album/sunflowers-single/1672448083",
       },
     ],

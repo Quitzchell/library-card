@@ -1,6 +1,6 @@
 from django.db import models
 
-class MusicService(models.Model):
+class StreamingService(models.Model):
     name = models.CharField(max_length=255)
     url = models.URLField()
     prefix = models.CharField(max_length=20, blank=True, null=True)

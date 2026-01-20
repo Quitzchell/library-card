@@ -1,10 +1,10 @@
 from django.db import models
-from .music_service import MusicService
+from .streaming_service import StreamingService
 
-class MusicItem(models.Model):
+class Release(models.Model):
     title = models.CharField(max_length=255)
     release_date = models.DateField()
     cover_image = models.ImageField(upload_to='covers/')
-    services = models.ManyToManyField(MusicService)
+    services = models.ManyToManyField(StreamingService)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
