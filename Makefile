@@ -29,3 +29,4 @@ login-back:
 .PHONY: clean
 clean:
 	PROJECT_NAME="${project_name}" docker compose down --rmi local --volumes
+	docker builder prune -f
