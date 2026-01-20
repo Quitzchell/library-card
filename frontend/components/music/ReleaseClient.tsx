@@ -3,12 +3,12 @@
 import { usePagination } from "@/hooks/usePagination";
 import { useResponsivePerPage } from "@/hooks/useResponsivePerPage";
 import { TailwindScreens } from "@/lib/enums/tailwind-screen";
-import { ReleaseDisplay } from "@/lib/interfaces/music";
+import { Release } from "@/lib/interfaces/music";
 import { useMemo } from "react";
 import PaginationContainer from "../common/Pagination";
 import ReleaseList from "./ReleaseList";
 
-export default function ReleaseClient({ items }: { items: ReleaseDisplay[] }) {
+export default function ReleaseClient({ items }: { items: Release[] }) {
   const PER_PAGE = useResponsivePerPage(
     [
       { query: `(min-width: ${TailwindScreens.MD})`, value: 8 },

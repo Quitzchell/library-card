@@ -1,5 +1,5 @@
-import Release from "@/components/music/Release";
-import { ReleaseDisplay, ReleaseResponse } from "@/lib/interfaces/music";
+import ReleaseModal from "@/components/music/ReleaseModal";
+import { Release, ReleaseResponse } from "@/lib/interfaces/music";
 
 type ReleaseListProps = {
   release: ReleaseResponse;
@@ -12,8 +12,8 @@ export default function ReleaseList({
 }: ReleaseListProps) {
   return (
     <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-      {release.data.map((release: ReleaseDisplay, index: number) => (
-        <Release key={index} release={release} />
+      {release.data.map((release: Release, index: number) => (
+        <ReleaseModal key={index} release={release} />
       ))}
 
       {Array.from({ length: emptySlots }).map((_, i) => (

@@ -13,14 +13,10 @@ export interface Release {
   release_date?: string;
   cover_image: string;
   services: Array<Service>;
-  created_at: string;
-  updated_at: string;
 }
 
-export type ReleaseDisplay = Omit<Release, "created_at" | "updated_at">;
-
 export interface ReleaseResponse {
-  data: ReleaseDisplay[];
+  data: Release[];
   meta?: {
     current_page: number;
     total_pages: number;

@@ -1,4 +1,4 @@
-import { ReleaseDisplay, ReleaseResponse } from "../../interfaces/music";
+import { Release, ReleaseResponse } from "../../interfaces/music";
 import { apiClient } from "../client";
 
 export const musicService = {
@@ -8,8 +8,8 @@ export const musicService = {
     );
   },
 
-  async getReleaseById(id: number): Promise<ReleaseDisplay> {
-    return apiClient.get<ReleaseDisplay>(`/music/${id}`);
+  async getReleaseById(id: number): Promise<Release> {
+    return apiClient.get<Release>(`/music/${id}`);
   },
 
   async getAllReleases(): Promise<ReleaseResponse> {

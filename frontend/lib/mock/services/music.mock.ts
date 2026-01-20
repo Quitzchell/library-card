@@ -1,11 +1,11 @@
 import { StreamingServiceName } from "@/lib/enums";
-import { ReleaseDisplay, ReleaseResponse } from "@/lib/interfaces/music";
+import { Release, ReleaseResponse } from "@/lib/interfaces/music";
 
 export const musicMock = {
   async getReleases(page = 1, perPage = 8): Promise<ReleaseResponse> {
     const from = page * perPage - perPage;
     const to = from + perPage;
-    const data: ReleaseDisplay[] = ReleaseList.slice(from, to);
+    const data: Release[] = ReleaseList.slice(from, to);
     const totalItems = ReleaseList.length;
     const totalPages = Math.ceil(totalItems / perPage);
 
@@ -20,7 +20,7 @@ export const musicMock = {
     };
   },
 
-  async getReleaseById(id: number): Promise<ReleaseDisplay | null> {
+  async getReleaseById(id: number): Promise<Release | null> {
     const item = ReleaseList.find((m) => m.id === id);
 
     return item ?? null;
@@ -34,7 +34,7 @@ export const musicMock = {
 };
 
 // Mockdata
-const ReleaseList: Array<ReleaseDisplay> = [
+const ReleaseList: Array<Release> = [
   {
     id: 1,
     title: "Art School",

@@ -6,10 +6,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ReleaseDisplay, Service } from "@/lib/interfaces/music";
+import { Release, Service } from "@/lib/interfaces/music";
 import Image from "next/image";
 
-export default function Release({ release }: { release: ReleaseDisplay }) {
+export default function ReleaseModal({ release }: { release: Release }) {
   return (
     <Dialog>
       <DialogTrigger className="w-full cursor-pointer space-y-2 border border-black p-4 hover:bg-black hover:text-white">
