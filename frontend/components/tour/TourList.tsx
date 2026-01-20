@@ -1,10 +1,9 @@
-import { formatDate } from "@/utils/date";
-import Link from "next/link";
-import React from "react";
-import { Button } from "../ui/button";
+import { TourDateEnum } from "@/lib/enums/tour-date";
 import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
 import { cn } from "@/utils/classnames";
-import { TourDateEnum } from "@/lib/enums/tour";
+import { formatDate } from "@/utils/date";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 type TourListProps = {
   tourDates: TourResponse;

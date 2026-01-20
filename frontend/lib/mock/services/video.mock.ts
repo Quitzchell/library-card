@@ -1,4 +1,4 @@
-import { VideoCategory } from "@/lib/enums/video";
+import { VideoCategory } from "@/lib/enums/video-category";
 import { PaginatedResponse } from "@/lib/interfaces/paginated-response";
 import {
   VideoItemDisplay,

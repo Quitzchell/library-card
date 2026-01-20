@@ -1,12 +1,12 @@
 "use client";
 
+import PaginationContainer from "@/components/common/Pagination";
+import SectionTitle from "@/components/common/SectionTitle";
+import TourList from "@/components/tour/TourList";
 import { usePagination } from "@/hooks/usePagination";
+import { TourDateEnum } from "@/lib/enums/tour-date";
 import { TourDateDisplay } from "@/lib/interfaces/tour";
 import { useMemo } from "react";
-import TourList from "@/components/tour/TourList";
-import PaginationContainer from "@/components/common/Pagination";
-import { TourDateEnum } from "@/lib/enums/tour";
-import SectionTitle from "@/components/common/SectionTitle";
 
 export default function TourClient({
   items,

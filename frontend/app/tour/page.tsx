@@ -1,5 +1,5 @@
 import TourContainer from "@/components/tour/TourServer";
-import { TourDateEnum } from "@/lib/enums/tour";
+import { TourDateEnum } from "@/lib/enums/tour-date";
 
 export default function TourPage() {
   return (
