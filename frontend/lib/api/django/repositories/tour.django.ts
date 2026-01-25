@@ -1,5 +1,9 @@
+import {
+  TourDate,
+  TourDateDisplay,
+  TourResponse,
+} from "../../../interfaces/tour";
 import { apiClient } from "../client";
-import { TourDate, TourDateDisplay, TourResponse } from "../../interfaces/tour";
 
 export const tourService = {
   async getAllTourDates(): Promise<TourResponse> {

@@ -1,4 +1,4 @@
-import { apiClient } from "@/lib/api/client";
+import { apiClient } from "@/lib/api/django/client";
 import { Biography } from "@/lib/interfaces/biography";
 
 export const biographyService = {

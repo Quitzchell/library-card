@@ -62,11 +62,6 @@ const ReleaseList: Array<Release> = [
     cover_image: "/images/nothing-interesting-artwork.jpg",
     services: [
       {
-        name: StreamingServiceName.ATEASE,
-        url: "https://shop.atease.ltd/products/library-card-nothing-interesting",
-        postfix: "Buy now!",
-      },
-      {
         name: StreamingServiceName.SPOTIFY,
         url: "https://open.spotify.com/album/4wzy3foMTOWeACd3J2FXoC?si=e3fn2cSqQ0CvfQ6wv-MIag",
       },
@@ -77,6 +72,13 @@ const ReleaseList: Array<Release> = [
       {
         name: StreamingServiceName.APPLE_MUSIC,
         url: "https://music.apple.com/us/album/nothing-interesting-ep/1722176456",
+      },
+    ],
+    stores: [
+      {
+        name: StreamingServiceName.ATEASE,
+        url: "https://shop.atease.ltd/products/library-card-nothing-interesting",
+        postfix: "Buy now!",
       },
     ],
   },
@@ -126,11 +128,6 @@ const ReleaseList: Array<Release> = [
     release_date: "2024-03-15",
     cover_image: "/images/nothing-interesting-artwork.jpg",
     services: [
-      {
-        name: StreamingServiceName.ATEASE,
-        url: "https://shop.atease.ltd/products/library-card-nothing-interesting",
-        postfix: "Buy now!",
-      },
       {
         name: StreamingServiceName.SPOTIFY,
         url: "https://open.spotify.com/album/4wzy3foMTOWeACd3J2FXoC?si=e3fn2cSqQ0CvfQ6wv-MIag",

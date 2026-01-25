@@ -3,16 +3,24 @@ import { StreamingServiceName } from "@/lib/enums";
 export type Service = {
   name: StreamingServiceName;
   url: string;
-  prefix?: string;
   postfix?: string;
 };
+
+export type Store = {
+  name: string;
+  url: string;
+  postfix?: string;
+};
+
+export type ReleaseLink = Service | Store;
 
 export interface Release {
   id: number;
   title: string;
   release_date?: string;
   cover_image: string;
-  services: Array<Service>;
+  services?: Array<Service>;
+  stores?: Array<Store>;
 }
 
 export interface ReleaseResponse {

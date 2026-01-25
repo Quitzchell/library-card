@@ -1,9 +1,9 @@
-import { apiClient } from "@/lib/api/client";
+import { apiClient } from "@/lib/api/django/client";
+import { PaginatedResponse } from "@/lib/interfaces/paginated-response";
 import {
   VideoItemDisplay,
   VideosByCategoryResponse,
 } from "@/lib/interfaces/video";
-import { PaginatedResponse } from "@/lib/interfaces/paginated-response";
 
 export const videoService = {
   async getVideoItems(

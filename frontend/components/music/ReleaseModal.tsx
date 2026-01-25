@@ -1,4 +1,4 @@
-import StreamingService from "@/components/music/StreamingService";
+import ReleaseLinks from "@/components/music/StreamingService";
 import {
   Dialog,
   DialogContent,
@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Release, Service } from "@/lib/interfaces/music";
+import { Release, Service, Store } from "@/lib/interfaces/music";
 import Image from "next/image";
 
 export default function ReleaseModal({ release }: { release: Release }) {
@@ -34,9 +34,14 @@ export default function ReleaseModal({ release }: { release: Release }) {
           />
         </DialogHeader>
 
-        {release.services.map((service: Service, index) => (
-          <StreamingService key={index} streamingService={service} />
-        ))}
+        {release.stores &&
+          release.stores.map((store: Store, index) => (
+            <ReleaseLinks key={index} link={store} />
+          ))}
+        {release.services &&
+          release.services.map((service: Service, index) => (
+            <ReleaseLinks key={index} link={service} />
+          ))}
       </DialogContent>
     </Dialog>
   );

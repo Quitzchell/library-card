@@ -3,10 +3,10 @@ import {
   contactService,
   imageService,
   musicService,
+  SocialMediaService,
   tourService,
   videoService,
-} from "./api/services";
-import { SocialMediaService } from "./api/services/social-media.service";
+} from "@/lib/api/django/repositories";
 import {
   biographyMock,
   contactMock,
