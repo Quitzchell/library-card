@@ -8,4 +8,4 @@ class StreamingServiceSerializer(serializers.ModelSerializer):
   """
   class Meta:
     model = StreamingService
-    fields = ['id', 'name', 'uri', 'prefix', 'postfix']
+    fields = ['id', 'name', 'url', 'prefix', 'postfix']

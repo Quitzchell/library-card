@@ -1,6 +1,10 @@
-from .streaming_service import StreamingServiceSerializer
+from decouple import config
 from rest_framework import serializers
-from ..models import Release, StreamingService
+
+from ..models import Release
+from .streaming_service import StreamingServiceSerializer
+
+PUBLIC_URL = str(config("PUBLIC_URL", default="http://localhost:8000")).rstrip("/")
 
 
 class ReleaseSerializer(serializers.ModelSerializer):
@@ -9,7 +13,8 @@ class ReleaseSerializer(serializers.ModelSerializer):
     Includes nested StreamingService data.
     """
 
-    services = StreamingServiceSerializer()
+    services = StreamingServiceSerializer(many=True)
+    cover_image = serializers.SerializerMethodField()
 
     class Meta:
         model = Release
@@ -21,17 +26,7 @@ class ReleaseSerializer(serializers.ModelSerializer):
             "services",
         ]
 
-
-class ReleaseWriteSerializer(serializers.Serializer):
-    """
-    Serializer for creating/updating Releases.
-    Accepts service IDs instead of nested objects.
-    """
-
-    services = serializers.PrimaryKeyRelatedField(
-        many=True, queryset=StreamingService.objects.all()
-    )
-
-    class Meta:
-        model = Release
-        fields = ["id", "title", "release_date", "cover_image", "services"]
+    def get_cover_image(self, obj):
+        if obj.cover_image:
+            return f"{PUBLIC_URL}{obj.cover_image.url}"
+        return None

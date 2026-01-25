@@ -1,2 +1,3 @@
 from .release import Release
-from .streaming_service import StreamingService
+from .store import Store
+from .streaming_service import StreamingService, StreamingServiceName

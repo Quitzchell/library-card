@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Project apps
+    "core.apps.CoreConfig",
     "tour.apps.TourConfig",
     "music.apps.MusicConfig",
     # Third-party apps
