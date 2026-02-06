@@ -41,14 +41,18 @@ export default function TourClient({
       />
       <section className="container flex flex-col space-y-5">
         <section className="grid gap-4">
-          {totalPages > 1 ? (
+          {items.length > 0 ? (
             <TourList
               tourDates={{ data: paginated }}
               direction={direction}
-              emptySlots={emptySlots}
+              emptySlots={totalPages > 1 ? emptySlots : 0}
             />
           ) : (
-            <p className="text-lg font-bold">No upcoming shows...</p>
+            <p className="text-lg font-bold">
+              {direction === TourDateEnum.UPCOMING
+                ? "No upcoming shows..."
+                : "No previous shows..."}
+            </p>
           )}
         </section>
         {totalPages > 1 && (
