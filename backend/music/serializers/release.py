@@ -1,10 +1,8 @@
-from decouple import config
+from django.conf import settings
 from rest_framework import serializers
 
 from ..models import Release
 from .streaming_service import StreamingServiceSerializer
-
-PUBLIC_URL = str(config("PUBLIC_URL", default="http://localhost:8000")).rstrip("/")
 
 
 class ReleaseSerializer(serializers.ModelSerializer):
@@ -28,5 +26,5 @@ class ReleaseSerializer(serializers.ModelSerializer):
 
     def get_cover_image(self, obj):
         if obj.cover_image:
-            return f"{PUBLIC_URL}{obj.cover_image.url}"
+            return f"{settings.PUBLIC_URL}{obj.cover_image.url}"
         return None

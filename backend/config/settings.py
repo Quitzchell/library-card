@@ -147,3 +147,6 @@ CORS_ALLOWED_ORIGINS = config(
     default="http://localhost:3000",
     cast=Csv(),
 )
+
+# Public URL for building absolute URLs
+PUBLIC_URL = config("PUBLIC_URL", default="http://localhost:8000").rstrip("/")
