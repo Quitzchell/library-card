@@ -5,7 +5,6 @@ from ..models import StreamingService
 class StreamingServiceSerializer(serializers.ModelSerializer):
     """
     Serializer for StreamService model.
-    Maps to the frontend Service type.
     """
 
     class Meta:
