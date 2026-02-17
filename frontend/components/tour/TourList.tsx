@@ -1,5 +1,5 @@
 import { TourDateEnum } from "@/lib/enums/tour-date";
-import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
+import { TourDate, TourResponse } from "@/lib/interfaces/tour";
 import { cn } from "@/utils/classnames";
 import { formatDate } from "@/utils/date";
 import Link from "next/link";
@@ -39,7 +39,7 @@ function TourRow({
   tourDate,
   showTickets,
 }: {
-  tourDate: TourDateDisplay;
+  tourDate: TourDate;
   showTickets: boolean;
 }) {
   return (
@@ -52,9 +52,11 @@ function TourRow({
         )}
       >
         <div className="px-4 py-2">
-          <p className="text-lg font-bold text-balance">{tourDate.venue}</p>
+          <p className="text-lg font-bold text-balance">
+            {tourDate.venue.name}
+          </p>
           <p className="text-balance">
-            {tourDate.city}, {tourDate.country}
+            {tourDate.venue.city}, {tourDate.venue.country}
           </p>
           <p className="text-sm">
             {formatDate(tourDate.date, "full", {
@@ -71,7 +73,7 @@ function TourRow({
   );
 }
 
-function TicketButtonContent({ tourDate }: { tourDate: TourDateDisplay }) {
+function TicketButtonContent({ tourDate }: { tourDate: TourDate }) {
   const baseClasses =
     "col-span-4 md:col-span-2 px-4 flex size-full text-center items-center justify-center border";
 

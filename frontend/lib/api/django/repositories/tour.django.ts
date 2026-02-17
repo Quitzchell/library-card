@@ -1,8 +1,4 @@
-import {
-  TourDate,
-  TourDateDisplay,
-  TourResponse,
-} from "../../../interfaces/tour";
+import { TourDate, TourResponse } from "../../../interfaces/tour";
 import { apiClient } from "../client";
 import { DjangoPaginatedResponse } from "../interfaces/responses";
 
@@ -17,13 +13,13 @@ export const tourService = {
     );
   },
 
-  async getTourDateById(id: number): Promise<TourDateDisplay> {
-    return apiClient.get<TourDateDisplay>(`/tour/${id}`);
+  async getTourDateById(id: number): Promise<TourDate> {
+    return apiClient.get<TourDate>(`/tour/${id}`);
   },
 
   async getUpcomingDates(page = 1, perPage = 20): Promise<TourResponse> {
     const response = await apiClient.get<DjangoPaginatedResponse<TourDate>>(
-      `/tour/upcoming?pages=${page}&per_page=${perPage}`,
+      `/tour/upcoming?page=${page}&per_page=${perPage}`,
     );
 
     return {
@@ -39,7 +35,7 @@ export const tourService = {
 
   async getPastDates(page = 1, perPage = 20): Promise<TourResponse> {
     const response = await apiClient.get<DjangoPaginatedResponse<TourDate>>(
-      `/tour/past?pages=${page}&per_page=${perPage}`,
+      `/tour/past?page=${page}&per_page=${perPage}`,
     );
 
     return {

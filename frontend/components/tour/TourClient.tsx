@@ -5,14 +5,14 @@ import SectionTitle from "@/components/common/SectionTitle";
 import TourList from "@/components/tour/TourList";
 import { usePagination } from "@/hooks/usePagination";
 import { TourDateEnum } from "@/lib/enums/tour-date";
-import { TourDateDisplay } from "@/lib/interfaces/tour";
+import { TourDate } from "@/lib/interfaces/tour";
 import { useMemo } from "react";
 
 export default function TourClient({
   items,
   direction,
 }: {
-  items: TourDateDisplay[];
+  items: TourDate[];
   direction: TourDateEnum;
 }) {
   const PER_PAGE = 4;
