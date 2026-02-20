@@ -2,6 +2,7 @@ import ReleaseLinks from "@/app/music/_components/StreamingService";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -26,6 +27,9 @@ export default function ReleaseModal({ release }: { release: Release }) {
       <DialogContent className="gap-y-0">
         <DialogHeader className="my-2 space-y-2 text-left">
           <DialogTitle>{release.title}</DialogTitle>
+          <DialogDescription className="sr-only">
+            Streaming links for {release.title}
+          </DialogDescription>
           <Image
             src={release.cover_image}
             width={1080}
