@@ -7,8 +7,8 @@ type TourPageProps = {
 
 export default async function TourPage({ searchParams }: TourPageProps) {
   const params = await searchParams;
-  const upcomingPage = Number(params.upcoming_page) || 1;
-  const pastPage = Number(params.past_page) || 1;
+  const upcomingPage = Math.max(1, Math.floor(Number(params.upcoming_page) || 1));
+  const pastPage = Math.max(1, Math.floor(Number(params.past_page) || 1));
 
   return (
     <div className="flex grow-1 flex-col py-8">

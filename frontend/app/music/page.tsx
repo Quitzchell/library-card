@@ -6,7 +6,7 @@ type MusicPageProps = {
 
 export default async function MusicPage({ searchParams }: MusicPageProps) {
   const params = await searchParams;
-  const page = Number(params.page) || 1;
+  const page = Math.max(1, Math.floor(Number(params.page) || 1));
 
   return (
     <div className="container flex grow-1 flex-col py-8">
