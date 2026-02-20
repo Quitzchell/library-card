@@ -1,57 +1,20 @@
 import { VideoCategory } from "@/lib/enums/video-category";
-import { PaginatedResponse } from "@/lib/interfaces/paginated-response";
-import {
-  VideoItemDisplay,
-  VideosByCategory,
-  VideosByCategoryResponse,
-} from "@/lib/interfaces/video";
+import { Video, VideoResponse } from "@/lib/interfaces/video";
 
 export const videoMock = {
-  async getVideoItems(
-    page = 1,
-    perPage = 10,
-  ): Promise<PaginatedResponse<VideoItemDisplay>> {
-    const from = page * perPage - perPage;
-    const to = from + perPage;
+  async getVideoItems(take?: number): Promise<VideoResponse> {
+    return { data: take ? VideoItemList.slice(0, take) : VideoItemList };
+  },
 
-    const data: VideoItemDisplay[] = VideoItemList.slice(from, to);
-
-    const totalItems = VideoItemList.length;
-    const totalPages = Math.ceil(totalItems / perPage);
-
+  async getVideoItemsByCategory(category: string): Promise<VideoResponse> {
     return {
-      data: data,
-      meta: {
-        current_page: page,
-        total_pages: totalPages,
-        per_page: perPage,
-        total: totalItems,
-      },
+      data: VideoItemList.filter((video) => video.category === category),
     };
-  },
-
-  async getVideoItemById(id: number): Promise<VideoItemDisplay | null> {
-    const item = VideoItemList.find((v) => v.id === id);
-
-    return item ?? null;
-  },
-
-  async getVideosByCategory(): Promise<VideosByCategoryResponse> {
-    const videosByCategory = VideoItemList.reduce<VideosByCategory>(
-      (acc, item) => {
-        acc[item.category] ??= [];
-        acc[item.category].push(item);
-        return acc;
-      },
-      {} as VideosByCategory,
-    );
-
-    return { data: videosByCategory };
   },
 };
 
 // Mockdata
-const VideoItemList: Array<VideoItemDisplay> = [
+const VideoItemList: Array<Video> = [
   {
     id: 1,
     title: "Art School",

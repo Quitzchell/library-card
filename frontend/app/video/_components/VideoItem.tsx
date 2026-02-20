@@ -1,10 +1,6 @@
-import { VideoItemDisplay } from "@/lib/interfaces/video";
+import { Video } from "@/lib/interfaces/video";
 
-export default function VideoItem({
-  videoItem,
-}: {
-  videoItem: VideoItemDisplay;
-}) {
+export default function VideoItem({ videoItem }: { videoItem: Video }) {
   return (
     <div className="aspect-video">
       <iframe

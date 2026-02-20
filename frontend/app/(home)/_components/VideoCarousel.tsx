@@ -5,14 +5,13 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
-import { VideoItemDisplay } from "@/lib/interfaces/video";
-import VideoItem from "@/components/video/VideoItem";
-import { PaginatedResponse } from "@/lib/interfaces/paginated-response";
+import { Video, VideoResponse } from "@/lib/interfaces/video";
+import VideoItem from "@/app/video/_components/VideoItem";
 
 export default function VideoCarousel({
   videoList,
 }: {
-  videoList?: PaginatedResponse<VideoItemDisplay> | null;
+  videoList?: VideoResponse;
 }) {
   if (videoList) {
     return (
@@ -21,7 +20,7 @@ export default function VideoCarousel({
         className="mx-auto max-w-2xl lg:max-w-3xl xl:max-w-5xl"
       >
         <CarouselContent>
-          {videoList.data.map((videoItem: VideoItemDisplay) => (
+          {videoList.data.map((videoItem: Video) => (
             <CarouselItem key={videoItem.id}>
               <VideoItem videoItem={videoItem} />
             </CarouselItem>

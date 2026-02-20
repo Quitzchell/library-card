@@ -1,18 +1,12 @@
 import { VideoCategory } from "../enums/video-category";
 
-export interface VideoItem {
+export interface Video {
   id: number;
   title: string;
   video_id: string;
   category: VideoCategory;
-  created_at: string;
-  updated_at: string;
 }
 
-export type VideoItemDisplay = Omit<VideoItem, "created_at" | "updated_at">;
-
-export type VideosByCategory = Record<VideoCategory, VideoItemDisplay[]>;
-
-export interface VideosByCategoryResponse {
-  data: VideosByCategory;
+export interface VideoResponse {
+  data: Video[];
 }

@@ -1,7 +1,7 @@
 import { VideoCategory } from "@/lib/enums/video-category";
-import { VideoItemDisplay } from "@/lib/interfaces/video";
-import SectionTitle from "../common/SectionTitle";
-import VideoItem from "./VideoItem";
+import { Video } from "@/lib/interfaces/video";
+import SectionTitle from "@/components/common/SectionTitle";
+import VideoItem from "@/app/video/_components/VideoItem";
 
 const PER_ROW = 2;
 
@@ -10,17 +10,16 @@ export default function VideoList({
   videos,
 }: {
   category: VideoCategory;
-  videos: VideoItemDisplay[];
+  videos: Video[];
 }) {
   const emptySlots = Math.max(0, PER_ROW % videos.length);
-  console.log(emptySlots);
 
   return (
     <section className="space-y-4">
       <SectionTitle title={category} />
 
       <ul className="container grid gap-4 md:grid-cols-2">
-        {videos.map((video: VideoItemDisplay, index: number) => (
+        {videos.map((video: Video, index: number) => (
           <li key={index}>
             <VideoItem videoItem={video} />
           </li>

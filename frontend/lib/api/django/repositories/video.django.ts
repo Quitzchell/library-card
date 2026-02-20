@@ -1,25 +1,18 @@
 import { apiClient } from "@/lib/api/django/client";
-import { PaginatedResponse } from "@/lib/interfaces/paginated-response";
-import {
-  VideoItemDisplay,
-  VideosByCategoryResponse,
-} from "@/lib/interfaces/video";
+import { VideoResponse } from "@/lib/interfaces/video";
 
 export const videoService = {
-  async getVideoItems(
-    page = 1,
-    perPage = 10,
-  ): Promise<PaginatedResponse<VideoItemDisplay>> {
-    return apiClient.get<PaginatedResponse<VideoItemDisplay>>(
-      `/video?page=${page}&per_page=${perPage}`,
-    );
+  async getVideoItems({
+    take,
+  }: {
+    take?: number;
+  } = {}): Promise<VideoResponse> {
+    return take
+      ? apiClient.get<VideoResponse>(`/video?take=${take}`)
+      : apiClient.get<VideoResponse>(`/video`);
   },
 
-  async getVideoItemById(id: number): Promise<VideoItemDisplay | null> {
-    return apiClient.get<VideoItemDisplay>(`/video/${id}`);
-  },
-
-  async getVideosByCategory(): Promise<VideosByCategoryResponse> {
-    return apiClient.get<VideosByCategoryResponse>(`/video`);
+  async getVideoItemsByCategory(category: string): Promise<VideoResponse> {
+    return apiClient.get<VideoResponse>(`/video?category=${category}`);
   },
 };
