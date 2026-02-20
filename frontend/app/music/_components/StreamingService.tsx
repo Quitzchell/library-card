@@ -1,6 +1,6 @@
 import { ReleaseLink } from "@/lib/interfaces/music";
 import Link from "next/link";
-import { Button } from "../../../components/ui/button";
+import { Button } from "@/components/ui/button";
 
 export default function ReleaseLinks({ link }: { link: ReleaseLink }) {
   return (
