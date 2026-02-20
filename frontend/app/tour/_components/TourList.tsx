@@ -3,7 +3,7 @@ import { TourDate, TourResponse } from "@/lib/interfaces/tour";
 import { cn } from "@/utils/classnames";
 import { formatDate } from "@/utils/date";
 import Link from "next/link";
-import { Button } from "../ui/button";
+import { Button } from "../../../components/ui/button";
 
 type TourListProps = {
   tourDates: TourResponse;

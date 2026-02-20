@@ -1,0 +1,142 @@
+"use client";
+
+import { cn } from "@/utils/classnames";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+type PaginationLinksProps = {
+  totalPages: number;
+  currentPage: number;
+  paramName: string;
+};
+
+function getPaginationRange(currentPage: number, totalPages: number) {
+  const siblings = 1;
+
+  // Show all pages if total is small
+  if (totalPages <= 5) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  const range: (number | "ellipsis")[] = [];
+
+  // Always show first page
+  range.push(1);
+
+  // Calculate start and end of middle range
+  const leftSibling = Math.max(2, currentPage - siblings);
+  const rightSibling = Math.min(totalPages - 1, currentPage + siblings);
+
+  // Add left ellipsis if needed
+  if (leftSibling > 2) {
+    range.push("ellipsis");
+  }
+
+  // Add middle pages
+  for (let i = leftSibling; i <= rightSibling; i++) {
+    if (i !== 1 && i !== totalPages) {
+      range.push(i);
+    }
+  }
+
+  // Add right ellipsis if needed
+  if (rightSibling < totalPages - 1) {
+    range.push("ellipsis");
+  }
+
+  // Always show last page
+  if (totalPages > 1) {
+    range.push(totalPages);
+  }
+
+  return range;
+}
+
+export default function PaginationLinks({
+  totalPages,
+  currentPage,
+  paramName,
+}: PaginationLinksProps) {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const canGoPrev = currentPage > 1;
+  const canGoNext = currentPage < totalPages;
+
+  function buildHref(page: number) {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set(paramName, String(page));
+    return `${pathname}?${params.toString()}`;
+  }
+
+  function navigate(e: React.MouseEvent, page: number) {
+    e.preventDefault();
+    router.push(buildHref(page), { scroll: false });
+  }
+
+  const paginationRange = getPaginationRange(currentPage, totalPages);
+
+  return (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            aria-disabled={!canGoPrev}
+            className={cn(!canGoPrev && "pointer-events-none opacity-50")}
+            {...(canGoPrev
+              ? {
+                  href: buildHref(currentPage - 1),
+                  onClick: (e: React.MouseEvent) =>
+                    navigate(e, currentPage - 1),
+                }
+              : {})}
+          />
+        </PaginationItem>
+
+        {paginationRange.map((item, i) =>
+          item === "ellipsis" ? (
+            <PaginationItem key={`ellipsis-${i}`}>
+              <PaginationEllipsis />
+            </PaginationItem>
+          ) : (
+            <PaginationItem key={item}>
+              <PaginationLink
+                href={buildHref(item)}
+                onClick={(e: React.MouseEvent) => navigate(e, item)}
+                className={cn(
+                  "flex items-center justify-center",
+                  item === currentPage &&
+                    "pointer-events-none bg-neutral-300 opacity-50",
+                )}
+              >
+                {item}
+              </PaginationLink>
+            </PaginationItem>
+          ),
+        )}
+
+        <PaginationItem>
+          <PaginationNext
+            aria-disabled={!canGoNext}
+            className={cn(!canGoNext && "pointer-events-none opacity-50")}
+            {...(canGoNext
+              ? {
+                  href: buildHref(currentPage + 1),
+                  onClick: (e: React.MouseEvent) =>
+                    navigate(e, currentPage + 1),
+                }
+              : {})}
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
+}
