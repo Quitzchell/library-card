@@ -3,7 +3,7 @@ import { Release, ReleaseResponse } from "@/lib/interfaces/music";
 import { DjangoPaginatedResponse } from "../interfaces/responses";
 
 export const musicService = {
-  async getReleases(page = 1, perPage = 10): Promise<ReleaseResponse> {
+  async getReleases(page = 1, perPage = 4): Promise<ReleaseResponse> {
     const response = await apiClient.get<DjangoPaginatedResponse<Release>>(
       `/music/?page=${page}&per_page=${perPage}`,
     );

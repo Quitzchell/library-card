@@ -1,4 +1,4 @@
-import ReleaseModal from "@/components/music/ReleaseModal";
+import ReleaseModal from "@/app/music/_components/ReleaseModal";
 import { Release, ReleaseResponse } from "@/lib/interfaces/music";
 
 type ReleaseListProps = {

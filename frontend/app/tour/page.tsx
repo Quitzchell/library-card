@@ -1,14 +1,14 @@
 import TourSection from "@/app/tour/_components/TourSection";
 import { TourDateEnum } from "@/lib/enums/tour-date";
 
-export default async function TourPage({
-  searchParams,
-}: {
+type TourPageProps = {
   searchParams: Promise<{ upcoming_page?: string; past_page?: string }>;
-}) {
+};
+
+export default async function TourPage({ searchParams }: TourPageProps) {
   const params = await searchParams;
-  const upcomingPage = Number(params.upcoming_page) || 1;
-  const pastPage = Number(params.past_page) || 1;
+  const upcomingPage = Math.max(1, Math.floor(Number(params.upcoming_page) || 1));
+  const pastPage = Math.max(1, Math.floor(Number(params.past_page) || 1));
 
   return (
     <div className="flex grow-1 flex-col py-8">
