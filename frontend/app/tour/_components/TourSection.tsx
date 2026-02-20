@@ -4,15 +4,17 @@ import SectionTitle from "../../../components/common/SectionTitle";
 import PaginationLinks from "./PaginationLinks";
 import TourList from "./TourList";
 
+type TourSectionProps = {
+  direction: TourDateEnum;
+  page: number;
+};
+
 const PER_PAGE = 5;
 
 export default async function TourSection({
   direction,
   page,
-}: {
-  direction: TourDateEnum;
-  page: number;
-}) {
+}: TourSectionProps) {
   const fetcher =
     direction === TourDateEnum.UPCOMING
       ? services.tour.getUpcomingDates
