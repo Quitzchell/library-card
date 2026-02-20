@@ -1,16 +1,12 @@
-import { NavigationRoute } from "@/lib/enums/navigation";
-import TourList from "@/components/tour/TourList";
-import SectionTitle from "@/components/common/SectionTitle";
 import SectionLink from "@/app/(home)/_components/SectionLink";
+import SectionTitle from "@/components/common/SectionTitle";
+import TourList from "@/app/tour/_components/TourList";
+import { NavigationRoute } from "@/lib/enums/navigation";
+import { TourDateEnum } from "@/lib/enums/tour-date";
 import { services } from "@/lib/services.config";
-import { TourDateEnum } from "@/lib/enums/tour";
 
 export default async function TourSection() {
-  const tourDates = await services.tour.getTourDates(
-    1,
-    3,
-    TourDateEnum.UPCOMING,
-  );
+  const tourDates = await services.tour.getUpcomingDates(1, 3);
 
   if (tourDates.data.length <= 1) return null;
 

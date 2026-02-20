@@ -22,10 +22,15 @@ detached:
 login-front:
 	docker exec -it library-card-frontend /bin/sh
 
-.PHONY: login-backend
-login-backend:
+.PHONY: login-back
+login-back:
 	docker exec -it library-card-backend /bin/bash
+
+.PHONY: shell
+shell:
+	docker exec -it library-card-backend /bin/bash -c "source /opt/venv/bin/activate && bash"
 
 .PHONY: clean
 clean:
 	PROJECT_NAME="${project_name}" docker compose down --rmi local --volumes
+	docker builder prune -f

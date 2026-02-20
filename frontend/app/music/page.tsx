@@ -1,4 +1,4 @@
-import MusicContainer from "@/components/music/MusicServer";
+import MusicContainer from "@/components/music/ReleaseServer";
 
 export default function MusicPage() {
   return (

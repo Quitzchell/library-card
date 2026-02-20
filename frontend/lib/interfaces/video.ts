@@ -1,4 +1,4 @@
-import { VideoCategory } from "../enums/video";
+import { VideoCategory } from "../enums/video-category";
 
 export interface VideoItem {
   id: number;
