@@ -1,8 +1,8 @@
 import { TourDateEnum } from "@/lib/enums/tour-date";
 import { services } from "@/lib/services.config";
-import SectionTitle from "../../../components/common/SectionTitle";
-import PaginationLinks from "./PaginationLinks";
-import TourList from "./TourList";
+import SectionTitle from "@/components/common/SectionTitle";
+import PaginationLinks from "@/components/common/PaginationLinks";
+import TourList from "@/app/tour/_components/TourList";
 
 type TourSectionProps = {
   direction: TourDateEnum;
