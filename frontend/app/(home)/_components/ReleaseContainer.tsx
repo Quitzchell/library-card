@@ -1,10 +1,10 @@
 import SectionLink from "@/app/(home)/_components/SectionLink";
 import SectionTitle from "@/components/common/SectionTitle";
-import ReleaseList from "@/components/music/ReleaseList";
+import ReleaseList from "@/app/music/_components/ReleaseList";
 import { NavigationRoute } from "@/lib/enums/navigation";
 import { services } from "@/lib/services.config";
 
-export default async function MusicContainer() {
+export default async function ReleaseContainer() {
   const musicItems = await services.music.getReleases(1, 4);
 
   return (

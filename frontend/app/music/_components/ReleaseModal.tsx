@@ -1,4 +1,4 @@
-import ReleaseLinks from "@/components/music/StreamingService";
+import ReleaseLinks from "@/app/music/_components/StreamingService";
 import {
   Dialog,
   DialogContent,
