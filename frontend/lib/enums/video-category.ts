@@ -1,6 +1,6 @@
 export enum VideoCategory {
   LIVE = "live",
-  VIDEOCLIP = "videoclip",
+  VIDEO_CLIP = "video_clip",
   PRESS = "press",
   OTHER = "other",
 }

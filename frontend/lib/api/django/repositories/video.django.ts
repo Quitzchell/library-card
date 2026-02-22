@@ -1,18 +1,21 @@
 import { apiClient } from "@/lib/api/django/client";
+import { VideoCategory } from "@/lib/enums/video-category";
 import { VideoResponse } from "@/lib/interfaces/video";
 
 export const videoService = {
   async getVideoItems({
     take,
+    category,
   }: {
     take?: number;
+    category?: VideoCategory;
   } = {}): Promise<VideoResponse> {
-    return take
-      ? apiClient.get<VideoResponse>(`/video?take=${take}`)
-      : apiClient.get<VideoResponse>(`/video`);
-  },
+    const params = new URLSearchParams();
 
-  async getVideoItemsByCategory(category: string): Promise<VideoResponse> {
-    return apiClient.get<VideoResponse>(`/video?category=${category}`);
+    if (take) params.set("take", take.toString());
+    if (category) params.set("category", category);
+
+    const query = params.toString();
+    return apiClient.get<VideoResponse>(`/video${query ? `?${query}` : ""}`);
   },
 };

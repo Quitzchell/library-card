@@ -5,7 +5,7 @@ import VideoList from "@/app/(home)/_components/VideoCarousel";
 import { services } from "@/lib/services.config";
 
 export default async function VideoContainer() {
-  const videoList = await services.video.getVideoItems(4);
+  const videoList = await services.video.getVideoItems({ take: 4 });
 
   return (
     <div className="space-y-8 md:space-y-10">
