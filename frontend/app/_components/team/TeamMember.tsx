@@ -8,11 +8,8 @@ export default function TeamMember({ member }: TeamMemberProps) {
   return (
     <div className="flex space-x-2 text-white">
       {member.region && <p>{member.region}:</p>}
-      <a
-        href={`mailto:${member.contact}`}
-        className="text-white hover:underline"
-      >
-        {member.contact}
+      <a href={`mailto:${member.name}`} className="text-white hover:underline">
+        {member.name}
       </a>
     </div>
   );

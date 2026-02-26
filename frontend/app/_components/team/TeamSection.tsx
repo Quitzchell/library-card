@@ -10,7 +10,7 @@ export default async function TeamSection() {
       {teams.teams.map((team: Team, index: number) => (
         <div key={index}>
           <p className="mb-2 font-bold text-white">{team.category}</p>
-          {team.items.map((member: Member, index: number) => (
+          {team.members.map((member: Member, index: number) => (
             <TeamMember key={index} member={member} />
           ))}
         </div>

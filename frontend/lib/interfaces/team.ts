@@ -1,11 +1,12 @@
 export interface Team {
   category: string | null;
-  items: Array<Member>;
+  members: Array<Member>;
 }
 
 export interface Member {
   region: string | null;
-  contact: string;
+  name: string;
+  email: string;
 }
 
 export interface Teams {

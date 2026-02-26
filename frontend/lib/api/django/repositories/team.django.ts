@@ -6,14 +6,14 @@ export const teamService = {
       teams: [
         {
           category: "Bookings",
-          items: [
+          members: [
             {
               region: "NL",
-              contact: "r.coppen@friendlyfire.nl",
+              name: "r.coppen@friendlyfire.nl",
             },
             {
               region: "BE",
-              contact: "bjorn@busker.be",
+              name: "bjorn@busker.be",
             },
           ],
         },
