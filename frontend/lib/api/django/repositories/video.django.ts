@@ -1,6 +1,6 @@
 import { apiClient } from "@/lib/api/django/client";
 import { VideoCategory } from "@/lib/enums/video-category";
-import { VideoResponse } from "@/lib/interfaces/video";
+import { Video, VideoResponse } from "@/lib/interfaces/video";
 
 export const videoService = {
   async getVideoItems({
@@ -16,6 +16,10 @@ export const videoService = {
     if (category) params.set("category", category);
 
     const query = params.toString();
-    return apiClient.get<VideoResponse>(`/video${query ? `?${query}` : ""}`);
+    const data = await apiClient.get<Video[]>(
+      `/video${query ? `?${query}` : ""}`,
+    );
+
+    return { data };
   },
 };
