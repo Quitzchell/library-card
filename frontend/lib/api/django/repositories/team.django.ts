@@ -9,11 +9,17 @@ export const teamService = {
           members: [
             {
               region: "NL",
-              name: "r.coppen@friendlyfire.nl",
+              name: "Roel",
+              surname: "Coppen",
+              org: "Friendly Fire",
+              email: "r.coppen@friendlyfire.nl",
             },
             {
               region: "BE",
-              name: "bjorn@busker.be",
+              name: "Björn",
+              surname: "Nuyens",
+              org: "Busker",
+              email: "bjorn@busker.be",
             },
           ],
         },

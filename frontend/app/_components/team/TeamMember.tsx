@@ -7,9 +7,21 @@ type TeamMemberProps = {
 export default function TeamMember({ member }: TeamMemberProps) {
   return (
     <div className="flex space-x-2 text-white">
-      {member.region && <p>{member.region}:</p>}
-      <a href={`mailto:${member.name}`} className="text-white hover:underline">
-        {member.name}
+      {member.region && (
+        <>
+          <p>{member.region}:</p>
+        </>
+      )}
+
+      {member.org && (
+        <>
+          <p>{member.org}</p>
+          <span>•</span>
+        </>
+      )}
+
+      <a href={`mailto:${member.email}`} className="text-white hover:underline">
+        {member.email}
       </a>
     </div>
   );

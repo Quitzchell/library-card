@@ -6,6 +6,8 @@ export interface Team {
 export interface Member {
   region: string | null;
   name: string;
+  surname: string;
+  org: string | null;
   email: string;
 }
 
