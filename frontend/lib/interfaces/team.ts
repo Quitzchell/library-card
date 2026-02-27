@@ -10,7 +10,3 @@ export interface Member {
   organization: string | null;
   email: string;
 }
-
-export interface Teams {
-  teams: Array<Team>;
-}

@@ -1,29 +1,14 @@
-import { Teams } from "@/lib/interfaces/team";
+import { Team } from "@/lib/interfaces/team";
+import { apiClient } from "@/lib/api/django/client";
 
 export const teamService = {
-  async getTeams(): Promise<Teams> {
-    return {
-      teams: [
-        {
-          category: "Bookings",
-          members: [
-            {
-              region: "NL",
-              name: "Roel",
-              surname: "Coppen",
-              organization: "Friendly Fire",
-              email: "r.coppen@friendlyfire.nl",
-            },
-            {
-              region: "BE",
-              name: "Björn",
-              surname: "Nuyens",
-              organization: "Busker",
-              email: "bjorn@busker.be",
-            },
-          ],
-        },
-      ],
-    };
+  async getTeams({ category }: { category?: string } = {}): Promise<Team[]> {
+    const params = new URLSearchParams();
+
+    if (category) params.set("category", category);
+
+    const query = params.toString();
+
+    return await apiClient.get<Team[]>(`/team${query ? `?${query}` : ""}`);
   },
 };
