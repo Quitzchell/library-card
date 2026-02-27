@@ -9,7 +9,7 @@ class TeamViewSet(viewsets.ModelViewSet):
     pagination_class = None
 
     def get_queryset(self):
-        queryset = Team.objects.all()
+        queryset = Team.objects.prefetch_related("members").all()
         category = self.request.query_params.get("category")
         if category:
             queryset = queryset.filter(category=category)

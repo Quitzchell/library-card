@@ -13,6 +13,7 @@ class TeamMemberSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "surname",
+            "region",
             "organization",
             "email",
         ]
