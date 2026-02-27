@@ -13,9 +13,9 @@ export default function TeamMember({ member }: TeamMemberProps) {
         </>
       )}
 
-      {member.org && (
+      {member.organization && (
         <>
-          <p>{member.org}</p>
+          <p>{member.organization}</p>
           <span>•</span>
         </>
       )}

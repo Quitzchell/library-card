@@ -7,7 +7,7 @@ export interface Member {
   region: string | null;
   name: string;
   surname: string;
-  org: string | null;
+  organization: string | null;
   email: string;
 }
 
