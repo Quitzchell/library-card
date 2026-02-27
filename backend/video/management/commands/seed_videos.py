@@ -33,8 +33,5 @@ class Command(BaseCommand):
 
             if created:
                 created_count += 1
-                self.stdout.write(f"  Created video: {video.title}")
-            else:
-                self.stdout.write(f"  Video already exists: {video.title}")
 
         self.stdout.write(self.style.SUCCESS(f"Seeded {created_count} videos"))
