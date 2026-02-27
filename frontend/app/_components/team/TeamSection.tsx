@@ -9,7 +9,9 @@ export default async function TeamSection() {
     <div className="flex flex-col">
       {teams.map((team: Team, index: number) => (
         <div key={index}>
-          <p className="mb-2 font-bold text-white">{team.category}</p>
+          <p className="mb-2 font-bold text-white capitalize">
+            {team.category}
+          </p>
           {team.members.map((member: Member, index: number) => (
             <TeamMember key={index} member={member} />
           ))}
