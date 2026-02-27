@@ -25,4 +25,7 @@ class Command(BaseCommand):
         self.stdout.write('Seeding tour dates...')
         call_command('seed_videos')
 
+        self.stdout.write('Seeding team and team members...')
+        call_command('seed_team')
+
         self.stdout.write(self.style.SUCCESS('Successfully seeded all development data'))

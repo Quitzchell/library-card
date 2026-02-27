@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "tour.apps.TourConfig",
     "music.apps.MusicConfig",
     "video.apps.VideoConfig",
+    "team.apps.TeamConfig",
     # Third-party apps
     "corsheaders",
     "rest_framework",

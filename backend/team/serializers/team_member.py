@@ -12,5 +12,7 @@ class TeamMemberSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "name",
+            "surname",
+            "organization",
             "email",
         ]
