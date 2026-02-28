@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 
 from team.models.team import Team
-from team.models.team_member import TeamMember
+from team.models.member import Member
 
 
 class Command(BaseCommand):
@@ -46,7 +46,7 @@ class Command(BaseCommand):
                 created_teams += 1
 
             for member_data in team_data["members"]:
-                member, member_created = TeamMember.objects.get_or_create(
+                member, member_created = Member.objects.get_or_create(
                     email=member_data["email"],
                     defaults={
                         "region": member_data["region"],

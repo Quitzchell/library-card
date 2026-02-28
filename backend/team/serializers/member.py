@@ -1,14 +1,14 @@
 from rest_framework import serializers
 
-from ..models.team_member import TeamMember
+from ..models.member import Member
 
-class TeamMemberSerializer(serializers.ModelSerializer):
+class MemberSerializer(serializers.ModelSerializer):
     """
-    Serializer for TeamMember model.
+    Serializer for Member model.
     """
 
     class Meta:
-        model = TeamMember
+        model = Member
         fields = [
             "id",
             "name",

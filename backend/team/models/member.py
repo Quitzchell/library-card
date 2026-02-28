@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class TeamMember(models.Model):
+class Member(models.Model):
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=20)
     region = models.CharField(max_length=5)

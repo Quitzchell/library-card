@@ -9,7 +9,7 @@ class TeamCategory(models.TextChoices):
 
 class Team(models.Model):
     category = models.CharField(choices=TeamCategory.choices, max_length=20)
-    members = models.ManyToManyField('TeamMember', related_name="teams")
+    members = models.ManyToManyField('Member', related_name="teams")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
