@@ -6,7 +6,7 @@ from team.models.member import Member
 
 
 class Command(BaseCommand):
-    help = "Seeds the database with teams and team members"
+    help = "Seeds the database with teams and members"
 
     def handle(self, *args, **options):
         if not settings.DEBUG:
@@ -62,6 +62,6 @@ class Command(BaseCommand):
 
         self.stdout.write(
             self.style.SUCCESS(
-                f"Created {created_teams} teams and {created_members} team members"
+                f"Created {created_teams} teams and {created_members} members"
             )
         )
