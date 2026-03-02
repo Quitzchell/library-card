@@ -7,6 +7,7 @@ class CustomAdminSite(AdminSite):
 
         model_order = {
             "team": ["Member", "Team"],
+            "core": ["GeneralContent", "CarouselImage"]
         }
 
         for app in app_list:
