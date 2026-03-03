@@ -3,6 +3,6 @@ import { CarouselImage } from "@/lib/interfaces/image";
 
 export const imageService = {
   async getCarouselImages(): Promise<CarouselImage[]> {
-    return apiClient.get<CarouselImage[]>(`/image`);
+    return apiClient.get<CarouselImage[]>(`/carousel-image`);
   },
 };
