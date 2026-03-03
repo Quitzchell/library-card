@@ -1,21 +1,20 @@
 "use client";
 
 import { Biography } from "@/lib/interfaces/biography";
-import { ImageItemResponse } from "@/lib/interfaces/image";
 import RichText from "../common/RichText";
 import ImageCarousel from "../common/ImageCarousel";
+import { CarouselImage } from "@/lib/interfaces/image";
 
-export default function AboutClient({
-  biography,
-  images,
-}: {
+interface AboutClientProps {
   biography: Biography;
-  images: ImageItemResponse;
-}) {
+  images: CarouselImage[];
+}
+
+export default function AboutClient({ biography, images }: AboutClientProps) {
   return (
     <section className="container space-y-8 gap-x-10 md:grid xl:grid-cols-2">
       <RichText richTextItem={biography} />
-      <ImageCarousel imageList={images} />
+      <ImageCarousel images={images} />
     </section>
   );
 }

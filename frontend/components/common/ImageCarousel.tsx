@@ -5,23 +5,23 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
-import { ImageItemDisplay, ImageItemResponse } from "@/lib/interfaces/image";
 import Image from "next/image";
+import { CarouselImage } from "@/lib/interfaces/image";
 
 type ImageListProps = {
-  imageList?: ImageItemResponse | null;
+  images?: CarouselImage[] | null;
 };
 
-export default function ImageCarousel({ imageList }: ImageListProps) {
-  if (imageList) {
+export default function ImageCarousel({ images }: ImageListProps) {
+  if (images) {
     return (
       <Carousel opts={{ loop: true }} className="mx-auto w-full">
         <CarouselContent>
-          {imageList.data.map((imageItem: ImageItemDisplay) => (
-            <CarouselItem key={imageItem.id}>
+          {images.map((image: CarouselImage) => (
+            <CarouselItem key={image.id}>
               <Image
-                src={imageItem.src}
-                alt={imageItem.alt}
+                src={image.image}
+                alt={image.alt}
                 width={1080}
                 height={1080}
                 className="aspect-video object-scale-down"
@@ -29,7 +29,7 @@ export default function ImageCarousel({ imageList }: ImageListProps) {
             </CarouselItem>
           ))}
         </CarouselContent>
-        {imageList.data.length > 1 && (
+        {images.length > 1 && (
           <div className="my-4 flex justify-center gap-2">
             <CarouselPrevious className="static -translate-x-4 translate-y-0" />
             <CarouselNext className="static translate-x-4 translate-y-0" />

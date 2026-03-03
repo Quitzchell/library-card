@@ -16,7 +16,7 @@ export default async function AboutContainer() {
 
       <div className="container space-y-8 gap-x-10 md:grid xl:grid-cols-2">
         <RichText richTextItem={biographyItem} />
-        <ImageCarousel imageList={imageList} />
+        <ImageCarousel images={imageList} />
       </div>
     </div>
   );
