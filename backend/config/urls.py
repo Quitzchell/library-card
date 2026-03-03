@@ -29,6 +29,7 @@ urlpatterns = [
     path("api/tour/", include("tour.urls")),
     path("api/video/", include("video.urls")),
     path("api/team/", include("team.urls")),
+    path("api/", include("core.urls")),
 ]
 
 if settings.DEBUG:
