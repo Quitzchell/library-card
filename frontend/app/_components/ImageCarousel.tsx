@@ -38,4 +38,6 @@ export default function ImageCarousel({ images }: ImageListProps) {
       </Carousel>
     );
   }
+
+  return null;
 }
