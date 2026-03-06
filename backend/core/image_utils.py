@@ -83,6 +83,7 @@ class OptimizedImageMixin(models.Model):
 
     def _optimize_image(self):
         img = Image.open(self.image)
+        icc_profile = img.info.get("icc_profile")
         img.thumbnail((OPTIMIZE_MAX_DIMENSION, OPTIMIZE_MAX_DIMENSION), Image.LANCZOS)
 
         if img.mode == "RGBA":
@@ -93,7 +94,10 @@ class OptimizedImageMixin(models.Model):
             img = img.convert("RGB")
 
         buffer = io.BytesIO()
-        img.save(buffer, format="WEBP", quality=85)
+        save_kwargs = {"format": "WEBP", "quality": 85}
+        if icc_profile:
+            save_kwargs["icc_profile"] = icc_profile
+        img.save(buffer, **save_kwargs)
 
         from pathlib import PurePosixPath
 
