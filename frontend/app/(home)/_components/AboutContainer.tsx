@@ -1,8 +1,8 @@
 import { NavigationLabel } from "@/lib/enums";
-import SectionTitle from "@/components/common/SectionTitle";
-import RichText from "@/components/common/RichText";
+import SectionTitle from "@/app/_components/SectionTitle";
+import RichText from "@/app/_components/RichText";
 import { services } from "@/lib/services.config";
-import ImageCarousel from "@/components/common/ImageCarousel";
+import ImageCarousel from "@/app/_components/ImageCarousel";
 
 export default async function AboutContainer() {
   const biographyItem = await services.biography.getBiography();

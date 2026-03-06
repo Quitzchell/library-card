@@ -1,6 +1,6 @@
 import { services } from "@/lib/services.config";
 import ReleaseList from "@/app/music/_components/ReleaseList";
-import PaginationLinks from "@/components/common/PaginationLinks";
+import PaginationLinks from "@/app/_components/pagination/PaginationLinks";
 
 type MusicSectionProps = {
   page: number;

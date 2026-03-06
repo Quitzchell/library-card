@@ -4,7 +4,7 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from "@/components/ui/carousel";
+} from "@/app/_components/ui/carousel";
 import { Video, VideoResponse } from "@/lib/interfaces/video";
 import VideoItem from "@/app/video/_components/VideoItem";
 

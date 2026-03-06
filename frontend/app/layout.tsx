@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import "@/app/globals.css";
-import Navigation from "@/components/navigation/Navigation";
+import Navigation from "@/app/_components/navigation/Navigation";
 import Footer from "@/app/_components/Footer";
 
 const ibmPlexMono = IBM_Plex_Mono({

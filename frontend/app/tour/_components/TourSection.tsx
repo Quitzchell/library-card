@@ -1,7 +1,7 @@
 import { TourDateEnum } from "@/lib/enums/tour-date";
 import { services } from "@/lib/services.config";
-import SectionTitle from "@/components/common/SectionTitle";
-import PaginationLinks from "@/components/common/PaginationLinks";
+import SectionTitle from "@/app/_components/SectionTitle";
+import PaginationLinks from "@/app/_components/pagination/PaginationLinks";
 import TourList from "@/app/tour/_components/TourList";
 
 type TourSectionProps = {

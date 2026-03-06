@@ -1,5 +1,5 @@
 import { NavigationLabel, NavigationRoute } from "@/lib/enums";
-import SectionTitle from "@/components/common/SectionTitle";
+import SectionTitle from "@/app/_components/SectionTitle";
 import SectionLink from "@/app/(home)/_components/SectionLink";
 import VideoList from "@/app/(home)/_components/VideoCarousel";
 import { services } from "@/lib/services.config";

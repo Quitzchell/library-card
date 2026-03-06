@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/app/_components/ui/dialog";
 import { Release, Service, Store } from "@/lib/interfaces/music";
 import Image from "next/image";
 

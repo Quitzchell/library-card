@@ -10,7 +10,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from "@/app/_components/ui/pagination";
 import { getPaginationRange } from "@/utils/page";
 
 type PaginationLinksProps = {

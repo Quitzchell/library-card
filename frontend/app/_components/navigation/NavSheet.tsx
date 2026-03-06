@@ -1,13 +1,18 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "@/app/_components/ui/sheet";
 import { homeItem, navItems } from "@/lib/enums/navigation";
 
 import Link from "next/link";
 import { cn } from "@/utils/classnames";
 import { useState } from "react";
-import { DialogTitle } from "../ui/dialog";
+import { DialogTitle } from "@/app/_components/ui/dialog";
 
 interface NavSheetProps {
   pathname: string;

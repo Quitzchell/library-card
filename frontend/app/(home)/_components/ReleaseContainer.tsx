@@ -1,5 +1,5 @@
 import SectionLink from "@/app/(home)/_components/SectionLink";
-import SectionTitle from "@/components/common/SectionTitle";
+import SectionTitle from "@/app/_components/SectionTitle";
 import ReleaseList from "@/app/music/_components/ReleaseList";
 import { NavigationRoute } from "@/lib/enums/navigation";
 import { services } from "@/lib/services.config";

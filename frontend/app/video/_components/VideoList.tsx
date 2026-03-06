@@ -1,6 +1,6 @@
 import { VideoCategory } from "@/lib/enums/video-category";
 import { Video } from "@/lib/interfaces/video";
-import SectionTitle from "@/components/common/SectionTitle";
+import SectionTitle from "@/app/_components/SectionTitle";
 import VideoItem from "@/app/video/_components/VideoItem";
 
 const PER_ROW = 2;

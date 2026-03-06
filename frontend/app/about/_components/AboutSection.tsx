@@ -1,6 +1,6 @@
 import { services } from "@/lib/services.config";
-import RichText from "@/components/common/RichText";
-import ImageCarousel from "@/components/common/ImageCarousel";
+import RichText from "@/app/_components/RichText";
+import ImageCarousel from "@/app/_components/ImageCarousel";
 
 export default async function AboutSection() {
   const biography = await services.biography.getBiography();
@@ -9,7 +9,7 @@ export default async function AboutSection() {
   return (
     <section className="container space-y-8 gap-x-10 md:grid xl:grid-cols-2">
       <RichText richTextItem={biography} />
-      {/*<ImageCarousel images={images} />*/}
+      <ImageCarousel images={images} />
     </section>
   );
 }

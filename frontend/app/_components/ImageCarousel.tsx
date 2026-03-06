@@ -4,7 +4,7 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from "@/components/ui/carousel";
+} from "@/app/_components/ui/carousel";
 import Image from "next/image";
 import { CarouselImage } from "@/lib/interfaces/image";
 
