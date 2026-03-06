@@ -25,6 +25,7 @@ admin.site.__class__ = CustomAdminSite
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("summernote/", include("django_summernote.urls")),
     path("api/music/", include("music.urls")),
     path("api/tour/", include("tour.urls")),
     path("api/video/", include("video.urls")),

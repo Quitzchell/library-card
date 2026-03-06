@@ -1,9 +1,24 @@
 from django.db import models
 
+from core.image_utils import (
+    OptimizedImageMixin,
+    hashed_upload_path,
+    validate_image_dimensions,
+    validate_image_file_size,
+    validate_image_format,
+)
 
-class CarouselImage(models.Model):
+
+class CarouselImage(OptimizedImageMixin):
     name = models.TextField(max_length=55)
-    image = models.ImageField(upload_to='carousel_images/')
+    image = models.ImageField(
+        upload_to=hashed_upload_path,
+        validators=[
+            validate_image_file_size,
+            validate_image_dimensions,
+            validate_image_format,
+        ],
+    )
     alt = models.TextField(max_length=55, blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
     is_active = models.BooleanField(default=True)

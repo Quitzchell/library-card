@@ -1,11 +1,14 @@
 from django.contrib import admin
 from django.shortcuts import redirect
+from django_summernote.admin import SummernoteModelAdmin
 
 from .models import GeneralContent, CarouselImage
 
 
 @admin.register(GeneralContent)
-class GeneralContentAdmin(admin.ModelAdmin):
+class GeneralContentAdmin(SummernoteModelAdmin):
+    summernote_fields = ("about_us_content",)
+
     def changelist_view(self, request, extra_context=None):
         obj = GeneralContent.load()
         return redirect(f'/admin/core/generalcontent/{obj.pk}/change/')

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # Third-party apps
     "corsheaders",
     "rest_framework",
+    "django_summernote",
 ]
 
 MIDDLEWARE = [
@@ -152,3 +153,17 @@ CORS_ALLOWED_ORIGINS = config(
 
 # Public URL for building absolute URLs
 PUBLIC_URL = config("PUBLIC_URL", default="http://localhost:8000").rstrip("/")
+
+# Summernote configuration
+SUMMERNOTE_CONFIG = {
+    "summernote": {
+        "width": "100%",
+        "toolbar": [
+            ["style", ["style"]],
+            ["font", ["bold", "italic", "underline", "clear"]],
+            ["fontsize", ["fontsize"]],
+            ["para", ["ul", "ol", "paragraph"]],
+            ["insert", ["link", "hr"]],
+        ],
+    },
+}

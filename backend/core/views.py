@@ -4,7 +4,15 @@ from rest_framework.views import APIView
 
 from .models import CarouselImage, GeneralContent
 from .serializer.carousel_image import CarouselImageSerializer
+from .serializer.about import AboutSerializer
 from .serializer.general_content import GeneralContentSerializer
+
+
+class AboutView(APIView):
+    def get(self, request):
+        content = GeneralContent.load()
+        serializer = AboutSerializer(content)
+        return Response(serializer.data)
 
 
 class GeneralContentView(APIView):
