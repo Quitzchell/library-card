@@ -1,4 +1,4 @@
-import AboutServer from "@/components/about/AboutServer";
+import AboutSection from "@/app/about/_components/AboutSection";
 
 export default function ContactPage() {
   return (
@@ -6,7 +6,7 @@ export default function ContactPage() {
       <h1 className="container mb-8 text-4xl font-bold">About</h1>
 
       <section className="h-full space-y-12">
-        <AboutServer />
+        <AboutSection />
       </section>
     </div>
   );

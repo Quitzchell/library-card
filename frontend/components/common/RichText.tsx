@@ -12,7 +12,7 @@ export default function RichText({
       {richTextItem.title && <h3 className="text-2xl">{richTextItem.title}</h3>}
       <div
         className="prose prose-sm max-w-none space-y-4"
-        dangerouslySetInnerHTML={{ __html: richTextItem.text }}
+        dangerouslySetInnerHTML={{ __html: richTextItem.content }}
       />
     </div>
   );
