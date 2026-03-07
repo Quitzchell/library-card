@@ -6,9 +6,7 @@ import ImageCarousel from "@/app/_components/ImageCarousel";
 
 export default async function AboutContainer() {
   const biographyItem = await services.biography.getBiography();
-  const imageList = await services.image.getImageItems({
-    target: NavigationLabel.ABOUT,
-  });
+  const imageList = await services.image.getCarouselImages();
 
   return (
     <div className="space-y-8 md:space-y-10">
