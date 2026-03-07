@@ -10,8 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-import re
-
 import dj_database_url
 from pathlib import Path
 
@@ -165,7 +163,8 @@ MEDIA_STORAGE_BACKEND = config("MEDIA_STORAGE_BACKEND", default="local")
 
 if MEDIA_STORAGE_BACKEND == "supabase":
     SUPABASE_URL = config("SUPABASE_URL")
-    SUPABASE_SERVICE_KEY = config("SUPABASE_SERVICE_KEY")
+    SUPABASE_S3_ACCESS_KEY = config("SUPABASE_S3_ACCESS_KEY")
+    SUPABASE_S3_SECRET_KEY = config("SUPABASE_S3_SECRET_KEY")
     SUPABASE_STORAGE_BUCKET = config("SUPABASE_STORAGE_BUCKET", default="media")
     SUPABASE_S3_REGION = config("SUPABASE_S3_REGION", default="eu-central-1")
 
@@ -173,15 +172,15 @@ if MEDIA_STORAGE_BACKEND == "supabase":
         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
     }
 
-    # Supabase S3 auth: project ref as access key, service_role key as secret
     _supabase_host = SUPABASE_URL.replace("https://", "").replace("http://", "")
-    _project_ref = re.match(r"https?://([^.]+)", SUPABASE_URL).group(1)
+    _storage_host = _supabase_host.replace(".supabase.co", ".storage.supabase.co")
 
-    AWS_ACCESS_KEY_ID = _project_ref
-    AWS_SECRET_ACCESS_KEY = SUPABASE_SERVICE_KEY
+    AWS_ACCESS_KEY_ID = SUPABASE_S3_ACCESS_KEY
+    AWS_SECRET_ACCESS_KEY = SUPABASE_S3_SECRET_KEY
     AWS_STORAGE_BUCKET_NAME = SUPABASE_STORAGE_BUCKET
-    AWS_S3_ENDPOINT_URL = f"{SUPABASE_URL}/storage/v1/s3"
+    AWS_S3_ENDPOINT_URL = f"https://{_storage_host}/storage/v1/s3"
     AWS_S3_REGION_NAME = SUPABASE_S3_REGION
+    AWS_S3_ADDRESSING_STYLE = "path"
     AWS_S3_CUSTOM_DOMAIN = (
         f"{_supabase_host}/storage/v1/object/public/{SUPABASE_STORAGE_BUCKET}"
     )
