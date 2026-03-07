@@ -21,7 +21,13 @@ export default async function TourSection({
       ? services.tour.getUpcomingDates
       : services.tour.getPastDates;
 
-  const { data, meta } = await fetcher(page, PER_PAGE);
+  let data, meta;
+  try {
+    ({ data, meta } = await fetcher(page, PER_PAGE));
+  } catch {
+    return null;
+  }
+
   const totalPages = meta?.total_pages ?? 1;
   const emptySlots = calculateEmptySlots(data.length, totalPages, PER_PAGE);
   const paramName =

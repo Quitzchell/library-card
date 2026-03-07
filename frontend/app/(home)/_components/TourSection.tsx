@@ -6,7 +6,12 @@ import { TourDateEnum } from "@/lib/enums/tour-date";
 import { services } from "@/lib/services.config";
 
 export default async function TourSection() {
-  const tourDates = await services.tour.getUpcomingDates(1, 3);
+  let tourDates;
+  try {
+    tourDates = await services.tour.getUpcomingDates(1, 3);
+  } catch {
+    return null;
+  }
 
   if (tourDates.data.length <= 1) return null;
 

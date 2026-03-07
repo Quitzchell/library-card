@@ -3,7 +3,12 @@ import { services } from "@/lib/services.config";
 import TeamMember from "@/app/_components/team/TeamMember";
 
 export default async function TeamSection() {
-  const teams: Team[] = await services.team.getTeams();
+  let teams: Team[];
+  try {
+    teams = await services.team.getTeams();
+  } catch {
+    return null;
+  }
 
   return (
     <div className="flex flex-col">

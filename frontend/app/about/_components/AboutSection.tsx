@@ -3,8 +3,16 @@ import RichText from "@/app/_components/RichText";
 import ImageCarousel from "@/app/_components/ImageCarousel";
 
 export default async function AboutSection() {
-  const biography = await services.biography.getBiography();
-  const images = await services.image.getCarouselImages();
+  let biography;
+  let images;
+  try {
+    [biography, images] = await Promise.all([
+      services.biography.getBiography(),
+      services.image.getCarouselImages(),
+    ]);
+  } catch {
+    return null;
+  }
 
   return (
     <section className="space-y-8 gap-x-10 md:grid xl:grid-cols-2">

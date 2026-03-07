@@ -7,7 +7,13 @@ type VideoSectionProps = {
 };
 
 export default async function VideoSection({ categories }: VideoSectionProps) {
-  const { data } = await services.video.getVideoItems();
+  let data;
+  try {
+    ({ data } = await services.video.getVideoItems());
+  } catch {
+    return null;
+  }
+
   const videosByCategory = Object.groupBy(data, (video) => video.category);
 
   return (

@@ -5,8 +5,16 @@ import { services } from "@/lib/services.config";
 import ImageCarousel from "@/app/_components/ImageCarousel";
 
 export default async function AboutContainer() {
-  const biographyItem = await services.biography.getBiography();
-  const imageList = await services.image.getCarouselImages();
+  let biographyItem;
+  let imageList;
+  try {
+    [biographyItem, imageList] = await Promise.all([
+      services.biography.getBiography(),
+      services.image.getCarouselImages(),
+    ]);
+  } catch {
+    return null;
+  }
 
   return (
     <div className="space-y-8 md:space-y-10">

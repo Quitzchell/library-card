@@ -10,7 +10,13 @@ type MusicSectionProps = {
 const PER_PAGE = 8;
 
 export default async function ReleaseSection({ page }: MusicSectionProps) {
-  const { data, meta } = await services.music.getReleases(page, PER_PAGE);
+  let data, meta;
+  try {
+    ({ data, meta } = await services.music.getReleases(page, PER_PAGE));
+  } catch {
+    return null;
+  }
+
   const totalPages = meta?.total_pages ?? 1;
   const emptySlots = calculateEmptySlots(data.length, totalPages, PER_PAGE);
 
