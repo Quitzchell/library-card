@@ -36,6 +36,10 @@ def trigger_revalidation(paths=None):
     if not url or not secret:
         return
 
+    if not url.startswith("https://") and not settings.DEBUG:
+        logger.error("REVALIDATION_URL must use HTTPS in production: %s", url)
+        return
+
     data = json.dumps({"paths": paths or ["/"]}).encode()
     req = Request(
         url,
