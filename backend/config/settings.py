@@ -194,6 +194,13 @@ if MEDIA_STORAGE_BACKEND == "supabase":
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Django REST Framework
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ],
+}
+
 
 # CORS configuration
 CORS_ALLOWED_ORIGINS = config(

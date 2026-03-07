@@ -4,7 +4,7 @@ from .models import Team
 from .serializers import TeamSerializer
 
 
-class TeamViewSet(viewsets.ModelViewSet):
+class TeamViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = TeamSerializer
     pagination_class = None
 
