@@ -35,3 +35,13 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+elif settings.MEDIA_STORAGE_BACKEND == "local":
+    from django.views.static import serve as serve_media
+
+    urlpatterns += [
+        path(
+            "media/<path:path>",
+            serve_media,
+            {"document_root": settings.MEDIA_ROOT},
+        ),
+    ]
