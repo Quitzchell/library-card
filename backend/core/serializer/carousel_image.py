@@ -13,5 +13,8 @@ class CarouselImageSerializer(serializers.ModelSerializer):
 
     def get_image(self, obj):
         if obj.image:
-            return f"{settings.PUBLIC_URL}{obj.image.url}"
+            url = obj.image.url
+            if url.startswith("http"):
+                return url
+            return f"{settings.PUBLIC_URL}{url}"
         return None

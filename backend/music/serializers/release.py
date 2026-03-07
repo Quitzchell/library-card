@@ -26,5 +26,8 @@ class ReleaseSerializer(serializers.ModelSerializer):
 
     def get_cover_image(self, obj):
         if obj.cover_image:
-            return f"{settings.PUBLIC_URL}{obj.cover_image.url}"
+            url = obj.cover_image.url
+            if url.startswith("http"):
+                return url
+            return f"{settings.PUBLIC_URL}{url}"
         return None
