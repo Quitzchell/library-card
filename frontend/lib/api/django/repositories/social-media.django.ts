@@ -1,11 +1,11 @@
-import { SocialMediaLists } from "@/lib/interfaces/social-media";
+import { SocialMediaGroups } from "@/lib/interfaces/social-media";
 
-export const SocialMediaService = {
-  async getSocialMediaList(): Promise<SocialMediaLists> {
+export const socialMediaService = {
+  async getSocialMediaGroups(): Promise<SocialMediaGroups> {
     return {
-      lists: [
+      groups: [
         {
-          title: "Follow us",
+          category: "Follow us",
           items: [
             {
               icon: "FaInstagram",

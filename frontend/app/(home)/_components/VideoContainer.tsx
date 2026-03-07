@@ -1,11 +1,16 @@
 import { NavigationLabel, NavigationRoute } from "@/lib/enums";
-import SectionTitle from "@/components/common/SectionTitle";
+import SectionTitle from "@/app/_components/SectionTitle";
 import SectionLink from "@/app/(home)/_components/SectionLink";
 import VideoList from "@/app/(home)/_components/VideoCarousel";
 import { services } from "@/lib/services.config";
 
 export default async function VideoContainer() {
-  const videoList = await services.video.getVideoItems(1, 4);
+  let videoList;
+  try {
+    videoList = await services.video.getVideoItems({ take: 4 });
+  } catch {
+    return null;
+  }
 
   return (
     <div className="space-y-8 md:space-y-10">

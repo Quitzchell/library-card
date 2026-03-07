@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import re
+
+import dj_database_url
 from pathlib import Path
 
 from decouple import Csv, config
@@ -26,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", default=True, cast=bool)
+DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="localhost,127.0.0.1", cast=Csv())
 
@@ -43,13 +46,17 @@ INSTALLED_APPS = [
     "core.apps.CoreConfig",
     "tour.apps.TourConfig",
     "music.apps.MusicConfig",
+    "video.apps.VideoConfig",
+    "team.apps.TeamConfig",
     # Third-party apps
     "corsheaders",
     "rest_framework",
+    "django_summernote",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -83,16 +90,23 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": config("DB_ENGINE", default="django.db.backends.sqlite3"),
-        "NAME": config("DB_DATABASE", default=BASE_DIR / "db.sqlite3"),
-        "USER": config("DB_USERNAME", default=""),
-        "PASSWORD": config("DB_PASSWORD", default=""),
-        "HOST": config("DB_HOST", default=""),
-        "PORT": config("DB_PORT", default=""),
+DATABASE_URL = config("DATABASE_URL", default="")
+
+if DATABASE_URL:
+    DATABASES = {
+        "default": dj_database_url.parse(DATABASE_URL, conn_max_age=0)
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": config("DB_ENGINE", default="django.db.backends.sqlite3"),
+            "NAME": config("DB_DATABASE", default=BASE_DIR / "db.sqlite3"),
+            "USER": config("DB_USERNAME", default=""),
+            "PASSWORD": config("DB_PASSWORD", default=""),
+            "HOST": config("DB_HOST", default=""),
+            "PORT": config("DB_PORT", default=""),
+        }
+    }
 
 
 # Password validation
@@ -130,15 +144,62 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Storage configuration
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Media files (user uploads)
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# Supabase Storage (S3-compatible) for production media
+MEDIA_STORAGE_BACKEND = config("MEDIA_STORAGE_BACKEND", default="local")
+
+if MEDIA_STORAGE_BACKEND == "supabase":
+    SUPABASE_URL = config("SUPABASE_URL")
+    SUPABASE_SERVICE_KEY = config("SUPABASE_SERVICE_KEY")
+    SUPABASE_STORAGE_BUCKET = config("SUPABASE_STORAGE_BUCKET", default="media")
+    SUPABASE_S3_REGION = config("SUPABASE_S3_REGION", default="eu-central-1")
+
+    STORAGES["default"] = {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    }
+
+    # Supabase S3 auth: project ref as access key, service_role key as secret
+    _supabase_host = SUPABASE_URL.replace("https://", "").replace("http://", "")
+    _project_ref = re.match(r"https?://([^.]+)", SUPABASE_URL).group(1)
+
+    AWS_ACCESS_KEY_ID = _project_ref
+    AWS_SECRET_ACCESS_KEY = SUPABASE_SERVICE_KEY
+    AWS_STORAGE_BUCKET_NAME = SUPABASE_STORAGE_BUCKET
+    AWS_S3_ENDPOINT_URL = f"{SUPABASE_URL}/storage/v1/s3"
+    AWS_S3_REGION_NAME = SUPABASE_S3_REGION
+    AWS_S3_CUSTOM_DOMAIN = (
+        f"{_supabase_host}/storage/v1/object/public/{SUPABASE_STORAGE_BUCKET}"
+    )
+    AWS_QUERYSTRING_AUTH = False
+    AWS_DEFAULT_ACL = "public-read"
+    AWS_S3_FILE_OVERWRITE = False
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Django REST Framework
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ],
+}
 
 
 # CORS configuration
@@ -148,5 +209,40 @@ CORS_ALLOWED_ORIGINS = config(
     cast=Csv(),
 )
 
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS",
+    default="http://localhost:8000",
+    cast=Csv(),
+)
+
 # Public URL for building absolute URLs
 PUBLIC_URL = config("PUBLIC_URL", default="http://localhost:8000").rstrip("/")
+
+# Summernote configuration
+SUMMERNOTE_CONFIG = {
+    "summernote": {
+        "width": "100%",
+        "toolbar": [
+            ["style", ["style"]],
+            ["font", ["bold", "italic", "underline", "clear"]],
+            ["fontsize", ["fontsize"]],
+            ["para", ["ul", "ol", "paragraph"]],
+            ["insert", ["link", "hr"]],
+        ],
+    },
+}
+
+# Production security settings
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# On-demand ISR revalidation
+REVALIDATION_URL = config("REVALIDATION_URL", default="")
+REVALIDATION_SECRET = config("REVALIDATION_SECRET", default="")

@@ -1,8 +1,9 @@
 import { TourDateEnum } from "@/lib/enums/tour-date";
 import { services } from "@/lib/services.config";
-import SectionTitle from "../../../components/common/SectionTitle";
-import PaginationLinks from "./PaginationLinks";
-import TourList from "./TourList";
+import { calculateEmptySlots } from "@/utils/page";
+import SectionTitle from "@/app/_components/SectionTitle";
+import PaginationLinks from "@/app/_components/pagination/PaginationLinks";
+import TourList from "@/app/tour/_components/TourList";
 
 type TourSectionProps = {
   direction: TourDateEnum;
@@ -20,9 +21,15 @@ export default async function TourSection({
       ? services.tour.getUpcomingDates
       : services.tour.getPastDates;
 
-  const { data, meta } = await fetcher(page, PER_PAGE);
+  let data, meta;
+  try {
+    ({ data, meta } = await fetcher(page, PER_PAGE));
+  } catch {
+    return null;
+  }
+
   const totalPages = meta?.total_pages ?? 1;
-  const emptySlots = totalPages > 1 ? Math.max(0, PER_PAGE - data.length) : 0;
+  const emptySlots = calculateEmptySlots(data.length, totalPages, PER_PAGE);
   const paramName =
     direction === TourDateEnum.UPCOMING ? "upcoming_page" : "past_page";
 

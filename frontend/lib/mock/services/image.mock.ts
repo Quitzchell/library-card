@@ -1,49 +1,23 @@
-import { GetImageItemsParams } from "@/lib/api/interfaces";
-import { NavigationLabel } from "@/lib/enums";
-import { ImageItemDisplay, ImageItemResponse } from "@/lib/interfaces/image";
+import { CarouselImage } from "@/lib/interfaces/image";
 
 export const imageMock = {
-  async getImageItems({
-    page = 0,
-    perPage = 10,
-    target = null,
-  }: GetImageItemsParams = {}): Promise<ImageItemResponse> {
-    const from = page * perPage;
-    const to = from + perPage;
-
-    const filteredItems = target
-      ? ImageItemList.filter((image) => image.target === target)
-      : ImageItemList;
-
-    const paginatedItems = filteredItems.slice(from, to);
-
-    const totalItems = filteredItems.length;
-    const lastPage = Math.ceil(totalItems / perPage);
-
-    return {
-      data: paginatedItems,
-      meta: {
-        current_page: page,
-        last_page: lastPage,
-        per_page: perPage,
-        total: totalItems,
-      },
-    };
+  async getCarouselImages(): Promise<CarouselImage[]> {
+    return Images;
   },
 };
 
 // Mockdata
-const ImageItemList: Array<ImageItemDisplay> = [
+const Images: CarouselImage[] = [
   {
     id: 1,
-    src: "/images/mock-press-image-1.jpeg",
+    image: "/images/mock-press-image-1.jpeg",
     alt: "Mock image of The Beatles",
-    target: NavigationLabel.ABOUT,
+    order: 1,
   },
   {
     id: 2,
-    src: "/images/mock-press-image-2.jpeg",
+    image: "/images/mock-press-image-2.jpeg",
     alt: "Mock image of The Beatles",
-    target: NavigationLabel.ABOUT,
+    order: 2,
   },
 ];

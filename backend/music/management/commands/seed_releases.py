@@ -26,9 +26,12 @@ class Command(BaseCommand):
                 "release_date": date(2025, 6, 9),
                 "cover_image": "release-covers/art-school-artwork.jpg",
                 "services": [
-                    {"name": StreamingServiceName.SPOTIFY, "url": "https://open.spotify.com/track/2pjSXlkwwlqEhoGtUpXeqr?si=27494075ad234820"},
-                    {"name": StreamingServiceName.BANDCAMP, "url": "https://thisislibrarycard.bandcamp.com/track/art-school"},
-                    {"name": StreamingServiceName.APPLE_MUSIC, "url": "https://music.apple.com/us/song/art-school/1823574040"},
+                    {"name": StreamingServiceName.SPOTIFY,
+                     "url": "https://open.spotify.com/track/2pjSXlkwwlqEhoGtUpXeqr?si=27494075ad234820"},
+                    {"name": StreamingServiceName.BANDCAMP,
+                     "url": "https://thisislibrarycard.bandcamp.com/track/art-school"},
+                    {"name": StreamingServiceName.APPLE_MUSIC,
+                     "url": "https://music.apple.com/us/song/art-school/1823574040"},
                 ],
                 "stores": [],
             },
@@ -37,12 +40,16 @@ class Command(BaseCommand):
                 "release_date": date(2024, 3, 15),
                 "cover_image": "release-covers/nothing-interesting-artwork.jpg",
                 "services": [
-                    {"name": StreamingServiceName.SPOTIFY, "url": "https://open.spotify.com/album/4wzy3foMTOWeACd3J2FXoC?si=e3fn2cSqQ0CvfQ6wv-MIag"},
-                    {"name": StreamingServiceName.BANDCAMP, "url": "https://thisislibrarycard.bandcamp.com/album/nothing-interesting"},
-                    {"name": StreamingServiceName.APPLE_MUSIC, "url": "https://music.apple.com/us/album/nothing-interesting-ep/1722176456"},
+                    {"name": StreamingServiceName.SPOTIFY,
+                     "url": "https://open.spotify.com/album/4wzy3foMTOWeACd3J2FXoC?si=e3fn2cSqQ0CvfQ6wv-MIag"},
+                    {"name": StreamingServiceName.BANDCAMP,
+                     "url": "https://thisislibrarycard.bandcamp.com/album/nothing-interesting"},
+                    {"name": StreamingServiceName.APPLE_MUSIC,
+                     "url": "https://music.apple.com/us/album/nothing-interesting-ep/1722176456"},
                 ],
                 "stores": [
-                    {"name": "At Ease Records", "url": "https://shop.atease.ltd/products/library-card-nothing-interesting", "postfix": "Buy now!"},
+                    {"name": "At Ease Records",
+                     "url": "https://shop.atease.ltd/products/library-card-nothing-interesting", "postfix": "Buy now!"},
                 ],
             },
             {
@@ -71,9 +78,12 @@ class Command(BaseCommand):
                 "release_date": date(2023, 3, 9),
                 "cover_image": "release-covers/sunflowers-artwork.jpg",
                 "services": [
-                    {"name": StreamingServiceName.SPOTIFY, "url": "https://open.spotify.com/album/5PY6ZHSv3OwcLNwi6qSm8P?si=s7X1JY32RgmKPfTdqA3ecg"},
-                    {"name": StreamingServiceName.BANDCAMP, "url": "https://thisislibrarycard.bandcamp.com/track/sunflowers"},
-                    {"name": StreamingServiceName.APPLE_MUSIC, "url": "https://music.apple.com/us/album/sunflowers-single/1672448083"},
+                    {"name": StreamingServiceName.SPOTIFY,
+                     "url": "https://open.spotify.com/album/5PY6ZHSv3OwcLNwi6qSm8P?si=s7X1JY32RgmKPfTdqA3ecg"},
+                    {"name": StreamingServiceName.BANDCAMP,
+                     "url": "https://thisislibrarycard.bandcamp.com/track/sunflowers"},
+                    {"name": StreamingServiceName.APPLE_MUSIC,
+                     "url": "https://music.apple.com/us/album/sunflowers-single/1672448083"},
                 ],
                 "stores": [],
             },
@@ -82,9 +92,12 @@ class Command(BaseCommand):
                 "release_date": date(2022, 6, 15),
                 "cover_image": "release-covers/mirror-factory-artwork.jpg",
                 "services": [
-                    {"name": StreamingServiceName.SPOTIFY, "url": "https://open.spotify.com/track/0D5W10M58DccbwOOxrdkxM?si=a27b56e81f6a4c2c"},
-                    {"name": StreamingServiceName.BANDCAMP, "url": "https://thisislibrarycard.bandcamp.com/album/mirror-factory"},
-                    {"name": StreamingServiceName.APPLE_MUSIC, "url": "https://music.apple.com/us/song/mirror-factory/1625081184"},
+                    {"name": StreamingServiceName.SPOTIFY,
+                     "url": "https://open.spotify.com/track/0D5W10M58DccbwOOxrdkxM?si=a27b56e81f6a4c2c"},
+                    {"name": StreamingServiceName.BANDCAMP,
+                     "url": "https://thisislibrarycard.bandcamp.com/album/mirror-factory"},
+                    {"name": StreamingServiceName.APPLE_MUSIC,
+                     "url": "https://music.apple.com/us/song/mirror-factory/1625081184"},
                 ],
                 "stores": [],
             },
@@ -117,8 +130,5 @@ class Command(BaseCommand):
                         url=store_data["url"],
                         postfix=store_data.get("postfix"),
                     )
-                self.stdout.write(f"  Created release: {release.title}")
-            else:
-                self.stdout.write(f"  Release already exists: {release.title}")
 
         self.stdout.write(self.style.SUCCESS(f"Seeded {created_count} releases"))

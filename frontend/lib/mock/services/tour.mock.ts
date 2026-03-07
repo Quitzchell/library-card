@@ -1,4 +1,4 @@
-import { TourDateDisplay, TourResponse } from "@/lib/interfaces/tour";
+import { TourDate, TourResponse } from "@/lib/interfaces/tour";
 
 const sortDataByDirection = (direction: string) =>
   direction === "asc"
@@ -16,16 +16,11 @@ export const tourMock = {
     };
   },
 
-  async getTourDates(
-    page = 1,
-    perPage = 20,
-    direction: string,
-  ): Promise<TourResponse> {
+  async getTourDates(page = 1, perPage = 5): Promise<TourResponse> {
     const from = page * perPage - perPage;
     const to = from + perPage;
-    const sortedData = sortDataByDirection(direction);
-    const data: TourDateDisplay[] = sortedData.slice(from, to);
-    const totalItems = sortedData.length;
+    const data: TourDate[] = TourDateList.slice(from, to);
+    const totalItems = TourDateList.length;
     const totalPages = Math.ceil(totalItems / perPage);
 
     return {
@@ -39,62 +34,80 @@ export const tourMock = {
     };
   },
 
-  async getTourDateById(id: number): Promise<TourDateDisplay | null> {
+  async getTourDateById(id: number): Promise<TourDate | null> {
     const item = TourDateList.find((t) => t.id === id);
 
     return item ?? null;
   },
 
-  async getUpcomingDates(): Promise<TourResponse> {
+  async getUpcomingDates(page = 1, perPage = 5): Promise<TourResponse> {
+    const upcoming = sortDataByDirection("desc");
+    const from = page * perPage - perPage;
+    const to = from + perPage;
+    const data: TourDate[] = upcoming.slice(from, to);
+    const totalItems = upcoming.length;
+    const totalPages = Math.ceil(totalItems / perPage);
+
     return {
-      data: sortDataByDirection("desc"),
+      data: data,
+      meta: {
+        current_page: page,
+        total_pages: totalPages,
+        per_page: perPage,
+        total: totalItems,
+      },
     };
   },
 
-  async getPastDates(): Promise<TourResponse> {
+  async getPastDates(page = 1, perPage = 5): Promise<TourResponse> {
+    const past = sortDataByDirection("asc");
+    const from = page * perPage - perPage;
+    const to = from + perPage;
+    const data: TourDate[] = past.slice(from, to);
+    const totalItems = past.length;
+    const totalPages = Math.ceil(totalItems / perPage);
+
     return {
-      data: sortDataByDirection("asc"),
+      data: data,
+      meta: {
+        current_page: page,
+        total_pages: totalPages,
+        per_page: perPage,
+        total: totalItems,
+      },
     };
   },
 };
 
 // Mockdata
-const TourDateList: Array<TourDateDisplay> = [
+const TourDateList: Array<TourDate> = [
   {
     id: 1,
-    venue: "Rotown",
-    city: "Rotterdam",
-    country: "NL",
+    venue: { id: 1, name: "Rotown", city: "Rotterdam", country: "NL" },
     ticket_url: "https://ticketurl.com",
     sold_out: false,
-    description: undefined,
     date: new Date("2025-01-01"),
   },
   {
     id: 2,
-    venue: "Paradiso",
-    city: "Amsterdam",
-    country: "NL",
-    ticket_url: undefined,
-    sold_out: undefined,
-    description: undefined,
+    venue: { id: 2, name: "Paradiso", city: "Amsterdam", country: "NL" },
     date: new Date("2025-01-02"),
   },
   {
     id: 3,
-    venue: "Doornroosje",
-    city: "Nijmegen",
-    country: "NL",
+    venue: { id: 3, name: "Doornroosje", city: "Nijmegen", country: "NL" },
     ticket_url: "https://ticketurl.com",
     sold_out: true,
-    description: undefined,
     date: new Date("2025-01-03"),
   },
   {
     id: 4,
-    venue: "The Bowery Ballroom",
-    city: "New York",
-    country: "USA",
+    venue: {
+      id: 4,
+      name: "The Bowery Ballroom",
+      city: "New York",
+      country: "USA",
+    },
     ticket_url: "https://boweryballroom.com/tickets",
     sold_out: false,
     description: "Special acoustic set",
@@ -102,39 +115,48 @@ const TourDateList: Array<TourDateDisplay> = [
   },
   {
     id: 5,
-    venue: "The Troubadour",
-    city: "Los Angeles",
-    country: "USA",
+    venue: {
+      id: 5,
+      name: "The Troubadour",
+      city: "Los Angeles",
+      country: "USA",
+    },
     ticket_url: "https://troubadour.com/shows",
     sold_out: true,
-    description: undefined,
     date: new Date("2025-01-05"),
   },
   {
     id: 6,
-    venue: "First Avenue",
-    city: "Minneapolis",
-    country: "USA",
-    ticket_url: undefined,
+    venue: {
+      id: 6,
+      name: "First Avenue",
+      city: "Minneapolis",
+      country: "USA",
+    },
     sold_out: false,
     description: "All ages show",
     date: new Date("2025-01-06"),
   },
   {
     id: 7,
-    venue: "O2 Academy Brixton",
-    city: "London",
-    country: "UK",
+    venue: {
+      id: 7,
+      name: "O2 Academy Brixton",
+      city: "London",
+      country: "UK",
+    },
     ticket_url: "https://academymusicgroup.com/o2academybrixton",
     sold_out: true,
-    description: undefined,
     date: new Date("2025-01-07"),
   },
   {
     id: 8,
-    venue: "The Roundhouse",
-    city: "London",
-    country: "UK",
+    venue: {
+      id: 8,
+      name: "The Roundhouse",
+      city: "London",
+      country: "UK",
+    },
     ticket_url: "https://roundhouse.org.uk",
     sold_out: false,
     description: "Album release show",
@@ -142,19 +164,13 @@ const TourDateList: Array<TourDateDisplay> = [
   },
   {
     id: 9,
-    venue: "La Cigale",
-    city: "Paris",
-    country: "FR",
-    ticket_url: undefined,
+    venue: { id: 9, name: "La Cigale", city: "Paris", country: "FR" },
     sold_out: false,
-    description: undefined,
     date: new Date("2026-01-01"),
   },
   {
     id: 10,
-    venue: "Olympia",
-    city: "Paris",
-    country: "FR",
+    venue: { id: 10, name: "Olympia", city: "Paris", country: "FR" },
     ticket_url: "https://olympiahall.com/tickets",
     sold_out: true,
     description: "Live recording",
@@ -162,62 +178,63 @@ const TourDateList: Array<TourDateDisplay> = [
   },
   {
     id: 11,
-    venue: "Columbiahalle",
-    city: "Berlin",
-    country: "DE",
+    venue: {
+      id: 11,
+      name: "Columbiahalle",
+      city: "Berlin",
+      country: "DE",
+    },
     ticket_url: "https://columbiahalle.de",
     sold_out: false,
-    description: undefined,
     date: new Date("2026-01-03"),
   },
   {
     id: 12,
-    venue: "Batschkapp",
-    city: "Frankfurt",
-    country: "DE",
-    ticket_url: undefined,
+    venue: {
+      id: 12,
+      name: "Batschkapp",
+      city: "Frankfurt",
+      country: "DE",
+    },
     sold_out: false,
     description: "Meet & greet available",
     date: new Date("2026-01-04"),
   },
   {
     id: 13,
-    venue: "Sala Apolo",
-    city: "Barcelona",
-    country: "ES",
+    venue: {
+      id: 13,
+      name: "Sala Apolo",
+      city: "Barcelona",
+      country: "ES",
+    },
     ticket_url: "https://sala-apolo.com",
     sold_out: true,
-    description: undefined,
     date: new Date("2026-01-05"),
   },
   {
     id: 14,
-    venue: "Joy Eslava",
-    city: "Madrid",
-    country: "ES",
+    venue: { id: 14, name: "Joy Eslava", city: "Madrid", country: "ES" },
     ticket_url: "https://joyeslava.com/eventos",
     sold_out: false,
-    description: undefined,
     date: new Date("2026-01-06"),
   },
   {
     id: 15,
-    venue: "The Opera House",
-    city: "Toronto",
-    country: "CA",
-    ticket_url: undefined,
+    venue: {
+      id: 15,
+      name: "The Opera House",
+      city: "Toronto",
+      country: "CA",
+    },
     sold_out: true,
     description: "Festival warm-up show",
     date: new Date("2026-01-07"),
   },
   {
     id: 16,
-    venue: "Vera",
-    city: "Groningen",
-    country: "NL",
-    ticket_url: undefined,
+    venue: { id: 16, name: "Vera", city: "Groningen", country: "NL" },
     sold_out: true,
-    description: undefined,
     date: new Date("2026-01-08"),
   },
 ];

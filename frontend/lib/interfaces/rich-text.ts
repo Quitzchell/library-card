@@ -1,4 +1,4 @@
 export interface RichTextItem {
   title?: string;
-  text: string;
+  content: string;
 }

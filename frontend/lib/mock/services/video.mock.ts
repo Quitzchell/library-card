@@ -1,68 +1,35 @@
 import { VideoCategory } from "@/lib/enums/video-category";
-import { PaginatedResponse } from "@/lib/interfaces/paginated-response";
-import {
-  VideoItemDisplay,
-  VideosByCategory,
-  VideosByCategoryResponse,
-} from "@/lib/interfaces/video";
+import { Video, VideoResponse } from "@/lib/interfaces/video";
 
 export const videoMock = {
-  async getVideoItems(
-    page = 1,
-    perPage = 10,
-  ): Promise<PaginatedResponse<VideoItemDisplay>> {
-    const from = page * perPage - perPage;
-    const to = from + perPage;
-
-    const data: VideoItemDisplay[] = VideoItemList.slice(from, to);
-
-    const totalItems = VideoItemList.length;
-    const totalPages = Math.ceil(totalItems / perPage);
-
-    return {
-      data: data,
-      meta: {
-        current_page: page,
-        total_pages: totalPages,
-        per_page: perPage,
-        total: totalItems,
-      },
-    };
-  },
-
-  async getVideoItemById(id: number): Promise<VideoItemDisplay | null> {
-    const item = VideoItemList.find((v) => v.id === id);
-
-    return item ?? null;
-  },
-
-  async getVideosByCategory(): Promise<VideosByCategoryResponse> {
-    const videosByCategory = VideoItemList.reduce<VideosByCategory>(
-      (acc, item) => {
-        acc[item.category] ??= [];
-        acc[item.category].push(item);
-        return acc;
-      },
-      {} as VideosByCategory,
-    );
-
-    return { data: videosByCategory };
+  async getVideoItems({
+    take,
+    category,
+  }: {
+    take?: number;
+    category?: VideoCategory;
+  } = {}): Promise<VideoResponse> {
+    let result = VideoItemList;
+    if (category)
+      result = result.filter((video) => video.category === category);
+    if (take) result = result.slice(0, take);
+    return { data: result };
   },
 };
 
 // Mockdata
-const VideoItemList: Array<VideoItemDisplay> = [
+const VideoItemList: Array<Video> = [
   {
     id: 1,
     title: "Art School",
     video_id: "Yne-u4IEUT4",
-    category: VideoCategory.VIDEOCLIP,
+    category: VideoCategory.VIDEO_CLIP,
   },
   {
     id: 2,
     title: "For the World is Hollow",
     video_id: "qewpFSU6Sd0",
-    category: VideoCategory.VIDEOCLIP,
+    category: VideoCategory.VIDEO_CLIP,
   },
   {
     id: 3,
@@ -80,12 +47,12 @@ const VideoItemList: Array<VideoItemDisplay> = [
     id: 5,
     title: "Mirror Factory",
     video_id: "CedA_EOk0gY",
-    category: VideoCategory.VIDEOCLIP,
+    category: VideoCategory.VIDEO_CLIP,
   },
   {
     id: 6,
     title: "Sunflowers",
     video_id: "OIRaQ6jPTXA",
-    category: VideoCategory.VIDEOCLIP,
+    category: VideoCategory.VIDEO_CLIP,
   },
 ];

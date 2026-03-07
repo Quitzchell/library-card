@@ -1,11 +1,16 @@
 import SectionLink from "@/app/(home)/_components/SectionLink";
-import SectionTitle from "@/components/common/SectionTitle";
+import SectionTitle from "@/app/_components/SectionTitle";
 import ReleaseList from "@/app/music/_components/ReleaseList";
 import { NavigationRoute } from "@/lib/enums/navigation";
 import { services } from "@/lib/services.config";
 
 export default async function ReleaseContainer() {
-  const musicItems = await services.music.getReleases(1, 4);
+  let musicItems;
+  try {
+    musicItems = await services.music.getReleases(1, 4);
+  } catch {
+    return null;
+  }
 
   return (
     <div className="space-y-8 md:space-y-10">

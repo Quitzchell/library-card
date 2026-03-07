@@ -1,13 +1,13 @@
-export interface SocialMediaList {
-  title: string | null;
-  items: Array<SocialMediaItem>;
+export interface SocialMediaGroup {
+  category: string | null;
+  items: Array<SocialMediaLink>;
 }
 
-export interface SocialMediaItem {
+export interface SocialMediaLink {
   icon: string;
   url: string;
 }
 
-export interface SocialMediaLists {
-  lists: Array<SocialMediaList>;
+export interface SocialMediaGroups {
+  groups: Array<SocialMediaGroup>;
 }

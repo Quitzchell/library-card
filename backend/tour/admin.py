@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models.venue import Venue
 from .models.tour_date import TourDate
 
@@ -13,4 +14,4 @@ class TourDateAdmin(admin.ModelAdmin):
 @admin.register(Venue)
 class VenueAdmin(admin.ModelAdmin):
     list_display = ["name", "city", "country"]
-    search_fields = ["name", "city", "country"]
+    search_fields = ["name", "city", "caountry"]
