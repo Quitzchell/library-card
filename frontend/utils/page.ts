@@ -2,6 +2,14 @@ export function sanitizePageParam(value: string | undefined): number {
   return Math.max(1, Math.floor(Number(value) || 1));
 }
 
+export function calculateEmptySlots(
+  count: number,
+  totalPages: number,
+  perPage: number,
+): number {
+  return totalPages > 1 ? Math.max(0, perPage - count) : 0;
+}
+
 export function getPaginationRange(currentPage: number, totalPages: number) {
   const siblings = 1;
 

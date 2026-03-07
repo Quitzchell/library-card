@@ -1,4 +1,5 @@
 import { services } from "@/lib/services.config";
+import { calculateEmptySlots } from "@/utils/page";
 import ReleaseList from "@/app/music/_components/ReleaseList";
 import PaginationLinks from "@/app/_components/pagination/PaginationLinks";
 
@@ -11,7 +12,7 @@ const PER_PAGE = 8;
 export default async function ReleaseSection({ page }: MusicSectionProps) {
   const { data, meta } = await services.music.getReleases(page, PER_PAGE);
   const totalPages = meta?.total_pages ?? 1;
-  const emptySlots = totalPages > 1 ? Math.max(0, PER_PAGE - data.length) : 0;
+  const emptySlots = calculateEmptySlots(data.length, totalPages, PER_PAGE);
 
   return (
     <div className="space-y-5">
