@@ -1,16 +1,32 @@
+import { timingSafeEqual } from "crypto";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request: NextRequest) {
-  const secret = request.headers.get("x-revalidation-secret");
+const ALLOWED_PATHS = ["/", "/music", "/tour", "/video", "/about"];
 
-  if (secret !== process.env.REVALIDATION_SECRET) {
+function secretsMatch(a: string | null, b: string | undefined): boolean {
+  if (!a || !b) return false;
+  const bufA = Buffer.from(a);
+  const bufB = Buffer.from(b);
+  if (bufA.length !== bufB.length) return false;
+  return timingSafeEqual(bufA, bufB);
+}
+
+export async function POST(request: NextRequest) {
+  if (
+    !secretsMatch(
+      request.headers.get("x-revalidation-secret"),
+      process.env.REVALIDATION_SECRET,
+    )
+  ) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
   try {
     const body = await request.json();
-    const paths: string[] = body.paths || ["/"];
+    const paths: string[] = (body.paths || ["/"]).filter((p: string) =>
+      ALLOWED_PATHS.includes(p),
+    );
 
     for (const path of paths) {
       revalidatePath(path);
