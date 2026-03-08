@@ -29,10 +29,7 @@ export default function NavSheet({ pathname }: NavSheetProps) {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         asChild
-        className={cn(
-          "absolute top-8 right-6",
-          pathname.endsWith(homeItem.href) && "text-white",
-        )}
+        className={cn(pathname.endsWith(homeItem.href) && "text-white")}
       >
         <Menu className="size-8 cursor-pointer" />
       </SheetTrigger>
