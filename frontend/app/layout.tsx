@@ -14,6 +14,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Library Card",
   description: "Library Card",
+  robots: "noindex, nofollow",
 };
 
 export default function RootLayout({
