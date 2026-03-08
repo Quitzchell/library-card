@@ -12,8 +12,7 @@ if [ -n "$DJANGO_SUPERUSER_USERNAME" ]; then
 fi
 
 # Seed database if empty
-python -c "
-import django; django.setup()
+python manage.py shell -c "
 from tour.models import TourDate
 if not TourDate.objects.exists():
     print('Database is empty, seeding...')
