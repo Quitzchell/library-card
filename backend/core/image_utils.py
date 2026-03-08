@@ -51,38 +51,49 @@ def hashed_upload_path(instance, filename):
 
 
 class OptimizedImageMixin(models.Model):
+    image_field_name = "image"
+
     class Meta:
         abstract = True
+
+    def _get_image_field(self):
+        return getattr(self, self.image_field_name)
+
+    def _set_image_field(self, value):
+        setattr(self, self.image_field_name, value)
 
     def save(self, *args, **kwargs):
         old_image_name = None
         image_changed = True
+        image = self._get_image_field()
 
         if self.pk:
             try:
                 old_instance = self.__class__.objects.get(pk=self.pk)
-                old_image_name = old_instance.image.name
-                if old_image_name == self.image.name:
+                old_image_name = getattr(old_instance, self.image_field_name).name
+                if old_image_name == image.name:
                     image_changed = False
             except self.__class__.DoesNotExist:
                 pass
 
-        if image_changed and self.image:
+        if image_changed and image and getattr(image, '_committed', True) is False:
             self._optimize_image()
 
         super().save(*args, **kwargs)
 
-        if old_image_name and old_image_name != self.image.name:
-            self.image.storage.delete(old_image_name)
+        if old_image_name and old_image_name != self._get_image_field().name:
+            image.storage.delete(old_image_name)
 
     def delete(self, *args, **kwargs):
-        image_name = self.image.name if self.image else None
+        image = self._get_image_field()
+        image_name = image.name if image else None
         super().delete(*args, **kwargs)
         if image_name:
-            self.image.storage.delete(image_name)
+            image.storage.delete(image_name)
 
     def _optimize_image(self):
-        img = Image.open(self.image)
+        image = self._get_image_field()
+        img = Image.open(image)
         icc_profile = img.info.get("icc_profile")
         img.thumbnail((OPTIMIZE_MAX_DIMENSION, OPTIMIZE_MAX_DIMENSION), Image.LANCZOS)
 
@@ -101,5 +112,5 @@ class OptimizedImageMixin(models.Model):
 
         from pathlib import PurePosixPath
 
-        stem = PurePosixPath(self.image.name).stem
-        self.image = ContentFile(buffer.getvalue(), name=f"{stem}.webp")
+        stem = PurePosixPath(image.name).stem
+        self._set_image_field(ContentFile(buffer.getvalue(), name=f"{stem}.webp"))
