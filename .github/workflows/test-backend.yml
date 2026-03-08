@@ -2,7 +2,7 @@ name: Test Backend
 
 on:
   pull_request:
-    paths: ["backend/**"]
+    branches: [main]
 
 jobs:
   test:
