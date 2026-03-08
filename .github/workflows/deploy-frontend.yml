@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
     paths: ["frontend/**"]
+  pull_request:
+    branches: [main]
+    paths: ["frontend/**"]
 
 jobs:
   test:
@@ -21,6 +24,7 @@ jobs:
         working-directory: frontend
 
   deploy:
+    if: github.event_name == 'push'
     needs: test
     runs-on: ubuntu-latest
     steps:
