@@ -1,4 +1,6 @@
-import DOMPurify from "isomorphic-dompurify";
+"use client";
+
+import DOMPurify from "dompurify";
 import { RichTextItem } from "@/lib/interfaces/rich-text";
 
 type RichTextProps = {
