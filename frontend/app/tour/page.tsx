@@ -1,4 +1,5 @@
 import TourSection from "@/app/tour/_components/TourSection";
+import PageHeader from "@/app/_components/PageHeader";
 import { TourDateEnum } from "@/lib/enums/tour-date";
 import { sanitizePageParam } from "@/utils/page";
 
@@ -13,7 +14,9 @@ export default async function TourPage({ searchParams }: TourPageProps) {
 
   return (
     <div className="flex grow-1 flex-col py-8">
-      <h1 className="container mb-8 text-4xl font-bold">Tour</h1>
+      <div className="container">
+        <PageHeader title="tour" />
+      </div>
 
       <section className="h-full space-y-12">
         <TourSection direction={TourDateEnum.UPCOMING} page={upcomingPage} />

@@ -48,6 +48,7 @@ function TourRow({
         variant="outline"
         className={cn(
           "text-left",
+          "hover:cursor-default hover:bg-transparent hover:text-inherit",
           showTickets ? "col-span-8 md:col-span-10" : "col-span-full",
         )}
       >

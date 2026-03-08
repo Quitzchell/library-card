@@ -1,8 +1,12 @@
 import Image from "next/image";
+import Navigation from "@/app/_components/navigation/Navigation";
 
 export default function Hero() {
   return (
-    <section className="h-dvh">
+    <section className="relative h-dvh">
+      <div className="container absolute inset-x-0 top-0 z-10 flex justify-end py-8">
+        <Navigation />
+      </div>
       <div className="bg-primary flex h-9/10 items-center justify-center">
         <Image
           src="/images/library-card.jpg"

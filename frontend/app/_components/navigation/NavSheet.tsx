@@ -29,17 +29,16 @@ export default function NavSheet({ pathname }: NavSheetProps) {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         asChild
-        className={cn(
-          "absolute top-8 right-6",
-          pathname.endsWith(homeItem.href) && "text-white",
-        )}
+        className={cn(pathname.endsWith(homeItem.href) && "text-white")}
       >
         <Menu className="size-8 cursor-pointer" />
       </SheetTrigger>
-      <SheetContent className="max-w-1/4">
+      <SheetContent className="max-w-2/4">
         <SheetHeader>
           <DialogTitle className="text-lg font-normal">
-            Library Card
+            <Link href={homeItem.href} onClick={handleLinkClick}>
+              Library Card
+            </Link>
           </DialogTitle>
         </SheetHeader>
         <div className={cn("grid flex-1 auto-rows-min gap-4 px-4")}>

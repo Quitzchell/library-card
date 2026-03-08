@@ -24,7 +24,6 @@ export default function RootLayout({
       <body
         className={`${ibmPlexMono.variable} flex h-full flex-col antialiased`}
       >
-        <Navigation />
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
       </body>
