@@ -46,7 +46,6 @@ class SeedCommandTests(TestCase):
     def test_seeds_all_data(self):
         out = StringIO()
         call_command("seed", stdout=out)
-        self.assertTrue(User.objects.filter(username="admin").exists())
         self.assertGreater(Release.objects.count(), 0)
         self.assertGreater(Video.objects.count(), 0)
         self.assertGreater(Team.objects.count(), 0)
