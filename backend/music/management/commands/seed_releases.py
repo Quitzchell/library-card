@@ -8,8 +8,11 @@ from music.models import Release, StreamingService, StreamingServiceName, Store
 class Command(BaseCommand):
     help = "Seeds the database with releases, streaming services, and stores"
 
+    def add_arguments(self, parser):
+        parser.add_argument('--production', action='store_true')
+
     def handle(self, *args, **options):
-        if not settings.DEBUG:
+        if not settings.DEBUG and not options.get('production'):
             self.stdout.write(self.style.ERROR("This command only runs in DEBUG mode"))
             return
 
