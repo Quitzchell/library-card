@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.shortcuts import redirect
 from django_summernote.admin import SummernoteModelAdmin
 
+from config.revalidation import trigger_revalidation
+
 from .models import GeneralContent, CarouselImage
 
 
@@ -19,9 +21,25 @@ class GeneralContentAdmin(SummernoteModelAdmin):
     def has_delete_permission(self, request, obj=None):
         return False
 
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        trigger_revalidation(["/", "/about"])
+
+    def delete_model(self, request, obj):
+        super().delete_model(request, obj)
+        trigger_revalidation(["/", "/about"])
+
 
 @admin.register(CarouselImage)
 class ImagesAdmin(admin.ModelAdmin):
     list_display = ["name", "alt", "order", "is_active"]
     search_fields = ["name", "alt"]
     list_editable = ["order", "is_active"]
+
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        trigger_revalidation(["/"])
+
+    def delete_model(self, request, obj):
+        super().delete_model(request, obj)
+        trigger_revalidation(["/"])
