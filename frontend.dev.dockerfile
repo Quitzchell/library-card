@@ -1,4 +1,4 @@
-FROM node:24-alpine
+FROM node:22-alpine
 
 RUN mkdir -p /var/www/html
 COPY ./frontend.entrypoint.sh /usr/local/bin/docker-entrypoint.sh
