@@ -9,8 +9,8 @@ ALLOWED_ATTRIBUTES = {"a": ["href", "target", "rel"], "span": ["style"]}
 
 
 class GeneralContent(models.Model):
-    about_us_title = models.CharField(max_length=55, blank=True, null=True)
-    about_us_content = models.TextField(blank=True, null=True)
+    about_us_title = models.CharField("biography title", max_length=55, blank=True, null=True)
+    about_us_content = models.TextField("biography content", blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.pk = 1
