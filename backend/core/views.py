@@ -6,6 +6,7 @@ from .models import CarouselImage, GeneralContent
 from .serializer.carousel_image import CarouselImageSerializer
 from .serializer.about import AboutSerializer
 from .serializer.general_content import GeneralContentSerializer
+from .serializer.social_media import SocialMediaLinkSerializer
 
 
 class AboutView(APIView):
@@ -19,6 +20,14 @@ class GeneralContentView(APIView):
     def get(self, request):
         content = GeneralContent.load()
         serializer = GeneralContentSerializer(content)
+        return Response(serializer.data)
+
+
+class SocialMediaView(APIView):
+    def get(self, request):
+        content = GeneralContent.load()
+        links = content.social_media_links.all()
+        serializer = SocialMediaLinkSerializer(links, many=True)
         return Response(serializer.data)
 
 

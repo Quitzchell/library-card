@@ -1,7 +1,8 @@
 from rest_framework.test import APITestCase
 
 from core.models import CarouselImage, GeneralContent
-from tests.helpers import create_test_image
+from core.models.social_media_link import Platform
+from tests.helpers import create_test_image, create_social_media_link
 
 
 class CarouselImageViewSetTests(APITestCase):
@@ -49,6 +50,38 @@ class AboutViewTests(APITestCase):
         response = self.client.get("/api/about/")
         self.assertEqual(response.data["title"], "Title")
         self.assertEqual(response.data["content"], "Content")
+
+
+class SocialMediaViewTests(APITestCase):
+    def test_returns_links(self):
+        content = GeneralContent.load()
+        create_social_media_link(
+            content=content,
+            platform=Platform.INSTAGRAM,
+            url="https://instagram.com/test",
+        )
+        response = self.client.get("/api/social-media/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.data), 1)
+        self.assertEqual(response.data[0]["platform"], "instagram")
+        self.assertEqual(response.data[0]["url"], "https://instagram.com/test")
+
+    def test_returns_empty_list_when_no_links(self):
+        response = self.client.get("/api/social-media/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, [])
+
+    def test_ordering(self):
+        content = GeneralContent.load()
+        create_social_media_link(
+            content=content, platform=Platform.FACEBOOK, order=2
+        )
+        create_social_media_link(
+            content=content, platform=Platform.INSTAGRAM, order=1
+        )
+        response = self.client.get("/api/social-media/")
+        self.assertEqual(response.data[0]["platform"], "instagram")
+        self.assertEqual(response.data[1]["platform"], "facebook")
 
 
 class GeneralContentViewTests(APITestCase):
