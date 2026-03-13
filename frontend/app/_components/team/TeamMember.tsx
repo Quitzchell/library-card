@@ -6,23 +6,20 @@ type TeamMemberProps = {
 
 export default function TeamMember({ member }: TeamMemberProps) {
   return (
-    <div className="flex space-x-2 text-white">
-      {member.region && (
-        <>
-          <p>{member.region}:</p>
-        </>
-      )}
+    <div className="flex flex-col text-white">
+      <div className="flex space-x-2">
+        {member.region && <p>{member.region}:</p>}
+        {member.organization && <p>{member.organization}</p>}
+      </div>
 
-      {member.organization && (
-        <>
-          <p>{member.organization}</p>
-          <span>•</span>
-        </>
-      )}
-
-      <a href={`mailto:${member.email}`} className="text-white hover:underline">
-        {member.email}
-      </a>
+      <div>
+        <a
+          href={`mailto:${member.email}`}
+          className="text-white hover:underline"
+        >
+          • {member.email}
+        </a>
+      </div>
     </div>
   );
 }
