@@ -23,6 +23,9 @@ from .admin import CustomAdminSite
 
 admin.site.__class__ = CustomAdminSite
 
+from django_summernote.models import Attachment
+admin.site.unregister(Attachment)
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("summernote/", include("django_summernote.urls")),

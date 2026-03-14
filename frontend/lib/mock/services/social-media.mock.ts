@@ -1,19 +1,12 @@
-import { SocialMediaGroups } from "@/lib/interfaces/social-media";
+import { SocialMediaLink } from "@/lib/interfaces/social-media";
 
 export const socialMediaMock = {
-  async getSocialMediaGroups(): Promise<SocialMediaGroups> {
-    return {
-      groups: [
-        {
-          category: "Follow us",
-          items: [
-            {
-              icon: "FaInstagram",
-              url: "https://www.instagram.com/thisislibrarycard/",
-            },
-          ],
-        },
-      ],
-    };
+  async getSocialMedia(): Promise<SocialMediaLink[]> {
+    return [
+      {
+        platform: "instagram",
+        url: "https://www.instagram.com/thisislibrarycard/",
+      },
+    ];
   },
 };

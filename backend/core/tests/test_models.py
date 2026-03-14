@@ -1,7 +1,8 @@
 from django.test import TestCase
 
-from core.models import GeneralContent, CarouselImage
-from tests.helpers import create_test_image
+from core.models import GeneralContent, CarouselImage, SocialMediaLink
+from core.models.social_media_link import Platform
+from tests.helpers import create_test_image, create_social_media_link
 
 
 class GeneralContentTests(TestCase):
@@ -66,3 +67,36 @@ class CarouselImageTests(TestCase):
         self.assertTrue(storage.exists(image_name))
         img.delete()
         self.assertFalse(storage.exists(image_name))
+
+
+class SocialMediaLinkTests(TestCase):
+    def test_ordering_by_order_field(self):
+        content = GeneralContent.load()
+        link1 = create_social_media_link(
+            content=content, platform=Platform.FACEBOOK, order=2
+        )
+        link2 = create_social_media_link(
+            content=content, platform=Platform.INSTAGRAM, order=1
+        )
+        links = list(SocialMediaLink.objects.all())
+        self.assertEqual(links[0].pk, link2.pk)
+        self.assertEqual(links[1].pk, link1.pk)
+
+    def test_str(self):
+        link = create_social_media_link(
+            platform=Platform.INSTAGRAM, url="https://instagram.com/test"
+        )
+        self.assertEqual(str(link), "Instagram (https://instagram.com/test)")
+
+    def test_fk_to_general_content(self):
+        content = GeneralContent.load()
+        link = create_social_media_link(content=content)
+        self.assertEqual(link.content, content)
+        self.assertIn(link, content.social_media_links.all())
+
+    def test_cascade_delete(self):
+        content = GeneralContent.load()
+        create_social_media_link(content=content)
+        self.assertEqual(SocialMediaLink.objects.count(), 1)
+        content.delete()
+        self.assertEqual(SocialMediaLink.objects.count(), 0)

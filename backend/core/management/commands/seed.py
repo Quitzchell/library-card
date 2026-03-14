@@ -34,4 +34,7 @@ class Command(BaseCommand):
         self.stdout.write('Seeding team and team members...')
         call_command('seed_team', *prod_flag)
 
+        self.stdout.write('Seeding social media links...')
+        call_command('seed_social_media', *prod_flag)
+
         self.stdout.write(self.style.SUCCESS('Successfully seeded all development data'))

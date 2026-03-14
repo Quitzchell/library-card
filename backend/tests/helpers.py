@@ -4,6 +4,8 @@ from datetime import date
 from django.core.files.uploadedfile import SimpleUploadedFile
 from PIL import Image
 
+from core.models import GeneralContent, SocialMediaLink
+from core.models.social_media_link import Platform
 from music.models import Release, StreamingService, StreamingServiceName, Store
 from video.models import Video, VideoCategory
 from team.models import Team, Member
@@ -96,3 +98,16 @@ def create_team(category="booking", members=None):
     if members:
         team.members.set(members)
     return team
+
+
+def create_social_media_link(content=None, **kwargs):
+    if content is None:
+        content = GeneralContent.load()
+    defaults = {
+        "content": content,
+        "platform": Platform.INSTAGRAM,
+        "url": "https://www.instagram.com/test",
+        "order": 0,
+    }
+    defaults.update(kwargs)
+    return SocialMediaLink.objects.create(**defaults)

@@ -4,12 +4,22 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from config.revalidation import trigger_revalidation
 
-from .models import GeneralContent, CarouselImage
+from .models import GeneralContent, CarouselImage, SocialMediaLink
+
+
+class SocialMediaLinkInline(admin.TabularInline):
+    model = SocialMediaLink
+    extra = 1
+    fields = ["platform", "url", "order"]
 
 
 @admin.register(GeneralContent)
 class GeneralContentAdmin(SummernoteModelAdmin):
     summernote_fields = ("about_us_content",)
+    fieldsets = [
+        ("Biography", {"fields": ["about_us_title", "about_us_content"]}),
+    ]
+    inlines = [SocialMediaLinkInline]
 
     def changelist_view(self, request, extra_context=None):
         obj = GeneralContent.load()
@@ -23,6 +33,10 @@ class GeneralContentAdmin(SummernoteModelAdmin):
 
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
+        trigger_revalidation(["/", "/about"])
+
+    def save_related(self, request, form, formsets, change):
+        super().save_related(request, form, formsets, change)
         trigger_revalidation(["/", "/about"])
 
     def delete_model(self, request, obj):

@@ -1,13 +1,4 @@
-export interface SocialMediaGroup {
-  category: string | null;
-  items: Array<SocialMediaLink>;
-}
-
 export interface SocialMediaLink {
-  icon: string;
+  platform: string;
   url: string;
-}
-
-export interface SocialMediaGroups {
-  groups: Array<SocialMediaGroup>;
 }

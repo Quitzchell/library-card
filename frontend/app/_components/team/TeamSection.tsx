@@ -13,7 +13,7 @@ export default async function TeamSection() {
   return (
     <div className="flex flex-col">
       {teams.map((team: Team, index: number) => (
-        <div key={index}>
+        <div className="space-y-2" key={index}>
           <p className="mb-2 font-bold text-white capitalize">
             {team.category}
           </p>

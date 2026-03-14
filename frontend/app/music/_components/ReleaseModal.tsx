@@ -20,7 +20,7 @@ export default function ReleaseModal({ release }: { release: Release }) {
           height={1080}
           alt={release.title}
         />
-        <p className="h-12 w-full text-left text-balance underline group-hover:text-white">
+        <p className="h-18 w-full text-left text-balance underline group-hover:text-white">
           {release.title}
         </p>
       </DialogTrigger>
